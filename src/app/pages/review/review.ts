@@ -43,7 +43,7 @@ export class Review {
   protected readonly i18n = inject(I18nService);
 
   protected readonly focusThemeIds = computed(() =>
-    this.themes()
+    (this.themes() ?? '')
       .split(',')
       .map((id) => id.trim())
       .filter(Boolean),
