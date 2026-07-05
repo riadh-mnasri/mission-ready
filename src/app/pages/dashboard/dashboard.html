@@ -1,28 +1,58 @@
 <main class="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
-  <div class="animate-fade-up mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-    <div>
-      <h1 class="text-2xl font-semibold tracking-tight text-text">{{ i18n.strings.dashboardTitle }}</h1>
-      <p class="mt-1 text-sm text-text-muted">
-        {{
-          totalDue() > 0
-            ? i18n.strings.dashboardSubtitleDue(totalDue())
-            : i18n.strings.dashboardSubtitleUpToDate
-        }}
-      </p>
+  <div class="relative mb-8">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="animate-fade-up flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <div>
+        <h1 class="text-3xl font-semibold tracking-tight text-text">{{ i18n.strings.dashboardTitle }}</h1>
+        <p class="mt-2 text-sm text-text-muted">
+          {{
+            totalDue() > 0
+              ? i18n.strings.dashboardSubtitleDue(totalDue())
+              : i18n.strings.dashboardSubtitleUpToDate
+          }}
+        </p>
+      </div>
+      @if (totalDue() > 0) {
+        <a
+          routerLink="/review/all"
+          class="whitespace-nowrap rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+        >
+          {{ i18n.strings.reviewAllDue }}
+        </a>
+      }
     </div>
-    @if (totalDue() > 0) {
-      <a
-        routerLink="/review/all"
-        class="whitespace-nowrap rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-accent-hover"
-      >
-        {{ i18n.strings.reviewAllDue }}
-      </a>
-    }
   </div>
 
+  @if (cards().length > 0) {
+    <div class="animate-fade-up mb-10 grid grid-cols-3 gap-2 sm:gap-4" style="animation-delay: 100ms">
+      <div class="card-shadow rounded-xl border border-border bg-surface px-3 py-3 sm:px-5 sm:py-4">
+        <p class="font-mono text-xl font-semibold text-text sm:text-3xl">
+          <app-animated-number [value]="totalDue()" />
+        </p>
+        <p class="mt-1 text-xs text-text-muted">{{ i18n.strings.statDueLabel }}</p>
+      </div>
+      <div class="card-shadow rounded-xl border border-border bg-surface px-3 py-3 sm:px-5 sm:py-4">
+        <p class="font-mono text-xl font-semibold text-accent sm:text-3xl">
+          <app-animated-number [value]="masteryPercent()" suffix="%" />
+        </p>
+        <p class="mt-1 text-xs text-text-muted">{{ i18n.strings.statMasteryLabel }}</p>
+      </div>
+      <div class="card-shadow rounded-xl border border-border bg-surface px-3 py-3 sm:px-5 sm:py-4">
+        <p class="font-mono text-xl font-semibold text-success sm:text-3xl">
+          <app-animated-number [value]="masteredCount()" /><span class="text-text-faint">/{{
+            cards().length
+          }}</span>
+        </p>
+        <p class="mt-1 text-xs text-text-muted">{{ i18n.strings.statMasteredLabel }}</p>
+      </div>
+    </div>
+  }
+
   <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-    @for (theme of themes(); track theme.id) {
-      <app-theme-card [theme]="theme" [cards]="cardsForTheme(theme.id)" />
+    @for (theme of themes(); track theme.id; let i = $index) {
+      <div class="animate-cascade" [style.animation-delay.ms]="i * 60">
+        <app-theme-card [theme]="theme" [cards]="cardsForTheme(theme.id)" />
+      </div>
     }
   </div>
 

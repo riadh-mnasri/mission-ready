@@ -51,6 +51,9 @@ interface Strings {
   deleteTheme: string;
   confirmDeleteTheme: string;
   confirmDeleteCard: string;
+  statDueLabel: string;
+  statMasteryLabel: string;
+  statMasteredLabel: string;
 }
 
 const en: Strings = {
@@ -95,6 +98,9 @@ const en: Strings = {
   deleteTheme: "Delete this theme",
   confirmDeleteTheme: "Delete this theme and all its cards?",
   confirmDeleteCard: "Delete this card?",
+  statDueLabel: "Due today",
+  statMasteryLabel: "Overall mastery",
+  statMasteredLabel: "Cards mastered",
 };
 
 const fr: Strings = {
@@ -138,6 +144,9 @@ const fr: Strings = {
   deleteTheme: "Supprimer ce thème",
   confirmDeleteTheme: "Supprimer ce thème et toutes ses cartes ?",
   confirmDeleteCard: "Supprimer cette carte ?",
+  statDueLabel: "À réviser aujourd'hui",
+  statMasteryLabel: "Maîtrise globale",
+  statMasteredLabel: "Cartes maîtrisées",
 };
 
 const DICTIONARIES: Record<Language, Strings> = { en, fr };
