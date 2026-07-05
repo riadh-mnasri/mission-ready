@@ -95,4 +95,44 @@ export const questions = [
     answerFr:
       "La crise (notamment le défaut de Lehman Brothers) a révélé l'ampleur des expositions bilatérales non compensées sur les dérivés OTC, poussant le G20/Bâle III à imposer la compensation centrale, la collatéralisation systématique, et des charges en capital dédiées (la CVA capital charge).",
   },
+  {
+    question: "What is the difference between Initial Margin (IM) and Variation Margin (VM)?",
+    answer:
+      "Variation Margin covers the current mark-to-market exposure and moves with daily price changes; Initial Margin is a separate buffer collected upfront to cover the potential future exposure that could build up between the last VM exchange and the time it takes to close out a defaulted counterparty's position.",
+    questionFr: "Quelle est la différence entre l'Initial Margin (IM) et la Variation Margin (VM) ?",
+    answerFr:
+      "La Variation Margin couvre l'exposition mark-to-market courante et évolue avec les variations de prix quotidiennes ; l'Initial Margin est un coussin séparé collecté en amont pour couvrir l'exposition future potentielle qui pourrait se former entre le dernier échange de VM et le temps nécessaire pour déboucler la position d'une contrepartie en défaut.",
+  },
+  {
+    question: "What are the Uncleared Margin Rules (UMR) and who do they affect?",
+    answer:
+      "A post-2008 regulatory framework requiring both Initial and Variation Margin to be exchanged on non-centrally-cleared OTC derivatives, phased in by counterparty size (largest first); it pushed many buy-side firms that were previously below the threshold to build IM/VM operational capabilities for the first time.",
+    questionFr: "Que sont les Uncleared Margin Rules (UMR) et qui affectent-elles ?",
+    answerFr:
+      "Un cadre réglementaire post-2008 exigeant l'échange d'Initial Margin et de Variation Margin sur les dérivés OTC non compensés centralement, déployé progressivement selon la taille des contreparties (les plus grandes d'abord) ; il a poussé de nombreuses firmes buy-side auparavant sous le seuil à construire pour la première fois des capacités opérationnelles IM/VM.",
+  },
+  {
+    question: "Beyond CVA and DVA, what other members of the \"XVA\" family exist and what do they cover?",
+    answer:
+      "FVA (Funding Valuation Adjustment) captures the cost of funding uncollateralized exposure; MVA (Margin Valuation Adjustment) captures the funding cost of posting Initial Margin; KVA (Capital Valuation Adjustment) captures the cost of the regulatory capital a trade consumes over its life.",
+    questionFr: "Au-delà du CVA et du DVA, quels autres membres de la famille \"XVA\" existent et que couvrent-ils ?",
+    answerFr:
+      "Le FVA (Funding Valuation Adjustment) capture le coût de financement d'une exposition non collatéralisée ; le MVA (Margin Valuation Adjustment) capture le coût de financement du fait de poster de l'Initial Margin ; le KVA (Capital Valuation Adjustment) capture le coût du capital réglementaire qu'un trade consomme sur sa durée de vie.",
+  },
+  {
+    question: "What is a netting set and why is it the key unit for exposure calculations?",
+    answer:
+      "The group of transactions with a single counterparty covered by one legally enforceable netting agreement (e.g. one ISDA Master Agreement); exposure, collateral, and capital calculations are generally performed at the netting set level rather than per individual trade, since that's the level at which offsetting is legally recognized on default.",
+    questionFr: "Qu'est-ce qu'un netting set et pourquoi est-ce l'unité clé pour les calculs d'exposition ?",
+    answerFr:
+      "Le groupe de transactions avec une seule contrepartie couvert par un accord de netting légalement exécutoire (ex. un seul ISDA Master Agreement) ; les calculs d'exposition, de collateral et de capital sont généralement effectués au niveau du netting set plutôt que par trade individuel, car c'est le niveau auquel la compensation est légalement reconnue en cas de défaut.",
+  },
+  {
+    question: "How does the Basel III leverage ratio interact with derivatives exposure, independent of risk-weighted measures?",
+    answer:
+      "The leverage ratio is a non-risk-based backstop: it caps total on- and off-balance-sheet exposure (including a standardized measure of derivatives exposure, SA-CCR-based) relative to capital, regardless of how low the risk-weighted exposure looks, discouraging excessive balance-sheet growth even on \"low-risk\" trades.",
+    questionFr: "Comment le leverage ratio de Bâle III interagit-il avec l'exposition dérivés, indépendamment des mesures pondérées par le risque ?",
+    answerFr:
+      "Le leverage ratio est un garde-fou non basé sur le risque : il plafonne l'exposition totale au bilan et hors bilan (y compris une mesure standardisée de l'exposition dérivés, basée sur SA-CCR) par rapport au capital, quel que soit à quel point l'exposition pondérée par le risque paraît faible, décourageant une croissance excessive du bilan même sur des trades \"peu risqués\".",
+  },
 ];

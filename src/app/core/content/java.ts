@@ -103,4 +103,52 @@ export const questions = [
     answerFr:
       "`synchronized` est plus simple (bloc/méthode) et géré par la JVM ; `ReentrantLock` offre un contrôle plus fin (tryLock avec timeout, interruption, locks équitables, conditions multiples) au prix d'un unlock manuel explicite.",
   },
+  {
+    question: "What are Java records and what do they generate for you?",
+    answer:
+      "A concise syntax for immutable data carriers: declaring `record Point(int x, int y)` generates a canonical constructor, accessor methods, `equals()`, `hashCode()`, and `toString()`, removing the boilerplate of a manual immutable value class.",
+    questionFr: "Que sont les records Java et que génèrent-ils automatiquement ?",
+    answerFr:
+      "Une syntaxe concise pour des porteurs de données immuables : déclarer `record Point(int x, int y)` génère un constructeur canonique, des méthodes d'accès, `equals()`, `hashCode()`, et `toString()`, supprimant le boilerplate d'une classe de valeur immuable écrite à la main.",
+  },
+  {
+    question: "What do sealed classes/interfaces add, combined with pattern matching for switch?",
+    answer:
+      "A sealed type declares exactly which classes are allowed to extend/implement it; combined with pattern matching in a `switch`, the compiler can verify exhaustiveness (every permitted subtype is handled), catching missing cases at compile time instead of at runtime.",
+    questionFr: "Qu'apportent les sealed classes/interfaces, combinées au pattern matching pour switch ?",
+    answerFr:
+      "Un type sealed déclare précisément quelles classes ont le droit de l'étendre/l'implémenter ; combiné au pattern matching dans un `switch`, le compilateur peut vérifier l'exhaustivité (chaque sous-type autorisé est géré), détectant les cas manquants à la compilation plutôt qu'à l'exécution.",
+  },
+  {
+    question: "What's a common misuse of `Optional` that best practices warn against?",
+    answer:
+      "Using `Optional` as a field type or a method parameter type (it was designed as a return type to signal \"may be absent\" to a caller), or calling `.get()` without checking presence first, which just relocates the null-check problem instead of solving it.",
+    questionFr: "Quel mésusage courant d'`Optional` les bonnes pratiques déconseillent-elles ?",
+    answerFr:
+      "Utiliser `Optional` comme type de champ ou comme type de paramètre de méthode (il a été conçu comme type de retour pour signaler \"peut être absent\" à un appelant), ou appeler `.get()` sans vérifier la présence d'abord, ce qui ne fait que déplacer le problème du null-check plutôt que de le résoudre.",
+  },
+  {
+    question: "What is a ClassLoader and why does it matter in frameworks like application servers?",
+    answer:
+      "The JVM component that finds and loads class bytecode at runtime, organized hierarchically (bootstrap, platform, application, and custom loaders); frameworks use custom class loaders for hot-reloading, plugin isolation, or running multiple app versions side by side without class conflicts.",
+    questionFr: "Qu'est-ce qu'un ClassLoader et pourquoi est-ce important dans des frameworks comme les serveurs d'application ?",
+    answerFr:
+      "Le composant de la JVM qui trouve et charge le bytecode des classes à l'exécution, organisé hiérarchiquement (bootstrap, platform, application, et loaders custom) ; les frameworks utilisent des class loaders custom pour le hot-reloading, l'isolation de plugins, ou faire tourner plusieurs versions d'une app côte à côte sans conflit de classes.",
+  },
+  {
+    question: "What is the difference between JIT compilation and a tool like GraalVM native image (AOT)?",
+    answer:
+      "JIT (Just-In-Time) compiles hot bytecode paths to native code at runtime, trading a warm-up period for adaptive optimization based on real execution profiles; AOT (Ahead-Of-Time, as in GraalVM native image) compiles everything to a native binary before startup, giving near-instant startup and lower memory at the cost of losing some runtime adaptive optimizations and reflection support.",
+    questionFr: "Quelle est la différence entre la compilation JIT et un outil comme GraalVM native image (AOT) ?",
+    answerFr:
+      "Le JIT (Just-In-Time) compile les chemins de bytecode chauds en code natif à l'exécution, échangeant une période de warm-up contre une optimisation adaptative basée sur les profils d'exécution réels ; l'AOT (Ahead-Of-Time, comme GraalVM native image) compile tout en binaire natif avant le démarrage, offrant un démarrage quasi instantané et moins de mémoire au prix de la perte de certaines optimisations adaptatives à l'exécution et du support de la réflexion.",
+  },
+  {
+    question: "What are common causes of memory leaks in a garbage-collected language like Java?",
+    answer:
+      "Objects that stay reachable longer than intended: unbounded caches with no eviction, listeners/callbacks never unregistered, static collections that keep growing, and ThreadLocal values not cleaned up in pooled threads (e.g. in application servers), all keeping objects alive despite the GC working correctly.",
+    questionFr: "Quelles sont les causes courantes de fuites mémoire dans un langage garbage-collected comme Java ?",
+    answerFr:
+      "Des objets qui restent atteignables plus longtemps que prévu : des caches non bornés sans éviction, des listeners/callbacks jamais désenregistrés, des collections statiques qui grossissent sans fin, et des valeurs ThreadLocal non nettoyées dans des threads poolés (ex. dans des serveurs d'application), tout cela gardant des objets vivants malgré un GC qui fonctionne correctement.",
+  },
 ];

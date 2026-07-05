@@ -87,4 +87,44 @@ export const questions = [
     answerFr:
       "Service Bus est de la messagerie d'entreprise (queues/topics, FIFO, transactions, dead-lettering) pour découpler des applications ; Event Grid est un routeur d'events léger et réactif (pub/sub) pour des notifications à grande échelle entre services/SaaS.",
   },
+  {
+    question: "What are Durable Functions and what problem do they solve?",
+    answer:
+      "An extension to Azure Functions that lets you write stateful, long-running orchestrations (chaining, fan-out/fan-in, human approval waits) as plain code, with the framework handling checkpointing and replay, instead of hand-rolling state machines across stateless function calls.",
+    questionFr: "Que sont les Durable Functions et quel problème résolvent-elles ?",
+    answerFr:
+      "Une extension d'Azure Functions qui permet d'écrire des orchestrations stateful et longue durée (chaînage, fan-out/fan-in, attente d'approbation humaine) en code classique, le framework gérant le checkpointing et le replay, plutôt que de coder à la main des state machines à travers des appels de fonctions stateless.",
+  },
+  {
+    question: "What is Azure Container Apps and how does it compare to AKS?",
+    answer:
+      "A serverless container platform built on Kubernetes/KEDA/Dapr under the hood, but without exposing the Kubernetes API: you get autoscaling (including scale-to-zero), revisions, and traffic splitting with far less operational overhead than running your own AKS cluster.",
+    questionFr: "Qu'est-ce qu'Azure Container Apps et comment se compare-t-il à AKS ?",
+    answerFr:
+      "Une plateforme de conteneurs serverless construite sur Kubernetes/KEDA/Dapr en interne, mais sans exposer l'API Kubernetes : on obtient de l'autoscaling (y compris le scale-to-zero), des revisions, et du traffic splitting avec beaucoup moins de charge opérationnelle qu'un cluster AKS géré soi-même.",
+  },
+  {
+    question: "What does Azure API Management provide on top of raw APIs?",
+    answer:
+      "A managed gateway layer for publishing, securing (keys, OAuth, rate limiting), versioning, and monitoring APIs, plus a developer portal for consumers, decoupling API consumers from the backend implementations behind it.",
+    questionFr: "Qu'apporte Azure API Management par-dessus des APIs brutes ?",
+    answerFr:
+      "Une couche de gateway managée pour publier, sécuriser (clés, OAuth, rate limiting), versionner et monitorer des APIs, plus un developer portal pour les consommateurs, découplant les consommateurs d'API des implémentations backend derrière.",
+  },
+  {
+    question: "What is Application Insights and what does distributed tracing add to it?",
+    answer:
+      "Application Insights (part of Azure Monitor) collects requests, dependencies, exceptions, and custom telemetry from an app; distributed tracing correlates that telemetry across service boundaries via an operation ID, letting you follow a single request through multiple microservices.",
+    questionFr: "Qu'est-ce qu'Application Insights et qu'apporte le distributed tracing ?",
+    answerFr:
+      "Application Insights (partie d'Azure Monitor) collecte requests, dependencies, exceptions et télémétrie custom d'une app ; le distributed tracing corrèle cette télémétrie à travers les frontières de services via un operation ID, permettant de suivre une seule requête à travers plusieurs microservices.",
+  },
+  {
+    question: "What is the difference between an ARM template and Bicep?",
+    answer:
+      "ARM templates are the underlying JSON format Azure Resource Manager consumes to deploy resources declaratively; Bicep is a more concise, readable DSL that compiles down to ARM JSON, making infrastructure-as-code on Azure much less verbose to write and review.",
+    questionFr: "Quelle est la différence entre un template ARM et Bicep ?",
+    answerFr:
+      "Les templates ARM sont le format JSON sous-jacent consommé par Azure Resource Manager pour déployer des ressources de façon déclarative ; Bicep est un DSL plus concis et lisible qui compile vers du JSON ARM, rendant l'infrastructure-as-code sur Azure beaucoup moins verbeuse à écrire et relire.",
+  },
 ];

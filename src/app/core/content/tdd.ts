@@ -97,4 +97,52 @@ export const questions = [
     answerFr:
       "Un test avec des ifs/loops devient lui-même sujet à bugs et perd en lisibilité ; chaque cas devrait idéalement être un test simple et explicite plutôt qu'un test paramétré trop générique.",
   },
+  {
+    question: "What is outside-in TDD (also called the London/mockist double-loop)?",
+    answer:
+      "Start from a failing acceptance test expressing the feature from the user's point of view, then work inward writing unit tests for each collaborator you discover you need, mocking them until you implement them one by one. It keeps design driven by actual usage rather than by components built bottom-up.",
+    questionFr: "Qu'est-ce que le TDD outside-in (aussi appelé double-loop London/mockist) ?",
+    answerFr:
+      "Partir d'un acceptance test qui échoue et qui exprime la fonctionnalité du point de vue de l'utilisateur, puis avancer vers l'intérieur en écrivant des tests unitaires pour chaque collaborateur découvert, en les mockant jusqu'à les implémenter un par un. Ça garde un design piloté par l'usage réel plutôt que par des composants construits de bas en haut.",
+  },
+  {
+    question: "What is a \"dummy\" as a type of test double, and how does it differ from a stub?",
+    answer:
+      "A dummy is passed around only to satisfy a method signature and is never actually used by the code under test (e.g. a null-ish placeholder argument); a stub, by contrast, is used and returns a canned value the test relies on.",
+    questionFr: "Qu'est-ce qu'un \"dummy\" comme type de test double, et en quoi diffère-t-il d'un stub ?",
+    answerFr:
+      "Un dummy est passé uniquement pour satisfaire une signature de méthode et n'est jamais réellement utilisé par le code testé (ex. un argument placeholder quasi null) ; un stub, à l'inverse, est utilisé et renvoie une valeur préprogrammée dont le test dépend.",
+  },
+  {
+    question: "What is mutation testing and what does it tell you that coverage doesn't?",
+    answer:
+      "A tool systematically introduces small bugs (\"mutants\") into the code, e.g. flipping a `>` to `>=`, and reruns the test suite; if tests still pass, that mutant \"survived\", revealing a gap in assertion quality that plain line/branch coverage would never expose.",
+    questionFr: "Qu'est-ce que le mutation testing et que révèle-t-il que la coverage ne révèle pas ?",
+    answerFr:
+      "Un outil introduit systématiquement de petits bugs (\"mutants\") dans le code, ex. remplacer un `>` par un `>=`, puis relance la suite de tests ; si les tests passent quand même, ce mutant a \"survécu\", révélant un trou dans la qualité des assertions que la simple coverage de lignes/branches ne montrerait jamais.",
+  },
+  {
+    question: "What typically causes a flaky test, and how do you fix it?",
+    answer:
+      "Common causes: shared mutable state between tests, reliance on real time/dates, unmanaged async operations, or test order dependency. Fixes: isolate state per test, inject a controllable clock, explicitly await async work instead of sleeping, and make each test independent of execution order.",
+    questionFr: "Qu'est-ce qui cause typiquement un test flaky, et comment le corriger ?",
+    answerFr:
+      "Causes courantes : état mutable partagé entre tests, dépendance au temps/dates réels, opérations async non maîtrisées, ou dépendance à l'ordre d'exécution des tests. Corrections : isoler l'état par test, injecter une horloge contrôlable, attendre explicitement le travail async plutôt que de faire un sleep, et rendre chaque test indépendant de l'ordre d'exécution.",
+  },
+  {
+    question: "What is the \"test pyramid\" and what's the \"ice cream cone\" anti-pattern?",
+    answer:
+      "The test pyramid recommends many fast unit tests, fewer integration tests, and very few slow end-to-end tests. The ice cream cone anti-pattern inverts this, with a thin layer of unit tests and a heavy reliance on slow, brittle UI/E2E tests, making the suite slow and painful to maintain.",
+    questionFr: "Qu'est-ce que la \"test pyramid\" et l'anti-pattern \"ice cream cone\" ?",
+    answerFr:
+      "La test pyramid recommande beaucoup de unit tests rapides, moins de tests d'intégration, et très peu de tests end-to-end lents. L'anti-pattern ice cream cone inverse cela, avec une fine couche de unit tests et une forte dépendance à des tests UI/E2E lents et fragiles, rendant la suite lente et pénible à maintenir.",
+  },
+  {
+    question: "What is contract testing and when do you need it?",
+    answer:
+      "A way to verify that a consumer and a provider of an API agree on the shape of their interaction (e.g. via Pact), without spinning up the real provider in every test run; essential once you have multiple independently deployed services that evolve their APIs over time.",
+    questionFr: "Qu'est-ce que le contract testing et quand en a-t-on besoin ?",
+    answerFr:
+      "Une façon de vérifier qu'un consumer et un provider d'une API sont d'accord sur la forme de leur interaction (ex. via Pact), sans faire tourner le vrai provider à chaque run de test ; essentiel dès qu'on a plusieurs services déployés indépendamment dont les APIs évoluent dans le temps.",
+  },
 ];

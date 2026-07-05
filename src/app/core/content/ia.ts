@@ -97,4 +97,52 @@ export const questions = [
     answerFr:
       "Via des \"evals\" : un jeu de tâches représentatives avec des critères de succès mesurables (tests qui passent, exactitude factuelle, respect d'un format), rejoués à chaque changement de prompt/modèle pour détecter les régressions, plutôt qu'une impression subjective.",
   },
+  {
+    question: "What are embeddings and what is a vector database used for?",
+    answer:
+      "An embedding maps a piece of text (or image, audio...) to a dense numerical vector such that semantically similar inputs end up close together in that vector space; a vector database indexes millions of such vectors for fast nearest-neighbor search, which is the retrieval half of RAG.",
+    questionFr: "Que sont les embeddings et à quoi sert une base de données vectorielle ?",
+    answerFr:
+      "Un embedding transforme un morceau de texte (ou image, audio...) en un vecteur numérique dense tel que des entrées sémantiquement similaires se retrouvent proches dans cet espace vectoriel ; une base de données vectorielle indexe des millions de ces vecteurs pour une recherche rapide des plus proches voisins, ce qui constitue la moitié \"retrieval\" du RAG.",
+  },
+  {
+    question: "What does the \"temperature\" sampling parameter control when generating text?",
+    answer:
+      "It scales the randomness of token selection: near 0 makes the model almost deterministic, picking the highest-probability token every time (good for factual/code tasks); higher values flatten the probability distribution, producing more varied/creative but less predictable output.",
+    questionFr: "Que contrôle le paramètre d'échantillonnage \"temperature\" lors de la génération de texte ?",
+    answerFr:
+      "Il ajuste le caractère aléatoire de la sélection des tokens : proche de 0, le modèle devient quasi déterministe et choisit à chaque fois le token le plus probable (bon pour des tâches factuelles/de code) ; des valeurs plus hautes aplatissent la distribution de probabilité, produisant une sortie plus variée/créative mais moins prévisible.",
+  },
+  {
+    question: "What is the practical difference between a system prompt and a user prompt?",
+    answer:
+      "The system prompt sets persistent instructions, role, and constraints for the whole conversation (usually not shown to the end user and given more \"authority\" by the model), while the user prompt is the specific, turn-by-turn input; well-designed agents keep stable behavior rules in the system prompt rather than repeating them per user message.",
+    questionFr: "Quelle est la différence pratique entre un system prompt et un user prompt ?",
+    answerFr:
+      "Le system prompt fixe des instructions persistantes, un rôle et des contraintes pour toute la conversation (généralement invisible pour l'utilisateur final et doté de plus \"d'autorité\" par le modèle), tandis que le user prompt est l'entrée spécifique, tour par tour ; des agents bien conçus gardent les règles de comportement stables dans le system prompt plutôt que de les répéter à chaque message utilisateur.",
+  },
+  {
+    question: "What do AI \"guardrails\" typically consist of in a production application?",
+    answer:
+      "A combination of input filtering (blocking disallowed requests before they reach the model), output filtering/moderation (checking generated content before it reaches the user), and structural constraints (forcing a schema/format), layered on top of the model's own built-in safety training rather than relying on it alone.",
+    questionFr: "En quoi consistent typiquement les \"guardrails\" IA dans une application en production ?",
+    answerFr:
+      "Une combinaison de filtrage des entrées (bloquer les requêtes non autorisées avant qu'elles n'atteignent le modèle), de filtrage/modération des sorties (vérifier le contenu généré avant qu'il n'atteigne l'utilisateur), et de contraintes structurelles (imposer un schéma/format), en plus de l'entraînement de sécurité intégré du modèle plutôt que de s'y fier seul.",
+  },
+  {
+    question: "What tradeoffs come with choosing an open-weight model over a closed/hosted API model?",
+    answer:
+      "Open-weight models can be self-hosted for data control, fine-tuned freely, and avoid per-token API costs at scale, but require your own inference infrastructure and ongoing ops; closed API models (Claude, GPT) usually lead on raw capability and require zero infrastructure, at the cost of per-request pricing and less control over data handling.",
+    questionFr: "Quels compromis implique le choix d'un modèle open-weight plutôt qu'un modèle API fermé/hébergé ?",
+    answerFr:
+      "Les modèles open-weight peuvent être auto-hébergés pour garder le contrôle des données, fine-tunés librement, et évitent les coûts API par token à grande échelle, mais nécessitent sa propre infrastructure d'inférence et son exploitation continue ; les modèles API fermés (Claude, GPT) sont généralement en tête sur la capacité brute et ne demandent aucune infrastructure, au prix d'une tarification par requête et de moins de contrôle sur le traitement des données.",
+  },
+  {
+    question: "What is LoRA and why is it popular for fine-tuning large models?",
+    answer:
+      "Low-Rank Adaptation freezes the original model weights and trains a small set of additional low-rank matrices injected into specific layers, achieving most of the benefit of full fine-tuning at a fraction of the compute/memory cost, and letting you swap different LoRA adapters onto the same base model.",
+    questionFr: "Qu'est-ce que LoRA et pourquoi est-il populaire pour le fine-tuning de grands modèles ?",
+    answerFr:
+      "Low-Rank Adaptation gèle les poids originaux du modèle et entraîne un petit ensemble de matrices low-rank additionnelles injectées dans des couches spécifiques, obtenant l'essentiel du bénéfice d'un fine-tuning complet pour une fraction du coût en calcul/mémoire, et permettant d'échanger différents adaptateurs LoRA sur le même modèle de base.",
+  },
 ];

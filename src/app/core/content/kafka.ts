@@ -96,4 +96,44 @@ export const questions = [
     answerFr:
       "Kafka est un log distribué persistant où les messages restent disponibles pour être rejoués tant que la rétention n'a pas expiré, avec plusieurs consumers indépendants lisant le même flux ; une queue classique retire généralement un message une fois consommé (modèle point-to-point).",
   },
+  {
+    question: "What is Schema Registry and why do teams adopt it?",
+    answer:
+      "A service that stores and versions message schemas (Avro, Protobuf, JSON Schema) outside the message payload itself, letting producers and consumers evolve independently while enforcing compatibility rules (e.g. backward-compatible only) so a schema change can't silently break downstream consumers.",
+    questionFr: "Qu'est-ce que le Schema Registry et pourquoi les équipes l'adoptent-elles ?",
+    answerFr:
+      "Un service qui stocke et versionne les schémas de message (Avro, Protobuf, JSON Schema) en dehors du payload du message lui-même, permettant aux producers et consumers d'évoluer indépendamment tout en imposant des règles de compatibilité (ex. backward-compatible uniquement) pour qu'un changement de schéma ne casse pas silencieusement les consumers en aval.",
+  },
+  {
+    question: "How does log compaction differ from time/size-based retention?",
+    answer:
+      "Time/size-based retention deletes whole old segments regardless of content; log compaction instead keeps only the latest value per key forever, discarding older updates for the same key, making a compacted topic behave like a durable key-value snapshot (used e.g. for `__consumer_offsets` itself).",
+    questionFr: "En quoi la log compaction diffère-t-elle d'une rétention basée sur le temps/la taille ?",
+    answerFr:
+      "La rétention basée sur le temps/la taille supprime des segments entiers anciens sans regarder leur contenu ; la log compaction garde à la place seulement la dernière valeur par clé pour toujours, en supprimant les anciennes mises à jour d'une même clé, ce qui fait qu'un topic compacté se comporte comme un snapshot clé-valeur durable (utilisé par exemple pour `__consumer_offsets` lui-même).",
+  },
+  {
+    question: "What triggers a consumer group rebalance, and why can it be disruptive?",
+    answer:
+      "A consumer joining or leaving the group (including a perceived failure from a missed heartbeat), or a change in partition count, triggers a rebalance where partition assignments are recomputed; during it, consumption can pause briefly, and poorly tuned session timeouts can cause unnecessary rebalances under normal processing delays.",
+    questionFr: "Qu'est-ce qui déclenche un rebalance de consumer group, et pourquoi peut-il être perturbateur ?",
+    answerFr:
+      "Un consumer qui rejoint ou quitte le groupe (y compris une panne perçue suite à un heartbeat manqué), ou un changement du nombre de partitions, déclenche un rebalance où les assignments de partitions sont recalculés ; pendant ce temps, la consommation peut se mettre en pause brièvement, et des session timeouts mal réglés peuvent causer des rebalances inutiles lors de délais de traitement normaux.",
+  },
+  {
+    question: "How do you monitor and act on consumer lag?",
+    answer:
+      "Consumer lag (the gap between the latest produced offset and a consumer group's committed offset) is exposed via tools like Kafka's own metrics, Burrow, or Prometheus exporters; growing lag signals the consumer can't keep up, prompting either scaling out consumers (up to the partition count) or investigating slow processing.",
+    questionFr: "Comment surveiller et agir sur le consumer lag ?",
+    answerFr:
+      "Le consumer lag (l'écart entre le dernier offset produit et l'offset commité d'un consumer group) est exposé via des outils comme les métriques natives de Kafka, Burrow, ou des exporters Prometheus ; un lag qui grossit signale que le consumer ne suit pas, ce qui pousse soit à scale out les consumers (jusqu'au nombre de partitions), soit à investiguer un traitement lent.",
+  },
+  {
+    question: "What rule of thumb guides how many partitions a topic should have?",
+    answer:
+      "Size partitions for the throughput and parallelism you need now plus reasonable headroom, since increasing partition count later changes key-to-partition hashing (breaking ordering guarantees for existing keys); too many partitions also add overhead (open file handles, replication traffic, longer leader elections) on the broker side.",
+    questionFr: "Quelle règle empirique guide le nombre de partitions qu'un topic devrait avoir ?",
+    answerFr:
+      "Dimensionner les partitions pour le débit et le parallélisme nécessaires maintenant plus une marge raisonnable, car augmenter le nombre de partitions plus tard change le hachage clé-vers-partition (cassant les garanties d'ordre pour les clés existantes) ; trop de partitions ajoute aussi de la charge (file handles ouverts, trafic de réplication, élections de leader plus longues) côté broker.",
+  },
 ];

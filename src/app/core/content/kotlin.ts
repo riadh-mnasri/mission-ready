@@ -97,4 +97,44 @@ export const questions = [
     answerFr:
       "Le compilateur déduit les types sans annotation explicite, et après un check `is`/null réussi, il \"caste\" automatiquement la variable au type vérifié dans ce scope, sans cast manuel nécessaire.",
   },
+  {
+    question: "What are delegated properties (`by lazy`, `by Delegates.observable`)?",
+    answer:
+      "A mechanism where a property's getter/setter logic is handed off to a separate delegate object implementing `getValue`/`setValue`, letting you reuse common patterns (lazy initialization, observable changes, storing in a map) without repeating boilerplate on every property.",
+    questionFr: "Que sont les delegated properties (`by lazy`, `by Delegates.observable`) ?",
+    answerFr:
+      "Un mécanisme où la logique getter/setter d'une propriété est déléguée à un objet delegate séparé implémentant `getValue`/`setValue`, permettant de réutiliser des patterns courants (initialisation lazy, changements observables, stockage dans une map) sans répéter le boilerplate sur chaque propriété.",
+  },
+  {
+    question: "What does `inline` do for a higher-order function, and what are reified generics?",
+    answer:
+      "`inline` copies the function's bytecode (and its lambda parameters') directly at each call site instead of allocating a function object, removing lambda overhead; combined with `reified` on a generic type parameter, it lets you access the actual type at runtime inside an inline function, which normal generics erase.",
+    questionFr: "Que fait `inline` pour une fonction d'ordre supérieur, et que sont les reified generics ?",
+    answerFr:
+      "`inline` copie le bytecode de la fonction (et de ses paramètres lambda) directement à chaque site d'appel plutôt que d'allouer un objet fonction, supprimant l'overhead des lambdas ; combiné à `reified` sur un paramètre de type générique, ça permet d'accéder au vrai type à l'exécution à l'intérieur d'une fonction inline, ce que les generics normaux effacent.",
+  },
+  {
+    question: "How do you build a type-safe DSL in Kotlin, and what role do lambdas with receivers play?",
+    answer:
+      "A DSL (like the Kotlin Gradle build script or HTML builders) is typically built from functions taking a lambda with receiver (`fun html(block: HTML.() -> Unit)`), so inside the block you're implicitly operating on the receiver's members, giving a nested, declarative syntax while staying fully type-checked.",
+    questionFr: "Comment construit-on un DSL type-safe en Kotlin, et quel rôle jouent les lambdas avec receiver ?",
+    answerFr:
+      "Un DSL (comme le script de build Gradle Kotlin ou des builders HTML) est typiquement construit à partir de fonctions prenant une lambda avec receiver (`fun html(block: HTML.() -> Unit)`), donc à l'intérieur du bloc on opère implicitement sur les membres du receiver, offrant une syntaxe imbriquée et déclarative tout en restant entièrement type-checked.",
+  },
+  {
+    question: "What is a Flow and how does it differ from a suspend function returning a single value?",
+    answer:
+      "A `Flow<T>` represents an asynchronous stream of multiple values over time (cold by default, computed on each collection), built on coroutines; a plain `suspend fun` returns exactly one value once, whereas `Flow` composes with operators like `map`/`filter`/`debounce` similarly to reactive streams but using coroutine primitives.",
+    questionFr: "Qu'est-ce qu'un Flow et en quoi diffère-t-il d'une fonction suspend qui retourne une seule valeur ?",
+    answerFr:
+      "Un `Flow<T>` représente un flux asynchrone de plusieurs valeurs dans le temps (cold par défaut, recalculé à chaque collecte), construit sur les coroutines ; une simple `suspend fun` retourne exactement une valeur une fois, alors que `Flow` se compose avec des opérateurs comme `map`/`filter`/`debounce` un peu comme des reactive streams mais avec les primitives des coroutines.",
+  },
+  {
+    question: "What is a value class (`@JvmInline value class`) and why use one?",
+    answer:
+      "A wrapper around a single value (e.g. `value class UserId(val value: String)`) that the compiler erases at the bytecode level where possible, giving you strong type safety (can't pass a raw String where a UserId is expected) with no runtime allocation overhead in most cases.",
+    questionFr: "Qu'est-ce qu'une value class (`@JvmInline value class`) et pourquoi en utiliser une ?",
+    answerFr:
+      "Un wrapper autour d'une seule valeur (ex. `value class UserId(val value: String)`) que le compilateur efface au niveau du bytecode quand c'est possible, offrant une forte sécurité de type (impossible de passer un String brut là où un UserId est attendu) sans overhead d'allocation à l'exécution dans la plupart des cas.",
+  },
 ];

@@ -103,4 +103,52 @@ export const questions = [
     answerFr:
       "Une ressource qui définit des règles de firewall au niveau des pods (par labels), contrôlant quel trafic entrant/sortant est autorisé - sans elle, tous les pods d'un cluster peuvent communiquer entre eux par défaut.",
   },
+  {
+    question: "What is Helm and what problem does it solve?",
+    answer:
+      "A package manager for Kubernetes: it bundles a set of manifests into a templated \"chart\" with configurable values, so you can install, upgrade, and roll back a whole application (with all its resources) as one versioned unit instead of applying raw YAML by hand.",
+    questionFr: "Qu'est-ce que Helm et quel problème résout-il ?",
+    answerFr:
+      "Un package manager pour Kubernetes : il regroupe un ensemble de manifests dans un \"chart\" templatisé avec des valeurs configurables, pour installer, mettre à jour et rollback toute une application (avec toutes ses ressources) comme une seule unité versionnée plutôt que d'appliquer du YAML brut à la main.",
+  },
+  {
+    question: "What is a Kubernetes Operator?",
+    answer:
+      "A controller that extends Kubernetes with a Custom Resource Definition (CRD) and application-specific logic, encoding operational knowledge (how to back up, upgrade, or fail over a piece of software) so that managing it becomes as declarative as managing a built-in resource like a Deployment.",
+    questionFr: "Qu'est-ce qu'un Operator Kubernetes ?",
+    answerFr:
+      "Un controller qui étend Kubernetes avec une Custom Resource Definition (CRD) et une logique spécifique à l'application, encodant une connaissance opérationnelle (comment sauvegarder, mettre à jour, ou basculer un logiciel) pour que le gérer devienne aussi déclaratif que gérer une ressource native comme un Deployment.",
+  },
+  {
+    question: "What is a PodDisruptionBudget and why does it matter during cluster maintenance?",
+    answer:
+      "It caps how many replicas of an application can be voluntarily evicted at once (e.g. during a node drain for upgrades), preventing a maintenance operation from accidentally taking down all replicas of a service simultaneously.",
+    questionFr: "Qu'est-ce qu'un PodDisruptionBudget et pourquoi est-ce important pendant la maintenance du cluster ?",
+    answerFr:
+      "Il plafonne combien de replicas d'une application peuvent être évincés volontairement en même temps (ex. lors d'un node drain pour des mises à jour), évitant qu'une opération de maintenance ne mette accidentellement à terre tous les replicas d'un service en même temps.",
+  },
+  {
+    question: "What is an init container used for?",
+    answer:
+      "A container that runs to completion before the main application containers in a pod start, typically used to wait for a dependency to be ready, run a one-off setup/migration step, or fetch configuration, keeping that logic out of the main container's image.",
+    questionFr: "À quoi sert un init container ?",
+    answerFr:
+      "Un conteneur qui s'exécute jusqu'à sa fin avant que les conteneurs applicatifs principaux d'un pod ne démarrent, typiquement utilisé pour attendre qu'une dépendance soit prête, exécuter une étape de setup/migration ponctuelle, ou récupérer de la configuration, gardant cette logique hors de l'image du conteneur principal.",
+  },
+  {
+    question: "What is the sidecar pattern and where is it commonly used?",
+    answer:
+      "Running a second container in the same pod that augments the main container without modifying it, e.g. a service mesh proxy (Envoy in Istio), a log shipper, or a TLS-terminating proxy, sharing the pod's network namespace and lifecycle.",
+    questionFr: "Qu'est-ce que le sidecar pattern et où est-il couramment utilisé ?",
+    answerFr:
+      "Faire tourner un second conteneur dans le même pod qui enrichit le conteneur principal sans le modifier, ex. un proxy de service mesh (Envoy dans Istio), un log shipper, ou un proxy qui termine le TLS, en partageant le namespace réseau et le cycle de vie du pod.",
+  },
+  {
+    question: "At a high level, what does a service mesh like Istio add on top of Kubernetes networking?",
+    answer:
+      "Uniform mTLS between services, fine-grained traffic control (canary routing, retries, circuit breaking) without touching application code, and rich observability (latency, error rates, traces) by routing pod-to-pod traffic through sidecar proxies.",
+    questionFr: "À haut niveau, qu'apporte un service mesh comme Istio par-dessus le réseau Kubernetes ?",
+    answerFr:
+      "Du mTLS uniforme entre services, un contrôle de trafic fin (canary routing, retries, circuit breaking) sans toucher au code applicatif, et une observabilité riche (latence, taux d'erreur, traces) en routant le trafic pod-à-pod à travers des proxies sidecar.",
+  },
 ];
