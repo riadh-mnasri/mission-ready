@@ -1,16 +1,16 @@
 @if (visible()) {
-  <div class="animate-fade-up mx-auto mt-6 flex max-w-xl gap-4">
+  <div class="animate-fade-up mx-auto mt-6 flex max-w-xl gap-3">
     <button
       type="button"
       (click)="missed.emit()"
-      class="stamp-button -rotate-1 flex-1 border-2 border-stamp-red bg-card px-5 py-3.5 font-display text-sm font-bold tracking-wide text-stamp-red uppercase"
+      class="flex-1 rounded-lg border border-border px-5 py-3 text-sm font-medium text-text-muted transition-colors hover:border-danger/50 hover:text-danger"
     >
       {{ i18n.strings.iDidNotKnow }}
     </button>
     <button
       type="button"
       (click)="knew.emit()"
-      class="stamp-button rotate-1 flex-1 border-2 border-ink-blue bg-card px-5 py-3.5 font-display text-sm font-bold tracking-wide text-ink-blue uppercase"
+      class="flex-1 rounded-lg bg-accent px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
     >
       {{ i18n.strings.iKnew }}
     </button>

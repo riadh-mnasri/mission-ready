@@ -1,28 +1,28 @@
-<header class="sticky top-0 z-20 border-b-2 border-ink-blue bg-card">
-  <div class="mx-auto flex max-w-5xl items-end justify-between px-6 pt-4">
-    <a routerLink="/" class="mb-3 flex items-center gap-3">
+<header class="sticky top-0 z-20 border-b border-border bg-bg/95 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-6 py-4">
+    <a routerLink="/" class="flex items-center gap-2.5">
       <span
-        class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border-2 border-double border-ink-blue font-display text-sm font-semibold text-ink-blue"
+        class="flex h-8 w-8 items-center justify-center rounded-lg bg-accent text-sm font-semibold text-white"
       >
-        MR
+        M
       </span>
-      <span class="font-display text-xl font-semibold tracking-tight text-ink">MissionReady</span>
+      <span class="text-[15px] font-semibold tracking-tight text-text">MissionReady</span>
     </a>
 
-    <div class="flex items-end gap-2">
-      <nav class="flex items-end gap-1">
+    <div class="flex items-center gap-3">
+      <nav class="flex items-center gap-1">
         <a
           routerLink="/"
-          routerLinkActive="bg-paper text-ink-blue card-shadow"
+          routerLinkActive="bg-surface text-text"
           [routerLinkActiveOptions]="{ exact: true }"
-          class="rounded-t-lg border border-b-0 border-rule px-4 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink-blue"
+          class="rounded-md px-3 py-1.5 text-sm font-medium text-text-muted transition-colors hover:text-text"
         >
           {{ i18n.strings.navDashboard }}
         </a>
         <a
           routerLink="/themes"
-          routerLinkActive="bg-paper text-ink-blue card-shadow"
-          class="rounded-t-lg border border-b-0 border-rule px-4 py-2 text-sm font-medium text-ink-muted transition-colors hover:text-ink-blue"
+          routerLinkActive="bg-surface text-text"
+          class="rounded-md px-3 py-1.5 text-sm font-medium text-text-muted transition-colors hover:text-text"
         >
           {{ i18n.strings.navThemes }}
         </a>
@@ -31,7 +31,7 @@
       <button
         type="button"
         (click)="i18n.toggle()"
-        class="stamp-button mb-2 flex h-8 w-8 items-center justify-center rounded-full border-2 border-stamp-red font-display text-xs font-bold text-stamp-red"
+        class="rounded-md border border-border px-2.5 py-1.5 text-xs font-medium text-text-muted transition-colors hover:border-accent hover:text-text"
       >
         {{ i18n.language() === 'en' ? 'FR' : 'EN' }}
       </button>

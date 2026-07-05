@@ -2,29 +2,27 @@
   <button
     type="button"
     (click)="flip.emit()"
-    class="flip-card preserve-3d card-shadow relative block h-72 w-full cursor-pointer border border-rule text-left focus:outline-none sm:h-80"
+    class="flip-card preserve-3d card-shadow relative block h-72 w-full cursor-pointer rounded-xl border border-border bg-surface text-left focus:outline-none sm:h-80"
     [class.flipped]="flipped()"
   >
-    <div class="index-card-face backface-hidden absolute inset-0 flex flex-col justify-between p-8 pl-12">
+    <div class="backface-hidden absolute inset-0 flex flex-col justify-between p-8">
       <span
-        class="w-fit -rotate-2 border-2 px-3 py-0.5 font-display text-xs font-bold tracking-wide uppercase"
-        [style.border-color]="accent()"
+        class="w-fit rounded-full px-2.5 py-1 text-xs font-medium tracking-wide uppercase"
+        [style.background]="accent() + '22'"
         [style.color]="accent()"
       >
         {{ i18n.strings.questionLabel }}
       </span>
-      <p class="font-card text-lg leading-snug text-ink">{{ question() }}</p>
-      <span class="font-card text-xs text-ink-faint italic">{{ i18n.strings.tapReveal }}</span>
+      <p class="text-xl leading-snug font-medium text-text">{{ question() }}</p>
+      <span class="text-sm text-text-faint">{{ i18n.strings.tapReveal }}</span>
     </div>
 
-    <div
-      class="index-card-face flip-face-back backface-hidden absolute inset-0 flex flex-col justify-between p-8 pl-12"
-    >
-      <span class="w-fit -rotate-2 border-2 border-ink-muted px-3 py-0.5 font-display text-xs font-bold tracking-wide text-ink-muted uppercase">
+    <div class="flip-face-back backface-hidden absolute inset-0 flex flex-col justify-between p-8">
+      <span class="w-fit rounded-full bg-white/8 px-2.5 py-1 text-xs font-medium tracking-wide text-text-muted uppercase">
         {{ i18n.strings.answerLabel }}
       </span>
-      <p class="font-card text-base leading-relaxed text-ink">{{ answer() }}</p>
-      <span class="font-card text-xs text-ink-faint italic">{{ i18n.strings.tapFlipBack }}</span>
+      <p class="text-base leading-relaxed text-text">{{ answer() }}</p>
+      <span class="text-sm text-text-faint">{{ i18n.strings.tapFlipBack }}</span>
     </div>
   </button>
 </div>

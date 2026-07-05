@@ -90,4 +90,36 @@ export const questions = [
     answerFr:
       "Un test d'intégration ciblé (ex. Testcontainers avec une vraie base de données) qui vérifie que l'implémentation respecte le contrat du port, séparé des unit tests du domaine.",
   },
+  {
+    question: "How does hexagonal architecture differ from Onion Architecture?",
+    answer:
+      "Both invert dependencies toward the domain; Onion Architecture is more explicit about multiple concentric layers (domain model, domain services, application services, outer infrastructure), while hexagonal keeps a simpler two-sided (driving/driven) mental model. In practice they lead to very similar codebases.",
+    questionFr: "En quoi l'architecture hexagonale diffère-t-elle de l'Onion Architecture ?",
+    answerFr:
+      "Les deux inversent les dépendances vers le domaine ; l'Onion Architecture est plus explicite sur plusieurs couches concentriques (domain model, domain services, application services, infrastructure externe), tandis que l'hexagonale garde un modèle mental à deux côtés (driving/driven) plus simple. En pratique, elles mènent à des codebases très similaires.",
+  },
+  {
+    question: "Can a single port have multiple adapters at the same time?",
+    answer:
+      "Yes, and it's a common reason to use one: the same primary port (use case) can be driven by both a REST controller and a GraphQL resolver, and the same secondary port (repository) could have a production JPA adapter and an in-memory adapter used only in tests.",
+    questionFr: "Un même port peut-il avoir plusieurs adapters en même temps ?",
+    answerFr:
+      "Oui, et c'est une raison courante de l'utiliser : un même primary port (use case) peut être piloté à la fois par un controller REST et un resolver GraphQL, et un même secondary port (repository) peut avoir un adapter JPA en production et un adapter in-memory utilisé seulement en tests.",
+  },
+  {
+    question: "Where do cross-cutting concerns like logging or authorization fit in a hexagonal design?",
+    answer:
+      "They're usually implemented as decorators wrapping a port's implementation (e.g. a logging decorator around a repository, an authorization check around a use case), keeping the concern outside both the domain logic and the concrete adapter it wraps.",
+    questionFr: "Où se situent les cross-cutting concerns comme le logging ou l'autorisation dans une conception hexagonale ?",
+    answerFr:
+      "Ils sont généralement implémentés comme des decorators qui enveloppent l'implémentation d'un port (ex. un decorator de logging autour d'un repository, une vérification d'autorisation autour d'un use case), gardant la préoccupation en dehors à la fois de la logique du domaine et de l'adapter concret qu'il enveloppe.",
+  },
+  {
+    question: "What is the \"composition root\" in a hexagonal application?",
+    answer:
+      "The single place (typically near the application's entry point) where concrete adapters get wired to the ports they implement and injected into use cases; it's the only part of the codebase allowed to know about every concrete implementation at once.",
+    questionFr: "Qu'est-ce que le \"composition root\" dans une application hexagonale ?",
+    answerFr:
+      "L'endroit unique (typiquement près du point d'entrée de l'application) où les adapters concrets sont câblés aux ports qu'ils implémentent et injectés dans les use cases ; c'est la seule partie du codebase autorisée à connaître toutes les implémentations concrètes à la fois.",
+  },
 ];

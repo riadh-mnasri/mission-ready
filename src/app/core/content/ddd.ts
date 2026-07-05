@@ -104,4 +104,44 @@ export const questions = [
     answerFr:
       "Un atelier collaboratif (développeurs + experts métier) qui fait émerger le modèle du domaine en plaçant les Domain Events sur un mur dans l'ordre chronologique, puis en ajoutant les commands, acteurs et aggregates qui les produisent.",
   },
+  {
+    question: "What is the difference between an Anemic Domain Model and a Rich Domain Model?",
+    answer:
+      "An Anemic Domain Model has entities that are just data bags (getters/setters) with all logic living in separate service classes, which DDD considers an anti-pattern; a Rich Domain Model puts behavior directly on entities/aggregates, so invariants are enforced where the data lives.",
+    questionFr: "Quelle est la différence entre un Anemic Domain Model et un Rich Domain Model ?",
+    answerFr:
+      "Un Anemic Domain Model a des entities qui sont de simples sacs de données (getters/setters) avec toute la logique dans des classes de service séparées, ce que le DDD considère comme un anti-pattern ; un Rich Domain Model met le comportement directement sur les entities/aggregates, pour que les invariants soient appliqués là où vivent les données.",
+  },
+  {
+    question: "What is CQRS and how does it relate to DDD?",
+    answer:
+      "Command Query Responsibility Segregation splits the write model (commands, enforcing invariants through aggregates) from the read model (queries, often a denormalized projection optimized for display). It's not required by DDD but pairs well with it, especially on complex bounded contexts.",
+    questionFr: "Qu'est-ce que le CQRS et quel est son lien avec le DDD ?",
+    answerFr:
+      "Command Query Responsibility Segregation sépare le modèle d'écriture (commands, qui appliquent les invariants via les aggregates) du modèle de lecture (queries, souvent une projection dénormalisée optimisée pour l'affichage). Ce n'est pas requis par le DDD mais s'associe bien avec lui, surtout sur des bounded contexts complexes.",
+  },
+  {
+    question: "What is Event Sourcing?",
+    answer:
+      "Instead of storing an aggregate's current state, you store the full sequence of Domain Events that led to it, and rebuild state by replaying them. It gives a full audit trail and temporal queries for free, at the cost of more complex querying and eventual schema evolution challenges.",
+    questionFr: "Qu'est-ce que l'Event Sourcing ?",
+    answerFr:
+      "Plutôt que de stocker l'état courant d'un aggregate, on stocke la séquence complète des Domain Events qui y ont mené, et on reconstruit l'état en les rejouant. Ça donne gratuitement un audit trail complet et des requêtes temporelles, au prix d'un requêtage plus complexe et de défis d'évolution de schéma dans la durée.",
+  },
+  {
+    question: "What is a Saga (or Process Manager) used for in DDD?",
+    answer:
+      "Coordinating a business process that spans multiple aggregates or bounded contexts, where a single ACID transaction isn't possible; it listens to Domain Events and issues follow-up commands, handling compensation if a later step fails.",
+    questionFr: "À quoi sert une Saga (ou Process Manager) en DDD ?",
+    answerFr:
+      "Coordonner un processus métier qui s'étend sur plusieurs aggregates ou bounded contexts, là où une seule transaction ACID n'est pas possible ; elle écoute des Domain Events et émet des commands de suite, en gérant la compensation si une étape ultérieure échoue.",
+  },
+  {
+    question: "What is a Shared Kernel in Context Mapping?",
+    answer:
+      "A deliberately shared subset of the model (code and database schema) between two bounded contexts owned by different teams, requiring close coordination on any change; used sparingly since it re-introduces coupling that bounded contexts are meant to avoid.",
+    questionFr: "Qu'est-ce qu'un Shared Kernel en Context Mapping ?",
+    answerFr:
+      "Un sous-ensemble du modèle (code et schéma de base de données) délibérément partagé entre deux bounded contexts possédés par des équipes différentes, nécessitant une coordination étroite sur tout changement ; à utiliser avec parcimonie puisqu'il réintroduit le couplage que les bounded contexts sont censés éviter.",
+  },
 ];

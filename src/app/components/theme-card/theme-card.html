@@ -1,29 +1,24 @@
 <a
   [routerLink]="['/review', theme().id]"
-  [style.--tilt]="tilt() + 'deg'"
-  class="tilt-card card-shadow card-shadow-hover block border border-rule bg-card p-5"
+  class="card-shadow card-shadow-hover block rounded-xl border border-border bg-surface p-5 transition-[transform,box-shadow,border-color] duration-150 hover:-translate-y-0.5 hover:border-accent/40"
 >
   <div class="flex items-start justify-between gap-3">
     <div class="flex items-center gap-2.5">
-      <span class="h-2.5 w-2.5 rounded-full border border-ink/20" [style.background]="theme().color"></span>
-      <h3 class="font-display text-base font-semibold text-ink">{{ i18n.themeName(theme()) }}</h3>
+      <span class="h-2 w-2 rounded-full" [style.background]="theme().color"></span>
+      <h3 class="text-[15px] font-medium text-text">{{ i18n.themeName(theme()) }}</h3>
     </div>
     @if (due() > 0) {
-      <span
-        class="shrink-0 -rotate-3 border-2 border-stamp-red px-2 py-0.5 font-display text-[0.65rem] font-bold tracking-wide text-stamp-red uppercase"
-      >
+      <span class="shrink-0 rounded-full bg-accent/15 px-2.5 py-0.5 text-xs font-medium text-accent">
         {{ i18n.strings.duePill(due()) }}
       </span>
     } @else {
-      <span
-        class="shrink-0 -rotate-3 border-2 border-tab-emerald px-2 py-0.5 font-display text-[0.65rem] font-bold tracking-wide text-tab-emerald uppercase"
-      >
+      <span class="shrink-0 rounded-full bg-success/10 px-2.5 py-0.5 text-xs font-medium text-success">
         {{ i18n.strings.upToDatePill }}
       </span>
     }
   </div>
 
-  <p class="mt-3 font-card text-xs text-ink-muted">{{ i18n.strings.cardsCount(cards().length) }}</p>
+  <p class="mt-3 text-xs text-text-muted">{{ i18n.strings.cardsCount(cards().length) }}</p>
 
   <div class="mt-4">
     <app-mastery-bar [ratio]="mastery()" [color]="theme().color" />

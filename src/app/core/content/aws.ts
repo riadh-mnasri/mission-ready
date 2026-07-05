@@ -95,4 +95,68 @@ export const questions = [
     answerFr:
       "ECS : l'orchestrateur de conteneurs propriétaire d'AWS. EKS : Kubernetes managé sur AWS. Fargate : un mode d'exécution serverless (pas de gestion de nodes) utilisable avec ECS ou EKS.",
   },
+  {
+    question: "What is CloudFront and when do you use it?",
+    answer:
+      "AWS's CDN: caches content at edge locations close to users to reduce latency, offload origin traffic, and provide a single entry point for TLS termination, WAF, and Lambda@Edge/CloudFront Functions for edge logic.",
+    questionFr: "Qu'est-ce que CloudFront et quand l'utiliser ?",
+    answerFr:
+      "Le CDN d'AWS : met en cache du contenu sur des edge locations proches des utilisateurs pour réduire la latence, décharger l'origine, et fournir un point d'entrée unique pour la terminaison TLS, le WAF, et de la logique edge via Lambda@Edge/CloudFront Functions.",
+  },
+  {
+    question: "How does Route 53 support high availability?",
+    answer:
+      "Health checks on endpoints combined with routing policies (failover, weighted, latency-based, geolocation) let Route 53 stop resolving to unhealthy targets and shift traffic automatically, without changing application code.",
+    questionFr: "Comment Route 53 contribue-t-il à la haute disponibilité ?",
+    answerFr:
+      "Des health checks sur les endpoints combinés à des routing policies (failover, weighted, latency-based, geolocation) permettent à Route 53 d'arrêter de résoudre vers des cibles en panne et de basculer le trafic automatiquement, sans changement côté application.",
+  },
+  {
+    question: "What is Infrastructure as Code and why use CloudFormation or Terraform on AWS?",
+    answer:
+      "Declaring infrastructure in versioned templates instead of clicking in the console: reproducible environments, code review on infra changes, and drift detection. CloudFormation is native and free; Terraform is cloud-agnostic and has a larger ecosystem.",
+    questionFr: "Qu'est-ce que l'Infrastructure as Code et pourquoi utiliser CloudFormation ou Terraform sur AWS ?",
+    answerFr:
+      "Déclarer l'infrastructure dans des templates versionnés plutôt qu'en cliquant dans la console : environnements reproductibles, revue de code sur les changements d'infra, et détection de drift. CloudFormation est natif et gratuit ; Terraform est agnostique du cloud et a un écosystème plus large.",
+  },
+  {
+    question: "How do you reduce Lambda cold starts?",
+    answer:
+      "Provisioned concurrency keeps warm execution environments ready; smaller deployment packages and faster runtimes (e.g. avoiding heavy JVM startup) reduce init time; keeping functions in fewer VPCs (or using Hyperplane ENIs) avoids the old VPC networking cold-start penalty.",
+    questionFr: "Comment réduire les cold starts sur Lambda ?",
+    answerFr:
+      "La provisioned concurrency garde des environnements d'exécution déjà chauds ; des packages de déploiement plus petits et des runtimes plus rapides (éviter le démarrage lourd de la JVM) réduisent le temps d'init ; limiter l'usage de VPC (ou profiter des Hyperplane ENIs) évite l'ancienne pénalité de cold start liée au réseau VPC.",
+  },
+  {
+    question: "DynamoDB: how does partitioning affect data modeling?",
+    answer:
+      "Data is spread across partitions by hashing the partition key; a well-chosen key distributes traffic evenly (avoiding hot partitions), and access patterns must be designed upfront since DynamoDB has no ad hoc joins or secondary query flexibility like SQL.",
+    questionFr: "DynamoDB : comment le partitioning influence-t-il le data modeling ?",
+    answerFr:
+      "Les données sont réparties entre des partitions par hachage de la partition key ; une clé bien choisie distribue le trafic uniformément (évite les hot partitions), et les access patterns doivent être conçus en amont puisque DynamoDB n'a pas de jointures ad hoc ni la flexibilité de requêtage d'un SQL.",
+  },
+  {
+    question: "What is a VPC endpoint and why does it matter for security?",
+    answer:
+      "A private connection from a VPC to an AWS service (S3, DynamoDB via Gateway endpoints, most others via Interface/PrivateLink endpoints) that avoids routing traffic over the public internet, reducing exposure and often improving latency and cost.",
+    questionFr: "Qu'est-ce qu'un VPC endpoint et pourquoi est-ce important pour la sécurité ?",
+    answerFr:
+      "Une connexion privée d'un VPC vers un service AWS (S3, DynamoDB via des Gateway endpoints, la plupart des autres via des Interface endpoints/PrivateLink) qui évite de faire transiter le trafic par l'internet public, réduisant l'exposition et souvent améliorant latence et coût.",
+  },
+  {
+    question: "What's the difference between CloudWatch Logs, Metrics, and Alarms?",
+    answer:
+      "Logs store raw application/system output for search and analysis; Metrics are numerical time series (built-in or custom) tracking behavior over time; Alarms watch a metric against a threshold and trigger actions (notifications, autoscaling, remediation).",
+    questionFr: "Quelle est la différence entre CloudWatch Logs, Metrics et Alarms ?",
+    answerFr:
+      "Logs stocke la sortie brute applicative/système pour recherche et analyse ; Metrics sont des séries temporelles numériques (natives ou custom) qui suivent un comportement dans le temps ; Alarms surveille une métrique par rapport à un seuil et déclenche des actions (notifications, autoscaling, remédiation).",
+  },
+  {
+    question: "How do Reserved Instances / Savings Plans differ from Spot Instances for cost optimization?",
+    answer:
+      "Reserved Instances/Savings Plans trade a usage commitment (1-3 years) for a discount on predictable workloads; Spot Instances offer steep discounts on spare capacity that can be reclaimed with short notice, suited to fault-tolerant or batch workloads, not steady production traffic.",
+    questionFr: "Comment les Reserved Instances/Savings Plans diffèrent-ils des Spot Instances pour optimiser les coûts ?",
+    answerFr:
+      "Les Reserved Instances/Savings Plans échangent un engagement d'usage (1-3 ans) contre une réduction sur des charges prévisibles ; les Spot Instances offrent de fortes réductions sur de la capacité inutilisée récupérable avec un court préavis, adaptées aux charges tolérantes aux pannes ou batch, pas au trafic de production stable.",
+  },
 ];

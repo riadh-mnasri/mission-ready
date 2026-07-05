@@ -1,10 +1,8 @@
 <main class="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
   <div class="animate-fade-up mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
     <div>
-      <h1 class="font-display text-2xl font-semibold text-ink sm:text-3xl">
-        {{ i18n.strings.dashboardTitle }}
-      </h1>
-      <p class="mt-1 font-card text-sm text-ink-muted">
+      <h1 class="text-2xl font-semibold tracking-tight text-text">{{ i18n.strings.dashboardTitle }}</h1>
+      <p class="mt-1 text-sm text-text-muted">
         {{
           totalDue() > 0
             ? i18n.strings.dashboardSubtitleDue(totalDue())
@@ -15,23 +13,23 @@
     @if (totalDue() > 0) {
       <a
         routerLink="/review/all"
-        class="stamp-button whitespace-nowrap border-2 border-ink-blue bg-card px-6 py-3 text-center font-display font-bold tracking-wide text-ink-blue uppercase"
+        class="whitespace-nowrap rounded-lg bg-accent px-5 py-2.5 text-center text-sm font-medium text-white transition-colors hover:bg-accent-hover"
       >
         {{ i18n.strings.reviewAllDue }}
       </a>
     }
   </div>
 
-  <div class="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
     @for (theme of themes(); track theme.id) {
       <app-theme-card [theme]="theme" [cards]="cardsForTheme(theme.id)" />
     }
   </div>
 
   @if (themes().length === 0) {
-    <div class="card-shadow border border-rule bg-card p-10 text-center text-ink-muted">
+    <div class="rounded-xl border border-border bg-surface p-10 text-center text-text-muted">
       {{ i18n.strings.noThemesYet }}
-      <a routerLink="/themes" class="text-ink-blue underline underline-offset-4">{{
+      <a routerLink="/themes" class="text-accent underline underline-offset-4">{{
         i18n.strings.createOne
       }}</a>
       {{ i18n.strings.toStartBuilding }}

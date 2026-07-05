@@ -3,7 +3,7 @@
 }
 
 .flip-card {
-  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .flip-card.flipped {
@@ -12,26 +12,4 @@
 
 .flip-face-back {
   transform: rotateY(180deg);
-}
-
-/* Ruled notebook lines plus a red margin rule, like a real index card. */
-.index-card-face {
-  background-color: var(--color-card);
-  background-image:
-    linear-gradient(var(--color-rule) 1px, transparent 1px),
-    linear-gradient(
-      90deg,
-      transparent,
-      transparent 11.5%,
-      rgba(168, 60, 42, 0.32) 11.5%,
-      rgba(168, 60, 42, 0.32) 12.1%,
-      transparent 12.1%
-    );
-  background-size:
-    100% 2rem,
-    100% 100%;
-  background-position:
-    0 3.4rem,
-    0 0;
-  background-repeat: repeat-y, no-repeat;
 }

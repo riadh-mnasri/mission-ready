@@ -97,4 +97,44 @@ export const questions = [
     answerFr:
       "La Clean Architecture applique le D de SOLID (Dependency Inversion) à l'échelle de l'architecture, et s'appuie aussi sur le SRP pour séparer clairement chaque couche par responsabilité.",
   },
+  {
+    question: "What is a Presenter and how does it differ from a ViewModel?",
+    answer:
+      "A Presenter formats a Use Case's output into a display-ready structure (the ViewModel), staying on the inner side of the UI boundary; the ViewModel itself is a dumb data holder consumed directly by the UI framework, with no business logic.",
+    questionFr: "Qu'est-ce qu'un Presenter et en quoi diffère-t-il d'un ViewModel ?",
+    answerFr:
+      "Un Presenter formate la sortie d'un Use Case en une structure prête à afficher (le ViewModel), en restant du côté interne de la frontière UI ; le ViewModel lui-même est une simple structure de données consommée directement par le framework UI, sans logique métier.",
+  },
+  {
+    question: "What is \"Screaming Architecture\"?",
+    answer:
+      "Uncle Bob's idea that a codebase's top-level structure should reveal the business domain at a glance (folders named after use cases/features) rather than the framework used, so opening the repo \"screams\" what the system does, not what it's built with.",
+    questionFr: "Qu'est-ce que la \"Screaming Architecture\" ?",
+    answerFr:
+      "L'idée d'Uncle Bob selon laquelle la structure de haut niveau d'un codebase devrait révéler le domaine métier au premier coup d'œil (des dossiers nommés d'après les use cases/features) plutôt que le framework utilisé, pour qu'ouvrir le repo \"crie\" ce que fait le système, pas ce avec quoi il est construit.",
+  },
+  {
+    question: "Where does input validation belong in Clean Architecture?",
+    answer:
+      "Structural/format validation (required fields, types) belongs at the boundary (controller/adapter), close to the input; business rule validation (e.g. an order can't ship without stock) belongs inside the Use Case or Entity, since it's a domain invariant, not a data-shape check.",
+    questionFr: "Où se situe la validation des entrées dans la Clean Architecture ?",
+    answerFr:
+      "La validation structurelle/de format (champs requis, types) se situe à la frontière (controller/adapter), près de l'entrée ; la validation des règles métier (ex. une commande ne peut pas être expédiée sans stock) se situe dans le Use Case ou l'Entity, car c'est un invariant du domaine, pas une simple vérification de forme.",
+  },
+  {
+    question: "How do transaction boundaries fit into Clean Architecture?",
+    answer:
+      "A transaction typically spans exactly one Use Case execution; the Use Case orchestrates repository calls but delegates the actual commit/rollback to an infrastructure concern (e.g. a Unit of Work implementation injected via a port), keeping the domain unaware of the underlying transaction mechanism.",
+    questionFr: "Comment les frontières transactionnelles s'intègrent-elles dans la Clean Architecture ?",
+    answerFr:
+      "Une transaction couvre typiquement l'exécution d'un seul Use Case ; le Use Case orchestre des appels au repository mais délègue le commit/rollback réel à une préoccupation d'infrastructure (ex. une implémentation Unit of Work injectée via un port), gardant le domaine indépendant du mécanisme transactionnel sous-jacent.",
+  },
+  {
+    question: "What is the Humble Object pattern and why is it useful here?",
+    answer:
+      "Splitting a hard-to-test piece of logic (e.g. UI rendering, a framework callback) into a thin \"humble\" wrapper with no logic and a separate testable component holding all the behavior, so the untestable part shrinks to almost nothing.",
+    questionFr: "Qu'est-ce que le pattern Humble Object et pourquoi est-il utile ici ?",
+    answerFr:
+      "Séparer un morceau de logique difficile à tester (ex. du rendu UI, un callback de framework) en un wrapper \"humble\" fin sans logique et un composant testable séparé qui porte tout le comportement, de sorte que la partie non testable se réduit à presque rien.",
+  },
 ];
