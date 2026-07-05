@@ -58,6 +58,11 @@ interface Strings {
   importBackup: string;
   importSuccess: string;
   importInvalidFile: string;
+  shortcutHint: string;
+  focusSessionTitle: string;
+  selectThemesHint: string;
+  startFocusSession: (n: number) => string;
+  clearSelection: string;
 }
 
 const en: Strings = {
@@ -109,6 +114,11 @@ const en: Strings = {
   importBackup: "Import backup",
   importSuccess: "Backup imported successfully.",
   importInvalidFile: "This file is not a valid MissionReady backup.",
+  shortcutHint: "Space to flip, then ← I did not know it, → I knew it",
+  focusSessionTitle: "Focus session",
+  selectThemesHint: "Select themes to cram before an interview, regardless of what's due.",
+  startFocusSession: (n) => `Start focus session (${n})`,
+  clearSelection: "Clear selection",
 };
 
 const fr: Strings = {
@@ -159,6 +169,11 @@ const fr: Strings = {
   importBackup: "Importer une sauvegarde",
   importSuccess: "Sauvegarde importée avec succès.",
   importInvalidFile: "Ce fichier n'est pas une sauvegarde MissionReady valide.",
+  shortcutHint: "Espace pour retourner, puis ← je ne savais pas, → je savais",
+  focusSessionTitle: "Session ciblée",
+  selectThemesHint: "Sélectionnez des thèmes à bachoter avant un entretien, peu importe ce qui est dû.",
+  startFocusSession: (n) => `Démarrer la session ciblée (${n})`,
+  clearSelection: "Effacer la sélection",
 };
 
 const DICTIONARIES: Record<Language, Strings> = { en, fr };

@@ -39,13 +39,34 @@
     </div>
   }
 
+  <p class="mb-4 text-sm text-text-muted">{{ i18n.strings.selectThemesHint }}</p>
+
+  @if (selectedThemeIds().size > 0) {
+    <div
+      class="card-shadow animate-fade-up mb-4 flex items-center justify-between gap-3 rounded-xl border border-accent/40 bg-surface px-5 py-3"
+    >
+      <button type="button" (click)="clearSelection()" class="text-sm text-text-muted hover:text-text">
+        {{ i18n.strings.clearSelection }}
+      </button>
+      <button
+        type="button"
+        (click)="startFocusSession()"
+        class="rounded-lg bg-accent px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-accent-hover"
+      >
+        {{ i18n.strings.startFocusSession(selectedThemeIds().size) }}
+      </button>
+    </div>
+  }
+
   <div class="space-y-3">
     @for (theme of themes(); track theme.id) {
       <app-theme-row
         [theme]="theme"
         [cards]="cardsForTheme(theme.id)"
         [expanded]="expandedThemeId() === theme.id"
+        [selected]="selectedThemeIds().has(theme.id)"
         (toggleExpand)="toggleExpand(theme.id)"
+        (toggleSelect)="toggleThemeSelection(theme.id, $event)"
         (addCard)="addCard(theme.id, $event)"
         (updateCard)="updateCard($event)"
         (deleteCard)="deleteCard($event)"

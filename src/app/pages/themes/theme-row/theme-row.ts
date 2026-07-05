@@ -17,8 +17,10 @@ export class ThemeRow {
   readonly theme = input.required<Theme>();
   readonly cards = input.required<Flashcard[]>();
   readonly expanded = input.required<boolean>();
+  readonly selected = input<boolean>(false);
 
   readonly toggleExpand = output<void>();
+  readonly toggleSelect = output<boolean>();
   readonly addCard = output<{ question: string; answer: string }>();
   readonly updateCard = output<{ cardId: string; question: string; answer: string }>();
   readonly deleteCard = output<string>();

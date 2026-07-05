@@ -1,4 +1,5 @@
 import { Component, computed, inject, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppStateService } from '../../core/app-state.service';
 import { I18nService } from '../../core/i18n.service';
 import { createCard } from '../../core/leitner';
@@ -13,6 +14,7 @@ import { ThemeRow } from './theme-row/theme-row';
 })
 export class Themes {
   private readonly appState = inject(AppStateService);
+  private readonly router = inject(Router);
   protected readonly i18n = inject(I18nService);
 
   protected readonly themes = computed(() => this.appState.state().themes);
@@ -20,6 +22,7 @@ export class Themes {
 
   protected readonly expandedThemeId = signal<string | null>(null);
   protected readonly newThemeOpen = signal(false);
+  protected readonly selectedThemeIds = signal<ReadonlySet<string>>(new Set());
 
   protected cardsForTheme(themeId: string) {
     return this.cards().filter((c) => c.themeId === themeId);
@@ -27,6 +30,24 @@ export class Themes {
 
   protected toggleExpand(themeId: string): void {
     this.expandedThemeId.set(this.expandedThemeId() === themeId ? null : themeId);
+  }
+
+  protected toggleThemeSelection(themeId: string, checked: boolean): void {
+    this.selectedThemeIds.update((prev) => {
+      const next = new Set(prev);
+      checked ? next.add(themeId) : next.delete(themeId);
+      return next;
+    });
+  }
+
+  protected clearSelection(): void {
+    this.selectedThemeIds.set(new Set());
+  }
+
+  protected startFocusSession(): void {
+    const ids = Array.from(this.selectedThemeIds());
+    if (ids.length === 0) return;
+    this.router.navigate(['/review', 'all'], { queryParams: { themes: ids.join(',') } });
   }
 
   protected addTheme(input: { name: string; color: string }): void {
