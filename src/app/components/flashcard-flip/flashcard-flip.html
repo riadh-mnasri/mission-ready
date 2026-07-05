@@ -2,29 +2,29 @@
   <button
     type="button"
     (click)="flip.emit()"
-    class="flip-card preserve-3d card-shadow relative block h-72 w-full cursor-pointer rounded-3xl text-left focus:outline-none sm:h-80"
+    class="flip-card preserve-3d card-shadow relative block h-72 w-full cursor-pointer border border-rule text-left focus:outline-none sm:h-80"
     [class.flipped]="flipped()"
   >
-    <div class="glass backface-hidden absolute inset-0 flex flex-col justify-between rounded-3xl p-8">
+    <div class="index-card-face backface-hidden absolute inset-0 flex flex-col justify-between p-8 pl-12">
       <span
-        class="w-fit rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide"
-        [style.background]="accent() + '22'"
+        class="w-fit -rotate-2 border-2 px-3 py-0.5 font-display text-xs font-bold tracking-wide uppercase"
+        [style.border-color]="accent()"
         [style.color]="accent()"
       >
         {{ i18n.strings.questionLabel }}
       </span>
-      <p class="text-xl font-medium leading-snug text-white">{{ question() }}</p>
-      <span class="text-sm text-slate-400">{{ i18n.strings.tapReveal }}</span>
+      <p class="font-card text-lg leading-snug text-ink">{{ question() }}</p>
+      <span class="font-card text-xs text-ink-faint italic">{{ i18n.strings.tapReveal }}</span>
     </div>
 
     <div
-      class="glass backface-hidden flip-face-back absolute inset-0 flex flex-col justify-between rounded-3xl p-8"
+      class="index-card-face flip-face-back backface-hidden absolute inset-0 flex flex-col justify-between p-8 pl-12"
     >
-      <span class="w-fit rounded-full bg-white/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-slate-300">
+      <span class="w-fit -rotate-2 border-2 border-ink-muted px-3 py-0.5 font-display text-xs font-bold tracking-wide text-ink-muted uppercase">
         {{ i18n.strings.answerLabel }}
       </span>
-      <p class="text-lg leading-relaxed text-slate-100">{{ answer() }}</p>
-      <span class="text-sm text-slate-400">{{ i18n.strings.tapFlipBack }}</span>
+      <p class="font-card text-base leading-relaxed text-ink">{{ answer() }}</p>
+      <span class="font-card text-xs text-ink-faint italic">{{ i18n.strings.tapFlipBack }}</span>
     </div>
   </button>
 </div>

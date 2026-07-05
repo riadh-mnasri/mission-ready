@@ -3,14 +3,14 @@ import { FormsModule } from '@angular/forms';
 import { I18nService } from '../../../core/i18n.service';
 
 const THEME_COLORS = [
-  '#f0b429',
-  '#38bdf8',
-  '#6366f1',
-  '#a78bfa',
-  '#34d399',
-  '#f43f5e',
-  '#fb923c',
-  '#d946ef',
+  '#1e3a5f',
+  '#a83c2a',
+  '#3f6b52',
+  '#b8862f',
+  '#6b4a7a',
+  '#2b6b6b',
+  '#a8562c',
+  '#5a5548',
 ];
 
 @Component({
