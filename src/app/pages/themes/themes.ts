@@ -71,4 +71,26 @@ export class Themes {
       cards: prev.cards.filter((c) => c.id !== cardId),
     }));
   }
+
+  protected exportBackup(): void {
+    const blob = new Blob([this.appState.exportJson()], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const date = new Date().toISOString().slice(0, 10);
+    const link = document.createElement('a');
+    link.href = url;
+    link.download = `missionready-backup-${date}.json`;
+    link.click();
+    URL.revokeObjectURL(url);
+  }
+
+  protected async importBackup(event: Event): Promise<void> {
+    const input = event.target as HTMLInputElement;
+    const file = input.files?.[0];
+    if (!file) return;
+
+    const raw = await file.text();
+    const ok = this.appState.importJson(raw);
+    alert(ok ? this.i18n.strings.importSuccess : this.i18n.strings.importInvalidFile);
+    input.value = '';
+  }
 }

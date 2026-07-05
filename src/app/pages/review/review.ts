@@ -9,7 +9,11 @@ import { ReviewControls } from '../../components/review-controls/review-controls
 
 function buildQueue(themeId: string, cards: Flashcard[]): string[] {
   const scoped = themeId === 'all' ? cards : cards.filter((c) => c.themeId === themeId);
-  return dueCards(scoped).map((c) => c.id);
+  // Weakest cards first: lower box means more past failures, so surfacing
+  // them before well-mastered cards makes each session target real gaps.
+  return dueCards(scoped)
+    .sort((a, b) => a.box - b.box || a.nextReviewAt - b.nextReviewAt)
+    .map((c) => c.id);
 }
 
 @Component({

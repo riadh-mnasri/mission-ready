@@ -54,6 +54,10 @@ interface Strings {
   statDueLabel: string;
   statMasteryLabel: string;
   statMasteredLabel: string;
+  exportBackup: string;
+  importBackup: string;
+  importSuccess: string;
+  importInvalidFile: string;
 }
 
 const en: Strings = {
@@ -101,6 +105,10 @@ const en: Strings = {
   statDueLabel: "Due today",
   statMasteryLabel: "Overall mastery",
   statMasteredLabel: "Cards mastered",
+  exportBackup: "Export backup",
+  importBackup: "Import backup",
+  importSuccess: "Backup imported successfully.",
+  importInvalidFile: "This file is not a valid MissionReady backup.",
 };
 
 const fr: Strings = {
@@ -147,6 +155,10 @@ const fr: Strings = {
   statDueLabel: "À réviser aujourd'hui",
   statMasteryLabel: "Maîtrise globale",
   statMasteredLabel: "Cartes maîtrisées",
+  exportBackup: "Exporter la sauvegarde",
+  importBackup: "Importer une sauvegarde",
+  importSuccess: "Sauvegarde importée avec succès.",
+  importInvalidFile: "Ce fichier n'est pas une sauvegarde MissionReady valide.",
 };
 
 const DICTIONARIES: Record<Language, Strings> = { en, fr };
