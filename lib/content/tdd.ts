@@ -27,7 +27,7 @@ export const questions = [
   {
     question: "What's the risk of tests too tightly coupled to implementation details?",
     answer:
-      "They break on any refactor even when observable behavior is unchanged (brittle tests) — prefer testing behavior/outcome rather than internal details.",
+      "They break on any refactor even when observable behavior is unchanged (brittle tests) - prefer testing behavior/outcome rather than internal details.",
   },
   {
     question: "What's the difference between the London School (mockist) and the Detroit/Chicago School (classicist) of TDD?",
@@ -37,7 +37,7 @@ export const questions = [
   {
     question: "How does TDD influence code design?",
     answer:
-      "Writing the test first forces you to think about the API from the caller's perspective, pushes toward injectable/testable dependencies and low coupling — TDD is as much a design tool as a verification tool.",
+      "Writing the test first forces you to think about the API from the caller's perspective, pushes toward injectable/testable dependencies and low coupling - TDD is as much a design tool as a verification tool.",
   },
   {
     question: "What is code coverage and what are its limits?",
@@ -52,7 +52,7 @@ export const questions = [
   {
     question: "What is the Arrange-Act-Assert (AAA) pattern?",
     answer:
-      "A readable test structure: Arrange (set up data/dependencies), Act (execute the action under test), Assert (verify the outcome) — improves test readability and maintainability.",
+      "A readable test structure: Arrange (set up data/dependencies), Act (execute the action under test), Assert (verify the outcome) - improves test readability and maintainability.",
   },
   {
     question: "Why avoid conditional logic inside tests?",

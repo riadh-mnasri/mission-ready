@@ -12,7 +12,7 @@ export const questions = [
   {
     question: "How does the domain stay independent from the database?",
     answer:
-      "The domain defines repository interfaces (ports); concrete implementations (SQL, NoSQL...) live in the outer layer and implement those interfaces — this is dependency inversion.",
+      "The domain defines repository interfaces (ports); concrete implementations (SQL, NoSQL...) live in the outer layer and implement those interfaces - this is dependency inversion.",
   },
   {
     question: "What is a Use Case in this model?",
@@ -27,7 +27,7 @@ export const questions = [
   {
     question: "How do you test a Clean Architecture?",
     answer:
-      "Use Cases and Entities are unit-tested without a database or framework, mocking the ports (repositories) — tests are fast and stable since business truth doesn't depend on infrastructure.",
+      "Use Cases and Entities are unit-tested without a database or framework, mocking the ports (repositories) - tests are fast and stable since business truth doesn't depend on infrastructure.",
   },
   {
     question: "What's the difference between Clean Architecture and a classic layered (N-tier) architecture?",
@@ -47,7 +47,7 @@ export const questions = [
   {
     question: "What's the main risk of misapplying Clean Architecture?",
     answer:
-      "Over-engineering: too many layers/mappers for a simple need, slowing development without real benefit — reserve it for domains with genuine business complexity or a long expected lifespan.",
+      "Over-engineering: too many layers/mappers for a simple need, slowing development without real benefit - reserve it for domains with genuine business complexity or a long expected lifespan.",
   },
   {
     question: "How does Clean Architecture make it easier to swap the web framework?",

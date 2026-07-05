@@ -7,7 +7,7 @@ export const questions = [
   {
     question: "How does IAM work (roles vs policies vs users)?",
     answer:
-      "JSON policies define permissions (actions/resources/conditions). Users/groups/roles are identities that policies get attached to. Roles are assumed temporarily (via STS) by services or humans, without long-lived access keys — best practice is to prefer roles over static credentials.",
+      "JSON policies define permissions (actions/resources/conditions). Users/groups/roles are identities that policies get attached to. Roles are assumed temporarily (via STS) by services or humans, without long-lived access keys - best practice is to prefer roles over static credentials.",
   },
   {
     question: "Difference between S3 Standard, S3 IA, and Glacier?",
@@ -37,7 +37,7 @@ export const questions = [
   {
     question: "What is the Well-Architected Framework?",
     answer:
-      "An AWS framework with 6 pillars: operational excellence, security, reliability, performance efficiency, cost optimization, sustainability — used to challenge an architecture through pillar-specific questions and best practices.",
+      "An AWS framework with 6 pillars: operational excellence, security, reliability, performance efficiency, cost optimization, sustainability - used to challenge an architecture through pillar-specific questions and best practices.",
   },
   {
     question: "Difference between SQS, SNS, and EventBridge?",

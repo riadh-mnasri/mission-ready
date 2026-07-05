@@ -32,7 +32,7 @@ export const questions = [
   {
     question: "How do you organize packages/modules for hexagonal architecture in Java/Kotlin?",
     answer:
-      "Typically `domain` (no external dependencies), `application` (use cases, orchestration), `adapters/in` (controllers, consumers), and `adapters/out` (repositories, HTTP clients) — the domain never references `adapters`.",
+      "Typically `domain` (no external dependencies), `application` (use cases, orchestration), `adapters/in` (controllers, consumers), and `adapters/out` (repositories, HTTP clients) - the domain never references `adapters`.",
   },
   {
     question: "What's a concrete example of a \"driving adapter\"?",

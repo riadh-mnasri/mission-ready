@@ -37,7 +37,7 @@ export const questions = [
   {
     question: "How do generics and \"type erasure\" work?",
     answer:
-      "Generics enforce type safety at compile time, but generic type information is erased at runtime (bytecode) — which is why you can't do `new T()` or `instanceof List<String>` directly.",
+      "Generics enforce type safety at compile time, but generic type information is erased at runtime (bytecode) - which is why you can't do `new T()` or `instanceof List<String>` directly.",
   },
   {
     question: "What is a `CompletableFuture` and why is it useful?",

@@ -27,12 +27,12 @@ export const questions = [
   {
     question: "What is \"prompt injection\" and why is it a risk for agents?",
     answer:
-      "An attack where external content (a webpage, document, tool result) contains hidden instructions meant to hijack the agent's behavior — critical as soon as an agent has access to tools with real-world effects (files, payments, emails).",
+      "An attack where external content (a webpage, document, tool result) contains hidden instructions meant to hijack the agent's behavior - critical as soon as an agent has access to tools with real-world effects (files, payments, emails).",
   },
   {
     question: "What is the context window and why is it a key constraint?",
     answer:
-      "The maximum amount of tokens (input + output) the model can process at once; beyond that, you need to summarize, chunk, or use RAG — this directly shapes the architecture of any LLM application over large documents/codebases.",
+      "The maximum amount of tokens (input + output) the model can process at once; beyond that, you need to summarize, chunk, or use RAG - this directly shapes the architecture of any LLM application over large documents/codebases.",
   },
   {
     question: "Difference between fine-tuning and prompt engineering/RAG to adapt an LLM to a domain?",
@@ -52,7 +52,7 @@ export const questions = [
   {
     question: "What are the specific security concerns of using AI agents in the enterprise (e.g. Copilot)?",
     answer:
-      "Leaking sensitive data to the model/third parties, executing unwanted actions via connected tools (prompt injection), and governing the permissions granted to the agent — often requiring a least-privilege approach similar to a service account.",
+      "Leaking sensitive data to the model/third parties, executing unwanted actions via connected tools (prompt injection), and governing the permissions granted to the agent - often requiring a least-privilege approach similar to a service account.",
   },
   {
     question: "How do you objectively evaluate the quality of an AI agent/assistant on a given task?",

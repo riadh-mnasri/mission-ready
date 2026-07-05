@@ -42,7 +42,7 @@ export const questions = [
   {
     question: "What is a Namespace and what is it for?",
     answer:
-      "A logical partition of the cluster to isolate resources (by team, environment...), with quotas and RBAC applicable per namespace — no native network isolation though (requires NetworkPolicies for that).",
+      "A logical partition of the cluster to isolate resources (by team, environment...), with quotas and RBAC applicable per namespace - no native network isolation though (requires NetworkPolicies for that).",
   },
   {
     question: "How does a Deployment's rolling update work?",
@@ -52,7 +52,7 @@ export const questions = [
   {
     question: "What is a StatefulSet and when do you use it?",
     answer:
-      "Like a Deployment, but guarantees a stable network identity and dedicated persistent storage per replica (deterministic creation/deletion order) — used for stateful workloads like databases.",
+      "Like a Deployment, but guarantees a stable network identity and dedicated persistent storage per replica (deterministic creation/deletion order) - used for stateful workloads like databases.",
   },
   {
     question: "What is a HorizontalPodAutoscaler (HPA)?",
@@ -62,6 +62,6 @@ export const questions = [
   {
     question: "What is a NetworkPolicy?",
     answer:
-      "A resource defining firewall rules at the pod level (by labels), controlling what inbound/outbound traffic is allowed — without it, all pods in a cluster can communicate with each other by default.",
+      "A resource defining firewall rules at the pod level (by labels), controlling what inbound/outbound traffic is allowed - without it, all pods in a cluster can communicate with each other by default.",
   },
 ];

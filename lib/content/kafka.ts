@@ -2,7 +2,7 @@ export const questions = [
   {
     question: "What is a topic and a partition?",
     answer:
-      "A topic is a named stream of messages; it's split into partitions (units of parallelism and ordering) — message order is only guaranteed within a single partition, not across partitions.",
+      "A topic is a named stream of messages; it's split into partitions (units of parallelism and ordering) - message order is only guaranteed within a single partition, not across partitions.",
   },
   {
     question: "How does Kafka guarantee read/write scalability?",

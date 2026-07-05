@@ -2,7 +2,7 @@ export const questions = [
   {
     question: "What is a Bounded Context?",
     answer:
-      "An explicit boundary (often aligned with a business subdomain) inside which a model and vocabulary (ubiquitous language) have a single, coherent meaning — the same term can mean something different in another context.",
+      "An explicit boundary (often aligned with a business subdomain) inside which a model and vocabulary (ubiquitous language) have a single, coherent meaning - the same term can mean something different in another context.",
   },
   {
     question: "Difference between an Entity and a Value Object?",
@@ -27,7 +27,7 @@ export const questions = [
   {
     question: "Difference between a Domain Event and a plain technical event?",
     answer:
-      "A Domain Event represents a meaningful, immutable business fact that happened (e.g. \"OrderConfirmed\"), named in the past tense, used to decouple business reactions — unlike a low-level plumbing event like \"RowUpdated\".",
+      "A Domain Event represents a meaningful, immutable business fact that happened (e.g. \"OrderConfirmed\"), named in the past tense, used to decouple business reactions - unlike a low-level plumbing event like \"RowUpdated\".",
   },
   {
     question: "What is a Repository in DDD?",
@@ -52,12 +52,12 @@ export const questions = [
   {
     question: "What is a Core Domain?",
     answer:
-      "The subdomain that constitutes the company's competitive advantage, where modeling effort and talent investment should be maximal — unlike \"Supporting\" or \"Generic\" subdomains that can be simplified or even bought as SaaS.",
+      "The subdomain that constitutes the company's competitive advantage, where modeling effort and talent investment should be maximal - unlike \"Supporting\" or \"Generic\" subdomains that can be simplified or even bought as SaaS.",
   },
   {
     question: "How does DDD relate to hexagonal/Clean Architecture?",
     answer:
-      "DDD structures the domain's content (aggregates, ubiquitous language, events); hexagonal/Clean Architecture provides the technical frame that isolates that domain from infrastructure details — the two are complementary, not competing.",
+      "DDD structures the domain's content (aggregates, ubiquitous language, events); hexagonal/Clean Architecture provides the technical frame that isolates that domain from infrastructure details - the two are complementary, not competing.",
   },
   {
     question: "What is Event Storming?",

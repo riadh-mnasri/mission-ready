@@ -46,7 +46,20 @@ function createStore<T>(key: string, initialValue: T) {
   return { getSnapshot, getServerSnapshot, subscribe, set };
 }
 
-const appStateStore = createStore<AppState>("missionready:state", createInitialState());
+const STORAGE_KEY = "missionready:state";
+
+const appStateStore = createStore<AppState>(STORAGE_KEY, createInitialState());
+
+/** Reads persisted state directly from localStorage, bypassing React's hydration timing. */
+export function readPersistedState(): AppState | null {
+  if (typeof window === "undefined") return null;
+  try {
+    const raw = window.localStorage.getItem(STORAGE_KEY);
+    return raw ? (JSON.parse(raw) as AppState) : null;
+  } catch {
+    return null;
+  }
+}
 
 export function useAppState() {
   const state = useSyncExternalStore(

@@ -17,7 +17,7 @@ export const questions = [
   {
     question: "What is CVA (Credit Valuation Adjustment)?",
     answer:
-      "The valuation adjustment reflecting the cost of counterparty risk on a derivative — the difference between the portfolio's \"risk-free\" value and its value once the counterparty's default probability is accounted for.",
+      "The valuation adjustment reflecting the cost of counterparty risk on a derivative - the difference between the portfolio's \"risk-free\" value and its value once the counterparty's default probability is accounted for.",
   },
   {
     question: "What is netting and why does it matter?",
@@ -47,12 +47,12 @@ export const questions = [
   {
     question: "What is the SA-CCR regulation?",
     answer:
-      "Standardised Approach for Counterparty Credit Risk — a standard method (post-2008 crisis, Basel framework) for computing regulatory exposure to counterparty credit risk on derivatives, replacing older methods (CEM, standard IMM) with better recognition of netting and collateral.",
+      "Standardised Approach for Counterparty Credit Risk - a standard method (post-2008 crisis, Basel framework) for computing regulatory exposure to counterparty credit risk on derivatives, replacing older methods (CEM, standard IMM) with better recognition of netting and collateral.",
   },
   {
     question: "What is DVA (Debit/Debt Valuation Adjustment)?",
     answer:
-      "The symmetric counterpart to CVA, reflecting an entity's own default risk from its counterparty's point of view — an accounting gain if its own credit quality deteriorates (an effect often criticized as counter-intuitive).",
+      "The symmetric counterpart to CVA, reflecting an entity's own default risk from its counterparty's point of view - an accounting gain if its own credit quality deteriorates (an effect often criticized as counter-intuitive).",
   },
   {
     question: "Why did counterparty risk become a major regulatory concern after 2008?",

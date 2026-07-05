@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# MissionReady
 
-## Getting Started
+Spaced-repetition flashcards for freelance tech mission interview prep.
 
-First, run the development server:
+MissionReady helps you walk into a technical interview sharp: review architecture, cloud, data platform, language, and domain-specific questions on a schedule that adapts to what you actually remember, instead of re-reading the same notes over and over.
+
+## Why this exists
+
+Freelance tech leads get evaluated on a wide, uneven surface: cloud infra, architecture patterns, testing discipline, a couple of JVM languages, and sometimes client-specific domain knowledge (risk, compliance...). Cramming the night before an interview does not stick. MissionReady applies the Leitner spaced-repetition method to that specific problem: short, frequent review sessions where cards you know well come back less often, and cards you get wrong resurface immediately.
+
+## Features
+
+- **Spaced repetition engine.** A 5-box Leitner system: answer a card correctly and it moves up a box with a longer interval before its next review; miss it and it drops straight back to box 1.
+- **Seeded content.** Ships with about 145 flashcards across 12 themes: AWS, Clean Architecture, Hexagonal Architecture, Domain-Driven Design, TDD, Azure, Kubernetes, Kafka, Java, Kotlin, Counterparty Risk, and AI tooling (Copilot, Claude, and friends).
+- **Custom themes and cards.** Add your own themes and flashcards for a specific client, mission, or technology on top of the seeded set.
+- **Dashboard at a glance.** Every theme shows how many cards are due today, how many exist in total, and a mastery score.
+- **Review sessions.** Flip a card, check yourself against the answer, and grade honestly with a single tap.
+- **Local-first.** Everything is stored in the browser via `localStorage`. No account, no backend, no data leaving your machine.
+
+## Design choices
+
+- **Leitner over SM-2.** A full SM-2 scheduler (ease factors, precise day intervals per card) adds complexity that does not pay off for a personal review tool used in short bursts before interviews. Five boxes with fixed intervals are easy to reason about and just as effective at this scale.
+- **No backend, for now.** A single user reviewing on one or two devices does not need a server. `localStorage` keeps the app simple to run and deploy; a sync backend can be added later without touching the review logic.
+- **Themes are first-class, not hardcoded.** Seeded themes and user-created themes share the exact same data model, so the app never treats "built-in" content as special.
+
+## Tech stack
+
+- [Next.js](https://nextjs.org) (App Router) and React
+- TypeScript
+- Tailwind CSS
+- Framer Motion for the flip-card and transition animations
+- Deployed on [Vercel](https://vercel.com)
+
+## Getting started
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The app runs on [http://localhost:3213](http://localhost:3213).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm run build   # production build
+npm run lint    # lint the codebase
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Project structure
 
-## Learn More
+```
+app/                 Routes: dashboard, review sessions, theme management
+components/          UI building blocks (flip card, theme card, nav bar...)
+lib/
+  types.ts           Core domain types (Theme, Flashcard)
+  leitner.ts          Spaced-repetition scheduling logic
+  storage.ts          localStorage-backed state store
+  content/            Seeded themes and flashcards, one file per theme
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Roadmap
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Session summaries and streak tracking across days
+- Import/export of a card deck as JSON
+- Optional sync backend for reviewing across multiple devices
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT

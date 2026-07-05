@@ -7,7 +7,7 @@ export const questions = [
   {
     question: "Difference between `val` and `var`?",
     answer:
-      "`val` declares a read-only reference (immutable once assigned, like `final` in Java); `var` declares a reassignable reference — Kotlin encourages `val` by default.",
+      "`val` declares a read-only reference (immutable once assigned, like `final` in Java); `var` declares a reassignable reference - Kotlin encourages `val` by default.",
   },
   {
     question: "What is a data class and what does it generate automatically?",
@@ -52,7 +52,7 @@ export const questions = [
   {
     question: "Difference between `List` and `MutableList` in Kotlin?",
     answer:
-      "`List` only exposes read operations (interface-level immutability, not necessarily of the underlying object); `MutableList` adds mutating operations (`add`, `remove`) — the distinction is at the type level, not the runtime level.",
+      "`List` only exposes read operations (interface-level immutability, not necessarily of the underlying object); `MutableList` adds mutating operations (`add`, `remove`) - the distinction is at the type level, not the runtime level.",
   },
   {
     question: "What are type inference and smart casts?",
