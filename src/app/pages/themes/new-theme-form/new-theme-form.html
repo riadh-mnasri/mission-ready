@@ -1,0 +1,30 @@
+<form
+  (ngSubmit)="submit()"
+  class="glass card-shadow flex flex-col gap-4 rounded-2xl p-5"
+>
+  <input
+    [(ngModel)]="name"
+    name="themeName"
+    [placeholder]="i18n.strings.themeNamePlaceholder"
+    class="rounded-xl border border-white/10 bg-white/5 px-4 py-2.5 text-white placeholder:text-slate-500 focus:border-amber-400/50 focus:outline-none"
+  />
+  <div class="flex items-center gap-2">
+    @for (c of colors; track c) {
+      <button
+        type="button"
+        (click)="color.set(c)"
+        class="h-7 w-7 rounded-full transition-transform"
+        [style.background]="c"
+        [style.outline]="color() === c ? '2px solid white' : 'none'"
+        [style.outline-offset.px]="2"
+        [style.transform]="color() === c ? 'scale(1.1)' : 'scale(1)'"
+      ></button>
+    }
+  </div>
+  <button
+    type="submit"
+    class="self-start rounded-full bg-amber-400 px-5 py-2 text-sm font-semibold text-slate-900"
+  >
+    {{ i18n.strings.createTheme }}
+  </button>
+</form>

@@ -1,0 +1,68 @@
+<main class="mx-auto flex w-full max-w-2xl flex-1 flex-col px-6 py-10">
+  <div class="mb-8 flex items-center justify-between">
+    <div>
+      <p class="text-sm text-slate-400">{{ i18n.strings.reviewSessionLabel }}</p>
+      <h1 class="text-xl font-bold text-white">{{ title() }}</h1>
+    </div>
+    <a
+      routerLink="/"
+      class="rounded-full border border-white/10 px-4 py-1.5 text-sm text-slate-300 hover:text-white"
+    >
+      {{ i18n.strings.exit }}
+    </a>
+  </div>
+
+  @if (currentCard(); as card) {
+    <div class="animate-fade-up">
+      @if (currentTheme(); as ct) {
+        @if (themeId() === 'all') {
+          <div class="mb-3 flex justify-center">
+            <span
+              class="rounded-full px-3 py-1 text-xs font-semibold uppercase tracking-wide"
+              [style.background]="ct.color + '22'"
+              [style.color]="ct.color"
+            >
+              {{ i18n.themeName(ct) }}
+            </span>
+          </div>
+        }
+      }
+
+      <app-flashcard-flip
+        [question]="cardText().question"
+        [answer]="cardText().answer"
+        [flipped]="flipped()"
+        [accent]="accent()"
+        (flip)="flipped.set(!flipped())"
+      />
+
+      <app-review-controls
+        [visible]="flipped()"
+        (knew)="advance(true)"
+        (missed)="advance(false)"
+      />
+
+      <p class="mt-6 text-center text-sm text-slate-500">
+        {{ i18n.strings.cardsLeft(queue().length) }}
+      </p>
+    </div>
+  } @else {
+    <div class="animate-fade-up glass card-shadow rounded-3xl p-10 text-center">
+      <p class="text-4xl">🎯</p>
+      <h2 class="mt-4 text-xl font-bold text-white">{{ i18n.strings.sessionComplete }}</h2>
+      <p class="mt-2 text-slate-400">
+        {{
+          stats().reviewed === 0
+            ? i18n.strings.nothingDue
+            : i18n.strings.knownOnFirstTry(stats().correct, stats().reviewed)
+        }}
+      </p>
+      <a
+        routerLink="/"
+        class="mt-6 inline-block rounded-full bg-amber-400 px-6 py-2.5 font-semibold text-slate-900 transition-transform hover:scale-105"
+      >
+        {{ i18n.strings.backToDashboard }}
+      </a>
+    </div>
+  }
+</main>

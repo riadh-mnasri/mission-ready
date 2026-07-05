@@ -1,0 +1,38 @@
+<main class="mx-auto w-full max-w-5xl flex-1 px-6 py-10">
+  <div class="animate-fade-up mb-10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h1 class="text-2xl font-bold text-white sm:text-3xl">{{ i18n.strings.dashboardTitle }}</h1>
+      <p class="mt-1 text-slate-400">
+        {{
+          totalDue() > 0
+            ? i18n.strings.dashboardSubtitleDue(totalDue())
+            : i18n.strings.dashboardSubtitleUpToDate
+        }}
+      </p>
+    </div>
+    @if (totalDue() > 0) {
+      <a
+        routerLink="/review/all"
+        class="animate-glow whitespace-nowrap rounded-full bg-amber-400 px-6 py-3 text-center font-semibold text-slate-900 shadow-lg shadow-amber-500/20 transition-transform hover:scale-105"
+      >
+        {{ i18n.strings.reviewAllDue }}
+      </a>
+    }
+  </div>
+
+  <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+    @for (theme of themes(); track theme.id) {
+      <app-theme-card [theme]="theme" [cards]="cardsForTheme(theme.id)" />
+    }
+  </div>
+
+  @if (themes().length === 0) {
+    <div class="glass card-shadow rounded-2xl p-10 text-center text-slate-400">
+      {{ i18n.strings.noThemesYet }}
+      <a routerLink="/themes" class="text-amber-300 underline underline-offset-4">{{
+        i18n.strings.createOne
+      }}</a>
+      {{ i18n.strings.toStartBuilding }}
+    </div>
+  }
+</main>

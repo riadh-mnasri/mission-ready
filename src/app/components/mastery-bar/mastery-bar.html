@@ -1,0 +1,10 @@
+<div class="flex items-center gap-2">
+  <div class="h-1.5 flex-1 overflow-hidden rounded-full bg-white/10">
+    <div
+      class="h-full rounded-full transition-[width] duration-500"
+      [style.width.%]="percent()"
+      [style.background]="color()"
+    ></div>
+  </div>
+  <span class="w-9 text-right text-xs font-medium text-slate-400">{{ percent() }}%</span>
+</div>

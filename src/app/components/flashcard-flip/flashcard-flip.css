@@ -1,0 +1,15 @@
+:host {
+  display: block;
+}
+
+.flip-card {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.flip-card.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face-back {
+  transform: rotateY(180deg);
+}
