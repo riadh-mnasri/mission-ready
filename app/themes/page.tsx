@@ -113,7 +113,9 @@ export default function ThemesPage() {
                       style={{ background: theme.color }}
                     />
                     <span className="font-semibold text-white">{theme.name}</span>
-                    <span className="text-sm text-slate-400">{themeCards.length} cards</span>
+                    <span className="text-sm text-slate-400">
+                      {themeCards.length} card{themeCards.length !== 1 ? "s" : ""}
+                    </span>
                   </div>
                   <div className="flex w-40 items-center gap-3">
                     <MasteryBar ratio={masteryRatio(themeCards)} color={theme.color} />

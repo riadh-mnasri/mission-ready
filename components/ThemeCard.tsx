@@ -43,7 +43,9 @@ export default function ThemeCard({ theme, cards }: ThemeCardProps) {
           )}
         </div>
 
-        <p className="mt-3 text-sm text-slate-400">{cards.length} cards</p>
+        <p className="mt-3 text-sm text-slate-400">
+          {cards.length} card{cards.length !== 1 ? "s" : ""}
+        </p>
 
         <div className="mt-4">
           <MasteryBar ratio={mastery} color={theme.color} />
