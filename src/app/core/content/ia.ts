@@ -145,4 +145,52 @@ export const questions = [
     answerFr:
       "Low-Rank Adaptation gèle les poids originaux du modèle et entraîne un petit ensemble de matrices low-rank additionnelles injectées dans des couches spécifiques, obtenant l'essentiel du bénéfice d'un fine-tuning complet pour une fraction du coût en calcul/mémoire, et permettant d'échanger différents adaptateurs LoRA sur le même modèle de base.",
   },
+  {
+    question: "When would you choose fine-tuning over RAG, or the other way around?",
+    answer:
+      "RAG is the default when the need is grounding answers in specific, changing, or proprietary documents (the model's reasoning stays the same, only its retrieved context changes); fine-tuning is worth its higher cost when you need to change the model's behavior itself (a specific tone, a specialized output format, domain vocabulary baked in) rather than just what facts it has access to.",
+    questionFr: "Quand choisir le fine-tuning plutôt que le RAG, ou l'inverse ?",
+    answerFr:
+      "Le RAG est le choix par défaut quand le besoin est d'ancrer les réponses dans des documents spécifiques, changeants ou propriétaires (le raisonnement du modèle reste le même, seul son contexte récupéré change) ; le fine-tuning justifie son coût plus élevé quand il faut changer le comportement du modèle lui-même (un ton spécifique, un format de sortie spécialisé, un vocabulaire métier intégré) plutôt que juste les faits auxquels il a accès.",
+  },
+  {
+    question: "What is an \"agentic loop\", and how does it differ from a single LLM call?",
+    answer:
+      "A single LLM call returns one response to one prompt; an agentic loop repeatedly calls the model, lets it choose and invoke tools, feeds the tool results back into the context, and continues until the model decides the task is done, letting it handle multi-step tasks that require gathering information or taking actions along the way.",
+    questionFr: "Qu'est-ce qu'une \"boucle agentique\", et en quoi diffère-t-elle d'un simple appel LLM ?",
+    answerFr:
+      "Un simple appel LLM retourne une réponse à un prompt ; une boucle agentique appelle le modèle de façon répétée, le laisse choisir et invoquer des outils, réinjecte les résultats des outils dans le contexte, et continue jusqu'à ce que le modèle décide que la tâche est terminée, ce qui lui permet de gérer des tâches multi-étapes nécessitant de récupérer des informations ou d'agir en chemin.",
+  },
+  {
+    question: "What is a model card / system card, and why does it matter for enterprise AI adoption?",
+    answer:
+      "A document published by the model provider describing intended use cases, known limitations, evaluated risks, and safety testing results for a given model; enterprises use it during vendor/model selection and risk assessment to understand what a model was and wasn't validated for before deploying it in a production workflow.",
+    questionFr: "Qu'est-ce qu'une model card / system card, et pourquoi compte-t-elle pour l'adoption de l'IA en entreprise ?",
+    answerFr:
+      "Un document publié par le fournisseur du modèle décrivant les cas d'usage prévus, les limitations connues, les risques évalués, et les résultats des tests de sécurité pour un modèle donné ; les entreprises l'utilisent lors de la sélection de fournisseur/modèle et de l'évaluation des risques pour comprendre pour quoi un modèle a (ou n'a pas) été validé avant de le déployer dans un workflow de production.",
+  },
+  {
+    question: "Difference between zero-shot, few-shot, and chain-of-thought prompting?",
+    answer:
+      "Zero-shot gives the model just the task description with no examples; few-shot adds a handful of example input/output pairs in the prompt to steer format and style; chain-of-thought asks the model to reason step by step before answering, which tends to improve accuracy on multi-step or logical tasks at the cost of more output tokens.",
+    questionFr: "Différence entre le prompting zero-shot, few-shot et chain-of-thought ?",
+    answerFr:
+      "Le zero-shot ne donne au modèle que la description de la tâche sans exemple ; le few-shot ajoute quelques paires exemple entrée/sortie dans le prompt pour orienter le format et le style ; le chain-of-thought demande au modèle de raisonner étape par étape avant de répondre, ce qui tend à améliorer la précision sur des tâches multi-étapes ou logiques au prix de plus de tokens en sortie.",
+  },
+  {
+    question: "What is \"context engineering\", and how does it differ from prompt engineering?",
+    answer:
+      "Prompt engineering focuses narrowly on wording a single instruction well; context engineering is the broader discipline of deciding what information (retrieved documents, tool outputs, conversation history, system instructions) the model sees at all, and in what order and format, since for agentic and long-running tasks what's in the context window matters more than how any one instruction is phrased.",
+    questionFr: "Qu'est-ce que le \"context engineering\", et en quoi diffère-t-il du prompt engineering ?",
+    answerFr:
+      "Le prompt engineering se concentre étroitement sur la bonne formulation d'une seule instruction ; le context engineering est la discipline plus large qui consiste à décider quelles informations (documents récupérés, résultats d'outils, historique de conversation, instructions système) le modèle voit, et dans quel ordre et format, car pour des tâches agentiques ou longue durée, ce qui est dans la fenêtre de contexte compte plus que la formulation d'une instruction isolée.",
+  },
+  {
+    question: "For billing and context-window purposes, what is a token, and how does it relate to words?",
+    answer:
+      "A token is the model's basic unit of text, typically a sub-word chunk (roughly 3-4 characters in English on average) produced by the model's tokenizer, not a whole word; as a rule of thumb one word is often around 1.3 tokens in English, though it varies significantly by language and vocabulary, which is why context limits and API costs are always specified in tokens rather than words.",
+    questionFr: "Pour la facturation et la fenêtre de contexte, qu'est-ce qu'un token, et quel est son lien avec les mots ?",
+    answerFr:
+      "Un token est l'unité de base de texte du modèle, typiquement un fragment de sous-mot (environ 3-4 caractères en anglais en moyenne) produit par le tokenizer du modèle, pas un mot entier ; en règle générale un mot fait souvent environ 1,3 token en anglais, même si cela varie fortement selon la langue et le vocabulaire, ce qui explique pourquoi les limites de contexte et les coûts API sont toujours exprimés en tokens plutôt qu'en mots.",
+  },
 ];

@@ -159,4 +159,52 @@ export const questions = [
     answerFr:
       "Les Reserved Instances/Savings Plans échangent un engagement d'usage (1-3 ans) contre une réduction sur des charges prévisibles ; les Spot Instances offrent de fortes réductions sur de la capacité inutilisée récupérable avec un court préavis, adaptées aux charges tolérantes aux pannes ou batch, pas au trafic de production stable.",
   },
+  {
+    question: "Difference between an S3 bucket policy and an IAM policy for controlling access to a bucket?",
+    answer:
+      "An IAM policy is attached to a principal (user, role) and defines what that identity can do; a bucket policy is attached to the resource itself and can grant or deny access to other accounts or principals, which is why it's the tool for cross-account S3 access.",
+    questionFr: "Différence entre une bucket policy S3 et une IAM policy pour contrôler l'accès à un bucket ?",
+    answerFr:
+      "Une IAM policy est attachée à un principal (utilisateur, rôle) et définit ce que cette identité peut faire ; une bucket policy est attachée à la ressource elle-même et peut accorder ou refuser l'accès à d'autres comptes ou principaux, ce qui en fait l'outil pour l'accès S3 cross-account.",
+  },
+  {
+    question: "What is AWS Step Functions used for?",
+    answer:
+      "A managed state machine service that orchestrates multiple steps (Lambda calls, service integrations, waits, branching, retries) as a visual, versioned workflow, replacing fragile custom orchestration code for multi-step or long-running business processes.",
+    questionFr: "À quoi sert AWS Step Functions ?",
+    answerFr:
+      "Un service de state machine managé qui orchestre plusieurs étapes (appels Lambda, intégrations de services, attentes, branchements, retries) sous forme de workflow visuel et versionné, remplaçant du code d'orchestration custom fragile pour des processus métier multi-étapes ou longue durée.",
+  },
+  {
+    question: "Difference between an Application Load Balancer (ALB) and a Network Load Balancer (NLB)?",
+    answer:
+      "ALB operates at layer 7 (HTTP/HTTPS), supporting path/host-based routing and content inspection; NLB operates at layer 4 (TCP/UDP), handling extreme throughput and preserving the client IP, used for latency-sensitive or non-HTTP protocols.",
+    questionFr: "Différence entre un Application Load Balancer (ALB) et un Network Load Balancer (NLB) ?",
+    answerFr:
+      "L'ALB opère à la couche 7 (HTTP/HTTPS), avec du routing basé sur le path/host et de l'inspection de contenu ; le NLB opère à la couche 4 (TCP/UDP), gère un débit extrême et préserve l'IP client, utilisé pour des protocoles sensibles à la latence ou non-HTTP.",
+  },
+  {
+    question: "What is AWS X-Ray and what problem does it solve?",
+    answer:
+      "A distributed tracing service that follows a request across services (API Gateway, Lambda, DynamoDB...), building a service map and per-segment latency breakdown, making it possible to pinpoint which hop in a microservices call chain is slow or failing.",
+    questionFr: "Qu'est-ce qu'AWS X-Ray et quel problème résout-il ?",
+    answerFr:
+      "Un service de tracing distribué qui suit une requête à travers plusieurs services (API Gateway, Lambda, DynamoDB...), construisant une service map et une décomposition de latence par segment, ce qui permet d'identifier quel maillon d'une chaîne d'appels microservices est lent ou en échec.",
+  },
+  {
+    question: "What is the AssumeRole pattern and why is it central to secure cross-account access?",
+    answer:
+      "Instead of sharing long-lived credentials, a principal in one account assumes an IAM role in another account (or a different role in the same account) to get short-lived temporary credentials scoped to that role's permissions, which is the standard way to grant scoped, auditable, revocable cross-account access.",
+    questionFr: "Qu'est-ce que le pattern AssumeRole et pourquoi est-il central pour l'accès cross-account sécurisé ?",
+    answerFr:
+      "Plutôt que de partager des identifiants longue durée, un principal d'un compte assume un rôle IAM dans un autre compte (ou un rôle différent dans le même compte) pour obtenir des identifiants temporaires courte durée limités aux permissions de ce rôle, ce qui est la façon standard d'accorder un accès cross-account scopé, auditable et révocable.",
+  },
+  {
+    question: "What do AWS WAF and AWS Shield each protect against?",
+    answer:
+      "WAF filters HTTP requests against rules (SQL injection, XSS, rate limiting, bad bots) at the application layer; Shield protects against DDoS attacks at the network/transport layer, with Shield Standard included by default and Shield Advanced adding larger-scale mitigation and cost protection.",
+    questionFr: "Contre quoi AWS WAF et AWS Shield protègent-ils chacun ?",
+    answerFr:
+      "WAF filtre les requêtes HTTP selon des règles (injection SQL, XSS, rate limiting, bots malveillants) au niveau applicatif ; Shield protège contre les attaques DDoS au niveau réseau/transport, avec Shield Standard inclus par défaut et Shield Advanced qui ajoute une mitigation à plus grande échelle et une protection des coûts.",
+  },
 ];

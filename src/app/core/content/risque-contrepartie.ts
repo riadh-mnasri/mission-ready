@@ -135,4 +135,52 @@ export const questions = [
     answerFr:
       "Le leverage ratio est un garde-fou non basé sur le risque : il plafonne l'exposition totale au bilan et hors bilan (y compris une mesure standardisée de l'exposition dérivés, basée sur SA-CCR) par rapport au capital, quel que soit à quel point l'exposition pondérée par le risque paraît faible, décourageant une croissance excessive du bilan même sur des trades \"peu risqués\".",
   },
+  {
+    question: "What is a CSA (Credit Support Annex) and how does it relate to an ISDA Master Agreement?",
+    answer:
+      "The CSA is a legal annex to the ISDA Master Agreement specifying the collateral terms between two counterparties: what's eligible as collateral, the threshold, the minimum transfer amount, and the frequency of margin calls, effectively turning the master agreement's general netting terms into an operational collateral process.",
+    questionFr: "Qu'est-ce qu'une CSA (Credit Support Annex) et quel est son lien avec un ISDA Master Agreement ?",
+    answerFr:
+      "La CSA est une annexe légale à l'ISDA Master Agreement qui précise les termes de collateral entre deux contreparties : ce qui est éligible comme collateral, le seuil, le montant minimum de transfert, et la fréquence des margin calls, transformant concrètement les termes généraux de netting de l'accord-cadre en un processus opérationnel de collateral.",
+  },
+  {
+    question: "Operationally, how does bilateral collateral posting differ from posting collateral to a CCP?",
+    answer:
+      "Bilateral posting is negotiated pairwise per CSA, with each relationship potentially using different thresholds, eligible collateral, and timing; posting to a CCP follows one standardized rulebook applied uniformly to every clearing member, trading negotiation flexibility for operational simplicity and comparability across the whole cleared book.",
+    questionFr: "Sur le plan opérationnel, en quoi le collateral bilatéral diffère-t-il du collateral posté à une CCP ?",
+    answerFr:
+      "Le collateral bilatéral est négocié par paire selon chaque CSA, chaque relation pouvant utiliser des seuils, du collateral éligible et un timing différents ; le collateral posté à une CCP suit un règlement unique standardisé appliqué uniformément à chaque membre compensateur, échangeant la flexibilité de négociation contre une simplicité opérationnelle et une comparabilité sur tout le book compensé.",
+  },
+  {
+    question: "What is \"backloading\" in the context of a central clearing mandate?",
+    answer:
+      "Moving an existing bilateral (uncleared) derivative trade into central clearing after it was originally executed bilaterally, typically done to reduce bilateral exposure/capital charges or to comply with a clearing mandate that was introduced after the trade was booked.",
+    questionFr: "Qu'est-ce que le \"backloading\" dans le contexte d'un mandat de compensation centrale ?",
+    answerFr:
+      "Faire migrer un trade dérivé bilatéral (non compensé) existant vers la compensation centrale après qu'il ait été initialement exécuté en bilatéral, typiquement fait pour réduire l'exposition/les charges en capital bilatérales ou pour se conformer à un mandat de compensation introduit après la mise en place du trade.",
+  },
+  {
+    question: "What is a \"haircut\" applied to posted collateral?",
+    answer:
+      "A discount applied to the market value of a non-cash collateral asset (e.g. a government bond) to account for its price volatility and potential liquidation cost, so that 100 of bond collateral might only count as 95 of eligible collateral value; cash typically has no or minimal haircut.",
+    questionFr: "Qu'est-ce qu'un \"haircut\" appliqué au collateral posté ?",
+    answerFr:
+      "Une décote appliquée à la valeur de marché d'un actif de collateral non-cash (ex. une obligation d'État) pour tenir compte de sa volatilité de prix et de son coût de liquidation potentiel, de sorte que 100 de collateral obligataire ne compte parfois que pour 95 de valeur de collateral éligible ; le cash n'a typiquement pas ou peu de haircut.",
+  },
+  {
+    question: "What is SIMM and how does it differ from a CCP's proprietary Initial Margin model?",
+    answer:
+      "SIMM (Standard Initial Margin Model, from ISDA) is a common, standardized methodology used across bilateral (uncleared) counterparties under UMR, chosen so both sides compute the same IM without dispute; each CCP instead runs its own proprietary risk-based margin model, which is not required to match another CCP's methodology.",
+    questionFr: "Qu'est-ce que SIMM et en quoi diffère-t-il du modèle d'Initial Margin propriétaire d'une CCP ?",
+    answerFr:
+      "SIMM (Standard Initial Margin Model, de l'ISDA) est une méthodologie commune et standardisée utilisée entre contreparties bilatérales (non compensées) sous UMR, choisie pour que les deux parties calculent le même IM sans litige ; chaque CCP fait tourner à la place son propre modèle de marge basé sur le risque, qui n'est pas tenu de correspondre à la méthodologie d'une autre CCP.",
+  },
+  {
+    question: "What is Right-Way Risk, and how does it differ from Wrong-Way Risk?",
+    answer:
+      "Right-Way Risk is the favorable case where exposure to a counterparty decreases as its credit quality deteriorates (or increases as its credit quality improves) - the opposite correlation from Wrong-Way Risk, meaning it reduces rather than amplifies the potential loss on default.",
+    questionFr: "Qu'est-ce que le Right-Way Risk, et en quoi diffère-t-il du Wrong-Way Risk ?",
+    answerFr:
+      "Le Right-Way Risk est le cas favorable où l'exposition à une contrepartie diminue quand sa qualité de crédit se dégrade (ou augmente quand sa qualité de crédit s'améliore) - la corrélation opposée au Wrong-Way Risk, ce qui réduit plutôt qu'amplifie la perte potentielle en cas de défaut.",
+  },
 ];

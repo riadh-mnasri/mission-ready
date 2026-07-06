@@ -137,4 +137,52 @@ export const questions = [
     answerFr:
       "Un wrapper autour d'une seule valeur (ex. `value class UserId(val value: String)`) que le compilateur efface au niveau du bytecode quand c'est possible, offrant une forte sécurité de type (impossible de passer un String brut là où un UserId est attendu) sans overhead d'allocation à l'exécution dans la plupart des cas.",
   },
+  {
+    question: "What is a `typealias` used for in Kotlin?",
+    answer:
+      "It gives an existing type (often a long generic type or a function type) an alternative, more meaningful name (e.g. `typealias UserId = String` or `typealias ClickHandler = (View) -> Unit`) purely for readability; it creates no new type, so a `UserId` and a `String` remain fully interchangeable to the compiler.",
+    questionFr: "À quoi sert un `typealias` en Kotlin ?",
+    answerFr:
+      "Il donne à un type existant (souvent un type générique long ou un type fonction) un nom alternatif plus parlant (ex. `typealias UserId = String` ou `typealias ClickHandler = (View) -> Unit`) purement pour la lisibilité ; il ne crée aucun nouveau type, donc un `UserId` et un `String` restent totalement interchangeables pour le compilateur.",
+  },
+  {
+    question: "What is Kotlin's `Result<T>` and how does it change error handling compared to throwing exceptions?",
+    answer:
+      "`Result<T>` wraps either a success value or a failure exception as a single return value, forcing callers to explicitly handle both branches (via `.fold()`, `.getOrElse()`) instead of relying on a possibly-uncaught thrown exception; it's especially useful at boundaries where you want error handling to be visible in the function's signature.",
+    questionFr: "Qu'est-ce que `Result<T>` en Kotlin et en quoi change-t-il la gestion d'erreur par rapport à lever des exceptions ?",
+    answerFr:
+      "`Result<T>` enveloppe soit une valeur de succès soit une exception d'échec dans une seule valeur de retour, forçant les appelants à gérer explicitement les deux branches (via `.fold()`, `.getOrElse()`) plutôt que de compter sur une exception levée possiblement non catchée ; particulièrement utile aux frontières où l'on veut que la gestion d'erreur soit visible dans la signature de la fonction.",
+  },
+  {
+    question: "What does the `tailrec` modifier do, and what must a function satisfy to use it?",
+    answer:
+      "The compiler rewrites a `tailrec` function's recursive call into a loop, avoiding stack growth (and `StackOverflowError`) for deep recursion; the function must be tail-recursive, meaning the recursive call is the very last operation performed, with no computation left to do after it returns.",
+    questionFr: "Que fait le modificateur `tailrec`, et que doit satisfaire une fonction pour l'utiliser ?",
+    answerFr:
+      "Le compilateur réécrit une fonction `tailrec` en boucle au lieu d'un appel récursif, évitant la croissance de la pile (et un `StackOverflowError`) pour une récursion profonde ; la fonction doit être récursive terminale, c'est-à-dire que l'appel récursif est la toute dernière opération effectuée, sans calcul restant à faire après son retour.",
+  },
+  {
+    question: "What's the difference between `Any`, `Any?`, and `Unit` in Kotlin's type system?",
+    answer:
+      "`Any` is the root of the non-nullable type hierarchy (roughly Kotlin's `Object`); `Any?` additionally allows null, sitting above `Any` since every type in Kotlin is implicitly nullable-or-not; `Unit` is the return type of functions that return no meaningful value (Kotlin's equivalent of `void`, but an actual singleton object rather than the absence of a type).",
+    questionFr: "Quelle est la différence entre `Any`, `Any?` et `Unit` dans le système de types de Kotlin ?",
+    answerFr:
+      "`Any` est la racine de la hiérarchie de types non-nullable (à peu près l'équivalent de `Object`) ; `Any?` autorise en plus null, se plaçant au-dessus d'`Any` puisque chaque type en Kotlin est implicitement nullable ou non ; `Unit` est le type de retour des fonctions qui ne retournent aucune valeur significative (l'équivalent de `void` en Kotlin, mais un vrai objet singleton plutôt que l'absence de type).",
+  },
+  {
+    question: "Difference between `StateFlow` and `SharedFlow`?",
+    answer:
+      "`StateFlow` always holds a current value (it needs an initial one) and only emits distinct-by-default state updates to collectors, modeling observable state; `SharedFlow` is more general, has no required initial value, and can be configured to replay a configurable number of past emissions to new collectors, modeling arbitrary event streams rather than just state.",
+    questionFr: "Différence entre `StateFlow` et `SharedFlow` ?",
+    answerFr:
+      "`StateFlow` porte toujours une valeur courante (il en faut une initiale) et n'émet par défaut que des mises à jour d'état distinctes aux collecteurs, modélisant un état observable ; `SharedFlow` est plus général, n'a pas de valeur initiale requise, et peut être configuré pour rejouer un nombre configurable d'émissions passées aux nouveaux collecteurs, modélisant des flux d'événements arbitraires plutôt que juste un état.",
+  },
+  {
+    question: "How does operator overloading work in Kotlin, and what's an example beyond arithmetic?",
+    answer:
+      "Marking a function `operator` and naming it after a conventional symbol (`plus`, `times`, `get`, `invoke`) lets instances of your type use that operator syntax directly (e.g. `money1 + money2`); beyond arithmetic, overloading `invoke` lets an object be called like a function (`myObject()`), which is how many Kotlin DSLs and functional-style APIs are built.",
+    questionFr: "Comment fonctionne la surcharge d'opérateurs en Kotlin, et quel est un exemple au-delà de l'arithmétique ?",
+    answerFr:
+      "Marquer une fonction `operator` et la nommer d'après un symbole conventionnel (`plus`, `times`, `get`, `invoke`) permet aux instances de votre type d'utiliser directement cette syntaxe d'opérateur (ex. `money1 + money2`) ; au-delà de l'arithmétique, surcharger `invoke` permet d'appeler un objet comme une fonction (`monObjet()`), ce qui est la base de nombreux DSL Kotlin et API de style fonctionnel.",
+  },
 ];

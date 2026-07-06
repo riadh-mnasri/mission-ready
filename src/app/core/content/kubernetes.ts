@@ -151,4 +151,52 @@ export const questions = [
     answerFr:
       "Du mTLS uniforme entre services, un contrôle de trafic fin (canary routing, retries, circuit breaking) sans toucher au code applicatif, et une observabilité riche (latence, taux d'erreur, traces) en routant le trafic pod-à-pod à travers des proxies sidecar.",
   },
+  {
+    question: "What is a Custom Resource Definition (CRD) and why does it matter for Kubernetes extensibility?",
+    answer:
+      "A CRD lets you define your own resource kind (e.g. `Certificate`, `PostgresCluster`) that the Kubernetes API server then treats like any built-in object, storing it in etcd and exposing it via `kubectl`; it's the extension point that makes Operators and most Kubernetes-native tooling possible without patching Kubernetes itself.",
+    questionFr: "Qu'est-ce qu'une Custom Resource Definition (CRD) et pourquoi compte-t-elle pour l'extensibilité de Kubernetes ?",
+    answerFr:
+      "Une CRD permet de définir son propre type de ressource (ex. `Certificate`, `PostgresCluster`) que l'API server de Kubernetes traite ensuite comme n'importe quel objet natif, en le stockant dans etcd et en l'exposant via `kubectl` ; c'est le point d'extension qui rend possibles les Operators et la plupart des outils Kubernetes-natifs sans modifier Kubernetes lui-même.",
+  },
+  {
+    question: "Difference between a DaemonSet and a Deployment?",
+    answer:
+      "A Deployment manages a desired number of pod replicas scheduled wherever there's room in the cluster; a DaemonSet ensures exactly one pod runs on every (or every matching) node, which is the pattern used for node-level agents like log collectors, monitoring agents, or CNI network plugins.",
+    questionFr: "Différence entre un DaemonSet et un Deployment ?",
+    answerFr:
+      "Un Deployment gère un nombre voulu de réplicas de pods planifiés où il y a de la place dans le cluster ; un DaemonSet garantit qu'exactement un pod tourne sur chaque nœud (ou chaque nœud correspondant), le pattern utilisé pour des agents au niveau nœud comme des collecteurs de logs, des agents de monitoring, ou des plugins réseau CNI.",
+  },
+  {
+    question: "Difference between a Job and a CronJob in Kubernetes?",
+    answer:
+      "A Job runs one or more pods to completion for a single task, retrying on failure up to a limit and then stopping; a CronJob wraps a Job with a schedule (standard cron syntax), creating a new Job run at each scheduled time, used for recurring batch work instead of long-running services.",
+    questionFr: "Différence entre un Job et un CronJob en Kubernetes ?",
+    answerFr:
+      "Un Job fait tourner un ou plusieurs pods jusqu'à complétion pour une tâche unique, en réessayant en cas d'échec jusqu'à une limite puis en s'arrêtant ; un CronJob enveloppe un Job avec une planification (syntaxe cron standard), créant une nouvelle exécution de Job à chaque horaire prévu, utilisé pour du travail batch récurrent plutôt que des services longue durée.",
+  },
+  {
+    question: "What role does etcd play in a Kubernetes cluster, and why is its availability so critical?",
+    answer:
+      "etcd is the distributed key-value store holding the entire cluster state (every object definition, its current status); the API server reads and writes to it as the single source of truth, so if etcd is lost or its quorum breaks, the cluster loses the ability to schedule, update, or even remember what should be running.",
+    questionFr: "Quel rôle joue etcd dans un cluster Kubernetes, et pourquoi sa disponibilité est-elle si critique ?",
+    answerFr:
+      "etcd est le magasin clé-valeur distribué qui contient tout l'état du cluster (chaque définition d'objet, son statut courant) ; l'API server y lit et écrit comme source de vérité unique, donc si etcd est perdu ou que son quorum se casse, le cluster perd la capacité de planifier, mettre à jour, ou même se souvenir de ce qui devrait tourner.",
+  },
+  {
+    question: "What are Taints and Tolerations used for?",
+    answer:
+      "A Taint applied to a node repels pods from being scheduled there unless a pod explicitly declares a matching Toleration; it's the inverse of node affinity (which attracts pods to nodes) and is commonly used to reserve nodes for specific workloads (e.g. GPU nodes, dedicated tenants).",
+    questionFr: "À quoi servent les Taints et les Tolerations ?",
+    answerFr:
+      "Un Taint appliqué à un nœud repousse les pods qui pourraient y être planifiés, sauf si un pod déclare explicitement une Toleration correspondante ; c'est l'inverse de l'affinité de nœud (qui attire les pods vers des nœuds) et c'est couramment utilisé pour réserver des nœuds à des charges spécifiques (ex. nœuds GPU, tenants dédiés).",
+  },
+  {
+    question: "Difference between a Role and a ClusterRole in Kubernetes RBAC?",
+    answer:
+      "A Role grants permissions scoped to a single Namespace; a ClusterRole grants permissions either cluster-wide (across all namespaces) or, when bound via a RoleBinding instead of a ClusterRoleBinding, scoped to one namespace but reusable across many - useful for defining a permission set once and applying it in several places.",
+    questionFr: "Différence entre un Role et un ClusterRole dans le RBAC Kubernetes ?",
+    answerFr:
+      "Un Role accorde des permissions limitées à un seul Namespace ; un ClusterRole accorde des permissions soit à l'échelle du cluster (à travers tous les namespaces), soit, quand il est lié via un RoleBinding plutôt qu'un ClusterRoleBinding, limité à un namespace mais réutilisable dans plusieurs - utile pour définir un ensemble de permissions une fois et l'appliquer à plusieurs endroits.",
+  },
 ];

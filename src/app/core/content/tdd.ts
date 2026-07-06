@@ -145,4 +145,44 @@ export const questions = [
     answerFr:
       "Une façon de vérifier qu'un consumer et un provider d'une API sont d'accord sur la forme de leur interaction (ex. via Pact), sans faire tourner le vrai provider à chaque run de test ; essentiel dès qu'on a plusieurs services déployés indépendamment dont les APIs évoluent dans le temps.",
   },
+  {
+    question: "What is a Spy as a type of test double, and how does it differ from a Mock?",
+    answer:
+      "A Spy wraps a real (or mostly real) object and records how it was called, letting you make assertions about interactions after the fact; a Mock is pre-programmed with expectations before the call happens and typically fails the test immediately if an unexpected interaction occurs, making Spies slightly more permissive and Mocks stricter.",
+    questionFr: "Qu'est-ce qu'un Spy comme type de test double, et en quoi diffère-t-il d'un Mock ?",
+    answerFr:
+      "Un Spy enveloppe un objet réel (ou en grande partie réel) et enregistre comment il a été appelé, permettant de faire des assertions sur les interactions après coup ; un Mock est pré-programmé avec des attentes avant que l'appel n'ait lieu et fait typiquement échouer le test immédiatement en cas d'interaction inattendue, rendant les Spies légèrement plus permissifs et les Mocks plus stricts.",
+  },
+  {
+    question: "What's the difference between the classic (Detroit) and mockist (London) schools of TDD?",
+    answer:
+      "The classic/Detroit school favors real collaborators and state-based assertions, mocking only true external boundaries (network, filesystem); the mockist/London school mocks every collaborator of the unit under test and verifies interactions between them, driving design outside-in from the top of the call chain down.",
+    questionFr: "Quelle est la différence entre l'école classique (Detroit) et mockiste (London) du TDD ?",
+    answerFr:
+      "L'école classique/Detroit privilégie de vrais collaborateurs et des assertions basées sur l'état, en ne mockant que les vraies frontières externes (réseau, système de fichiers) ; l'école mockiste/London mocke chaque collaborateur de l'unité testée et vérifie les interactions entre eux, pilotant la conception outside-in depuis le haut de la chaîne d'appels.",
+  },
+  {
+    question: "How do you TDD a piece of logic that needs to make an external HTTP call?",
+    answer:
+      "Define a port/interface for the external dependency first, write the test against a fake or mock implementation of that port so the test stays fast and deterministic, then implement the real HTTP-calling adapter separately (often verified by a smaller number of integration or contract tests instead of unit tests).",
+    questionFr: "Comment faire du TDD sur une logique qui doit effectuer un appel HTTP externe ?",
+    answerFr:
+      "Définir d'abord un port/interface pour la dépendance externe, écrire le test contre une implémentation fake ou mock de ce port pour que le test reste rapide et déterministe, puis implémenter séparément le vrai adapter qui fait l'appel HTTP (souvent vérifié par un plus petit nombre de tests d'intégration ou de contract testing plutôt que des tests unitaires).",
+  },
+  {
+    question: "What is \"triangulation\" in TDD?",
+    answer:
+      "Writing a second (and sometimes third) test case with different input/output pairs before generalizing the implementation, so the code is forced to become genuinely correct rather than hard-coded to pass the first example (e.g. `return 4` would pass a single `add(2, 2)` test but not a second `add(3, 5)` one).",
+    questionFr: "Qu'est-ce que la \"triangulation\" en TDD ?",
+    answerFr:
+      "Écrire un deuxième (et parfois un troisième) cas de test avec des paires entrée/sortie différentes avant de généraliser l'implémentation, pour forcer le code à devenir réellement correct plutôt que codé en dur pour passer le premier exemple (ex. `return 4` passerait un seul test `add(2, 2)` mais pas un second `add(3, 5)`).",
+  },
+  {
+    question: "What does the Given-When-Then (BDD-style) format add on top of the plain Arrange-Act-Assert pattern?",
+    answer:
+      "Structurally it's the same three-part shape (setup, action, verification), but Given-When-Then is phrased in domain/business language meant to be readable by non-developers and often lives in a specification tool (Cucumber, SpecFlow), while AAA is aimed purely at the developer reading the test code.",
+    questionFr: "Qu'apporte le format Given-When-Then (style BDD) par rapport au simple pattern Arrange-Act-Assert ?",
+    answerFr:
+      "Structurellement c'est la même forme en trois parties (préparation, action, vérification), mais Given-When-Then est formulé en langage métier/domaine pensé pour être lisible par des non-développeurs et vit souvent dans un outil de spécification (Cucumber, SpecFlow), alors qu'AAA vise purement le développeur qui lit le code du test.",
+  },
 ];

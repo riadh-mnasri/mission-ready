@@ -122,4 +122,52 @@ export const questions = [
     answerFr:
       "L'endroit unique (typiquement près du point d'entrée de l'application) où les adapters concrets sont câblés aux ports qu'ils implémentent et injectés dans les use cases ; c'est la seule partie du codebase autorisée à connaître toutes les implémentations concrètes à la fois.",
   },
+  {
+    question: "Where does the term \"Ports and Adapters\" come from, and is it the same thing as hexagonal architecture?",
+    answer:
+      "Alistair Cockburn coined \"Ports and Adapters\" in the early 2000s; \"hexagonal architecture\" is the same pattern, just named for the hexagon shape often used to diagram the domain with multiple ports/adapters around it. The hexagon itself has no special meaning beyond giving the domain room to show several sides.",
+    questionFr: "D'où vient le terme \"Ports and Adapters\", et est-ce la même chose que l'architecture hexagonale ?",
+    answerFr:
+      "Alistair Cockburn a inventé \"Ports and Adapters\" au début des années 2000 ; \"l'architecture hexagonale\" est le même pattern, simplement nommé d'après la forme d'hexagone souvent utilisée pour diagrammer le domaine avec plusieurs ports/adapters autour. L'hexagone lui-même n'a pas de signification particulière au-delà de donner de la place au domaine pour montrer plusieurs faces.",
+  },
+  {
+    question: "In tests, what's the difference between a mock adapter and a stub adapter for the same port?",
+    answer:
+      "A stub adapter returns canned data to let the test run (e.g. a `FakeUserRepository` seeded with fixtures); a mock adapter additionally verifies that specific interactions happened (e.g. asserting `save()` was called exactly once with a given argument) - both implement the same port interface, but a mock adds behavioral verification on top of the stub's state-based one.",
+    questionFr: "Dans les tests, quelle différence entre un adapter mock et un adapter stub pour le même port ?",
+    answerFr:
+      "Un adapter stub retourne des données préparées pour faire tourner le test (ex. un `FakeUserRepository` peuplé de fixtures) ; un adapter mock vérifie en plus que des interactions précises ont eu lieu (ex. s'assurer que `save()` a été appelé exactement une fois avec un argument donné) - les deux implémentent la même interface de port, mais le mock ajoute une vérification comportementale par-dessus la vérification par état du stub.",
+  },
+  {
+    question: "How do you handle several driving adapters (REST, CLI, a scheduled job) triggering the same use case?",
+    answer:
+      "Each driving adapter translates its own trigger (an HTTP request, a CLI argument, a cron tick) into the same input port's call signature and invokes it; the use case itself is written once and stays unaware of which adapter called it, so adding a new entry point never touches application or domain code.",
+    questionFr: "Comment gérer plusieurs adapters primaires (REST, CLI, un job planifié) qui déclenchent le même use case ?",
+    answerFr:
+      "Chaque adapter primaire traduit son propre déclencheur (une requête HTTP, un argument CLI, un tick cron) vers la même signature d'appel du port d'entrée et l'invoque ; le use case lui-même est écrit une seule fois et reste indifférent à l'adapter qui l'a appelé, donc ajouter un nouveau point d'entrée ne touche jamais le code applicatif ou domaine.",
+  },
+  {
+    question: "What role does an Application Service typically play compared to the use case interactor itself?",
+    answer:
+      "In many hexagonal codebases the \"Application Service\" and the \"use case\" are the same class; when they're split, the Application Service adds cross-cutting orchestration (transactions, authorization checks, publishing domain events after success) around a thinner interactor that holds only the core business steps.",
+    questionFr: "Quel rôle joue typiquement un Application Service par rapport à l'interactor du use case lui-même ?",
+    answerFr:
+      "Dans beaucoup de codebases hexagonales, l'\"Application Service\" et le \"use case\" sont la même classe ; quand ils sont séparés, l'Application Service ajoute de l'orchestration transverse (transactions, vérifications d'autorisation, publication d'événements de domaine après succès) autour d'un interactor plus fin qui ne porte que les étapes métier principales.",
+  },
+  {
+    question: "A new requirement means switching from Postgres to a document store for one aggregate. What changes?",
+    answer:
+      "Only a new secondary adapter implementing the existing repository port, plus the wiring in the composition root; the port's interface, the domain model, and every use case that depends on it stay untouched, which is the concrete payoff hexagonal architecture is designed to deliver.",
+    questionFr: "Une nouvelle exigence impose de passer de Postgres à un document store pour un aggregate. Qu'est-ce qui change ?",
+    answerFr:
+      "Seulement un nouvel adapter secondaire implémentant le port de repository existant, plus le câblage dans le composition root ; l'interface du port, le modèle de domaine, et chaque use case qui en dépend restent intouchés, ce qui est le bénéfice concret que l'architecture hexagonale est conçue pour offrir.",
+  },
+  {
+    question: "What's a common mistake when defining a port interface?",
+    answer:
+      "Letting persistence-specific or transport-specific types leak into the port's signature (e.g. a method returning a JPA entity, or taking an HTTP request object as a parameter), which quietly re-couples the domain to the very infrastructure the port was meant to isolate it from.",
+    questionFr: "Quelle est une erreur courante en définissant l'interface d'un port ?",
+    answerFr:
+      "Laisser des types spécifiques à la persistance ou au transport s'infiltrer dans la signature du port (ex. une méthode qui retourne une entité JPA, ou qui prend un objet requête HTTP en paramètre), ce qui recouple silencieusement le domaine à l'infrastructure même dont le port était censé l'isoler.",
+  },
 ];

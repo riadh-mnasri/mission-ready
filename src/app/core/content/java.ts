@@ -151,4 +151,52 @@ export const questions = [
     answerFr:
       "Des objets qui restent atteignables plus longtemps que prévu : des caches non bornés sans éviction, des listeners/callbacks jamais désenregistrés, des collections statiques qui grossissent sans fin, et des valeurs ThreadLocal non nettoyées dans des threads poolés (ex. dans des serveurs d'application), tout cela gardant des objets vivants malgré un GC qui fonctionne correctement.",
   },
+  {
+    question: "Difference between `List.of()` and `Arrays.asList()`?",
+    answer:
+      "`List.of()` returns a truly immutable list (any mutation attempt throws `UnsupportedOperationException`) and rejects null elements; `Arrays.asList()` returns a fixed-size view backed by the original array where `set()` works and mutates the array, but `add()`/`remove()` still throw, a middle ground that often surprises people.",
+    questionFr: "Différence entre `List.of()` et `Arrays.asList()` ?",
+    answerFr:
+      "`List.of()` retourne une liste réellement immuable (toute tentative de mutation lève `UnsupportedOperationException`) et rejette les éléments null ; `Arrays.asList()` retourne une vue de taille fixe adossée au tableau d'origine où `set()` fonctionne et modifie le tableau, mais `add()`/`remove()` lèvent quand même une exception, un entre-deux qui surprend souvent.",
+  },
+  {
+    question: "What is the Fork/Join framework used for?",
+    answer:
+      "A framework for recursively splitting a large task into smaller subtasks executed in parallel across a pool of worker threads, each idle thread able to \"steal\" work from busier ones (work-stealing); it's what `parallelStream()` uses under the hood for CPU-bound divide-and-conquer workloads.",
+    questionFr: "À quoi sert le framework Fork/Join ?",
+    answerFr:
+      "Un framework pour découper récursivement une grande tâche en sous-tâches plus petites exécutées en parallèle sur un pool de threads travailleurs, chaque thread inactif pouvant \"voler\" du travail aux threads plus occupés (work-stealing) ; c'est ce qu'utilise `parallelStream()` en interne pour des charges CPU-bound de type diviser-pour-régner.",
+  },
+  {
+    question: "What is try-with-resources and what interface makes a type eligible for it?",
+    answer:
+      "A syntax (`try (var r = openResource()) { ... }`) that automatically calls `close()` on the resource at the end of the block, even if an exception is thrown; any type implementing `AutoCloseable` (or the stricter `Closeable`) is eligible, removing the need for manual `finally` blocks to release files, connections, or streams.",
+    questionFr: "Qu'est-ce que try-with-resources et quelle interface rend un type éligible ?",
+    answerFr:
+      "Une syntaxe (`try (var r = openResource()) { ... }`) qui appelle automatiquement `close()` sur la ressource à la fin du bloc, même si une exception est levée ; tout type implémentant `AutoCloseable` (ou le plus strict `Closeable`) est éligible, supprimant le besoin de blocs `finally` manuels pour libérer fichiers, connexions ou streams.",
+  },
+  {
+    question: "Difference between `Comparable` and `Comparator`?",
+    answer:
+      "`Comparable` is implemented by the class itself to define its single \"natural\" ordering (via `compareTo`); `Comparator` is a separate object defining an ordering from the outside, letting you sort the same type in multiple different ways (e.g. by name, then separately by date) without touching the class.",
+    questionFr: "Différence entre `Comparable` et `Comparator` ?",
+    answerFr:
+      "`Comparable` est implémenté par la classe elle-même pour définir son unique ordre \"naturel\" (via `compareTo`) ; `Comparator` est un objet séparé qui définit un ordre depuis l'extérieur, permettant de trier le même type de plusieurs façons différentes (ex. par nom, puis séparément par date) sans toucher à la classe.",
+  },
+  {
+    question: "What problem does the Java Platform Module System (JPMS, `module-info.java`) address?",
+    answer:
+      "Before modules, any public class on the classpath was accessible from anywhere (\"JAR hell\" with no real encapsulation at the package level); JPMS lets a module explicitly declare which packages it `exports` and which modules it `requires`, enforcing strong encapsulation of internal packages even across JARs.",
+    questionFr: "Quel problème résout le Java Platform Module System (JPMS, `module-info.java`) ?",
+    answerFr:
+      "Avant les modules, toute classe publique du classpath était accessible de partout (\"JAR hell\" sans réelle encapsulation au niveau package) ; JPMS permet à un module de déclarer explicitement quels packages il `exports` et de quels modules il `requires`, imposant une encapsulation forte des packages internes même à travers des JARs.",
+  },
+  {
+    question: "Why is `Cloneable` considered a flawed way to copy an object, and what's usually preferred instead?",
+    answer:
+      "`Cloneable` is a marker interface with no `clone()` method of its own, relies on a fragile protocol (calling `super.clone()` correctly at every level, catching a checked `CloneNotSupportedException`), and defaults to a shallow copy that silently shares mutable fields; a copy constructor or a static factory method is usually clearer and safer.",
+    questionFr: "Pourquoi `Cloneable` est-il considéré comme une façon boiteuse de copier un objet, et que préfère-t-on habituellement ?",
+    answerFr:
+      "`Cloneable` est une interface marqueur sans méthode `clone()` propre, repose sur un protocole fragile (appeler correctement `super.clone()` à chaque niveau, catcher une `CloneNotSupportedException` checked), et fait par défaut une copie superficielle qui partage silencieusement des champs mutables ; un constructeur de copie ou une méthode de fabrique statique est généralement plus clair et plus sûr.",
+  },
 ];

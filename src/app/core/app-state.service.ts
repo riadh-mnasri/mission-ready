@@ -5,12 +5,33 @@ import { createInitialState } from "./content";
 const STORAGE_KEY = "missionready:state";
 
 function loadInitialState(): AppState {
+  const seeded = createInitialState();
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as AppState) : createInitialState();
+    if (!raw) return seeded;
+    return mergeNewSeedContent(JSON.parse(raw) as AppState, seeded);
   } catch {
-    return createInitialState();
+    return seeded;
   }
+}
+
+/**
+ * Deck content grows over time (new seed themes/cards added in later releases).
+ * Seed ids are deterministic, so anything already in persisted state keeps its
+ * progress untouched, and only genuinely new seed themes/cards get appended.
+ */
+function mergeNewSeedContent(persisted: AppState, seeded: AppState): AppState {
+  const knownThemeIds = new Set(persisted.themes.map((t) => t.id));
+  const knownCardIds = new Set(persisted.cards.map((c) => c.id));
+  const newThemes = seeded.themes.filter((t) => !knownThemeIds.has(t.id));
+  const newCards = seeded.cards.filter((c) => !knownCardIds.has(c.id));
+
+  if (newThemes.length === 0 && newCards.length === 0) return persisted;
+
+  return {
+    themes: [...persisted.themes, ...newThemes],
+    cards: [...persisted.cards, ...newCards],
+  };
 }
 
 @Injectable({ providedIn: "root" })

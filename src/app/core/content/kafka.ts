@@ -136,4 +136,52 @@ export const questions = [
     answerFr:
       "Dimensionner les partitions pour le débit et le parallélisme nécessaires maintenant plus une marge raisonnable, car augmenter le nombre de partitions plus tard change le hachage clé-vers-partition (cassant les garanties d'ordre pour les clés existantes) ; trop de partitions ajoute aussi de la charge (file handles ouverts, trafic de réplication, élections de leader plus longues) côté broker.",
   },
+  {
+    question: "Difference between producer idempotence and full Kafka transactions?",
+    answer:
+      "Idempotence (`enable.idempotence=true`) only prevents a single producer's retries from creating duplicate messages on one partition; transactions extend that to atomic writes across multiple partitions/topics (e.g. \"consume, process, produce\" as one all-or-nothing unit), which is what exactly-once processing actually relies on.",
+    questionFr: "Différence entre l'idempotence du producer et les transactions Kafka complètes ?",
+    answerFr:
+      "L'idempotence (`enable.idempotence=true`) empêche seulement les retries d'un seul producer de créer des messages dupliqués sur une partition ; les transactions étendent cela à des écritures atomiques sur plusieurs partitions/topics (ex. \"consommer, traiter, produire\" comme une seule unité tout-ou-rien), ce sur quoi repose réellement le traitement exactly-once.",
+  },
+  {
+    question: "What tradeoff does the producer's `linger.ms` setting control?",
+    answer:
+      "It's the maximum time a producer waits to accumulate more records into a batch before sending; a higher value improves throughput and compression efficiency by sending fewer, larger batches, at the cost of added per-message latency, while `0` sends as soon as possible with less batching benefit.",
+    questionFr: "Quel compromis contrôle le paramètre `linger.ms` du producer ?",
+    answerFr:
+      "C'est le temps maximum qu'un producer attend pour accumuler plus d'enregistrements dans un batch avant de l'envoyer ; une valeur plus haute améliore le débit et l'efficacité de la compression en envoyant des batches moins nombreux et plus gros, au prix d'une latence par message ajoutée, tandis que `0` envoie dès que possible avec moins de bénéfice de batching.",
+  },
+  {
+    question: "What is a tombstone message in a compacted topic?",
+    answer:
+      "A message with a given key and a null value; log compaction treats it as a delete marker for that key, eventually removing both the tombstone and any earlier value for that key once a configured retention period passes, which is how compacted topics support deleting a key entirely rather than just updating it.",
+    questionFr: "Qu'est-ce qu'un message tombstone dans un topic compacté ?",
+    answerFr:
+      "Un message avec une clé donnée et une valeur null ; la log compaction le traite comme un marqueur de suppression pour cette clé, supprimant éventuellement à la fois le tombstone et toute valeur antérieure pour cette clé une fois une période de rétention configurée passée, ce qui permet aux topics compactés de supprimer une clé entièrement plutôt que juste la mettre à jour.",
+  },
+  {
+    question: "What is MirrorMaker used for?",
+    answer:
+      "An open-source tool (now MirrorMaker 2, built on Kafka Connect) that replicates topics between Kafka clusters, commonly used for cross-region disaster recovery, migrating to a new cluster, or aggregating data from several regional clusters into one central cluster.",
+    questionFr: "À quoi sert MirrorMaker ?",
+    answerFr:
+      "Un outil open-source (aujourd'hui MirrorMaker 2, construit sur Kafka Connect) qui réplique des topics entre clusters Kafka, couramment utilisé pour la reprise après sinistre cross-région, la migration vers un nouveau cluster, ou l'agrégation de données de plusieurs clusters régionaux vers un cluster central.",
+  },
+  {
+    question: "A single topic is falling behind under load. When do you add partitions vs. add another consumer group?",
+    answer:
+      "Add partitions when the current partition count is the bottleneck limiting how many consumers in a group can work in parallel (you can't have more active consumers than partitions); add a separate consumer group when you need the same messages processed independently by a different piece of logic, since each group reads the full topic on its own.",
+    questionFr: "Un topic prend du retard sous charge. Quand ajouter des partitions plutôt qu'un autre consumer group ?",
+    answerFr:
+      "Ajouter des partitions quand le nombre actuel de partitions est le goulot d'étranglement qui limite combien de consumers d'un groupe peuvent travailler en parallèle (on ne peut pas avoir plus de consumers actifs que de partitions) ; ajouter un consumer group séparé quand les mêmes messages doivent être traités indépendamment par une logique différente, puisque chaque groupe lit le topic complet de son côté.",
+  },
+  {
+    question: "What is KRaft mode and what does it change about Kafka's architecture?",
+    answer:
+      "KRaft (Kafka Raft) replaces ZooKeeper as the mechanism storing cluster metadata and electing controllers, using Kafka's own Raft-based consensus among a small set of controller nodes instead; it simplifies operations (one system to run instead of two) and removes ZooKeeper's scalability ceiling on the number of partitions a cluster can manage.",
+    questionFr: "Qu'est-ce que le mode KRaft et que change-t-il dans l'architecture de Kafka ?",
+    answerFr:
+      "KRaft (Kafka Raft) remplace ZooKeeper comme mécanisme de stockage des métadonnées du cluster et d'élection des controllers, en utilisant un consensus basé sur Raft propre à Kafka parmi un petit ensemble de nœuds controller ; cela simplifie l'exploitation (un seul système à faire tourner au lieu de deux) et supprime le plafond de scalabilité de ZooKeeper sur le nombre de partitions qu'un cluster peut gérer.",
+  },
 ];

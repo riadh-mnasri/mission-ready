@@ -137,4 +137,52 @@ export const questions = [
     answerFr:
       "Séparer un morceau de logique difficile à tester (ex. du rendu UI, un callback de framework) en un wrapper \"humble\" fin sans logique et un composant testable séparé qui porte tout le comportement, de sorte que la partie non testable se réduit à presque rien.",
   },
+  {
+    question: "What is the Dependency Rule, stated precisely?",
+    answer:
+      "Source code dependencies can only point inward, toward higher-level policies: an inner circle (e.g. Entities) must never reference anything declared in an outer circle (e.g. a controller or a database driver), which is what forces frameworks and infrastructure to depend on the domain instead of the reverse.",
+    questionFr: "Quelle est la formulation précise de la Dependency Rule ?",
+    answerFr:
+      "Les dépendances du code source ne peuvent pointer que vers l'intérieur, vers les politiques de plus haut niveau : un cercle interne (ex. les Entities) ne doit jamais référencer quoi que ce soit déclaré dans un cercle externe (ex. un controller ou un driver de base de données), ce qui force les frameworks et l'infrastructure à dépendre du domaine et non l'inverse.",
+  },
+  {
+    question: "What's the difference in responsibility between a Controller and a Use Case?",
+    answer:
+      "A Controller translates a delivery-mechanism-specific request (an HTTP request, a CLI argument list) into a plain input model and invokes the Use Case; the Use Case holds the actual application logic and knows nothing about HTTP, CLI, or any other entry point, which is what lets the same Use Case be reused behind different Controllers.",
+    questionFr: "Quelle différence de responsabilité entre un Controller et un Use Case ?",
+    answerFr:
+      "Un Controller traduit une requête spécifique à un mécanisme de livraison (une requête HTTP, une liste d'arguments CLI) en un modèle d'entrée simple et invoque le Use Case ; le Use Case porte la vraie logique applicative et ne connaît ni HTTP, ni CLI, ni aucun autre point d'entrée, ce qui permet de réutiliser le même Use Case derrière différents Controllers.",
+  },
+  {
+    question: "How do you avoid an anemic Use Case layer that's just a pass-through to the domain?",
+    answer:
+      "Keep genuine orchestration logic in the Use Case (coordinating multiple aggregates, checking cross-aggregate invariants, sequencing calls to ports) while pushing single-entity business rules down into the Entities themselves; a Use Case that only calls one repository method and returns is usually a sign the logic belongs elsewhere or doesn't need this layer at all.",
+    questionFr: "Comment éviter une couche Use Case anémique qui ne fait que transmettre au domaine ?",
+    answerFr:
+      "Garder une vraie logique d'orchestration dans le Use Case (coordonner plusieurs aggregates, vérifier des invariants cross-aggregate, séquencer des appels à des ports) tout en poussant les règles métier propres à une seule entité dans les Entities elles-mêmes ; un Use Case qui ne fait qu'appeler une méthode de repository et retourner est souvent le signe que la logique devrait être ailleurs ou que cette couche n'est pas nécessaire.",
+  },
+  {
+    question: "What's the tradeoff of introducing full Clean Architecture layering on a small CRUD service?",
+    answer:
+      "The extra layers (boundaries, DTOs, mappers, presenters) add real ceremony and indirection for logic that's genuinely just \"read from and write to a table\"; the architecture earns its cost when business rules, multiple delivery mechanisms, or long-term framework independence matter, not by default on every service regardless of complexity.",
+    questionFr: "Quel est le compromis d'appliquer un layering Clean Architecture complet sur un petit service CRUD ?",
+    answerFr:
+      "Les couches supplémentaires (boundaries, DTOs, mappers, presenters) ajoutent un vrai cérémonial et de l'indirection pour une logique qui n'est vraiment que \"lire et écrire dans une table\" ; l'architecture justifie son coût quand des règles métier, plusieurs mécanismes de livraison, ou l'indépendance long terme au framework comptent réellement, pas par défaut sur chaque service quelle que soit sa complexité.",
+  },
+  {
+    question: "How should exceptions cross layer boundaries in Clean Architecture?",
+    answer:
+      "Domain/Use Case layers should raise meaningful domain exceptions (e.g. `InsufficientFundsException`), not framework-specific ones; an outer layer (a Presenter or a Controller's error handler) is responsible for translating those into delivery-mechanism-specific responses (an HTTP 422, a CLI exit code), keeping the mapping to transport concerns out of the domain.",
+    questionFr: "Comment les exceptions doivent-elles traverser les frontières de couches en Clean Architecture ?",
+    answerFr:
+      "Les couches Domain/Use Case doivent lever des exceptions métier porteuses de sens (ex. `InsufficientFundsException`), pas des exceptions spécifiques à un framework ; une couche externe (un Presenter ou le gestionnaire d'erreurs d'un Controller) est responsable de les traduire en réponses spécifiques au mécanisme de livraison (un HTTP 422, un code de sortie CLI), gardant ce mapping vers les préoccupations de transport hors du domaine.",
+  },
+  {
+    question: "What is a Data Mapper and why keep it separate from Entities?",
+    answer:
+      "A Data Mapper converts between a persistence representation (a database row, a JSON document) and a domain Entity, isolating that translation logic in one place; keeping it out of the Entity itself prevents the domain model from being shaped by storage concerns (column names, ORM annotations) that have nothing to do with business rules.",
+    questionFr: "Qu'est-ce qu'un Data Mapper et pourquoi le garder séparé des Entities ?",
+    answerFr:
+      "Un Data Mapper convertit entre une représentation de persistance (une ligne de base de données, un document JSON) et une Entity du domaine, isolant cette logique de traduction à un seul endroit ; la garder hors de l'Entity elle-même évite que le modèle de domaine soit façonné par des préoccupations de stockage (noms de colonnes, annotations ORM) qui n'ont rien à voir avec les règles métier.",
+  },
 ];

@@ -144,4 +144,52 @@ export const questions = [
     answerFr:
       "Un sous-ensemble du modèle (code et schéma de base de données) délibérément partagé entre deux bounded contexts possédés par des équipes différentes, nécessitant une coordination étroite sur tout changement ; à utiliser avec parcimonie puisqu'il réintroduit le couplage que les bounded contexts sont censés éviter.",
   },
+  {
+    question: "What's the difference between a Domain Event and an Integration Event?",
+    answer:
+      "A Domain Event stays internal to a bounded context, notifying other aggregates or handlers within the same model of something that happened; an Integration Event is the (often translated, more stable) message published across bounded context boundaries, since exposing raw domain events externally would leak internal model details and couple other teams to them.",
+    questionFr: "Quelle différence entre un Domain Event et un Integration Event ?",
+    answerFr:
+      "Un Domain Event reste interne à un bounded context, notifiant d'autres aggregates ou handlers du même modèle qu'un événement s'est produit ; un Integration Event est le message (souvent traduit, plus stable) publié à travers les frontières de bounded contexts, car exposer des domain events bruts en externe fuiterait des détails internes du modèle et couplerait d'autres équipes à eux.",
+  },
+  {
+    question: "In Context Mapping, what's the difference between a Partnership and a Customer-Supplier relationship?",
+    answer:
+      "In a Partnership, two teams coordinate as equals with mutual dependency and shared planning; in a Customer-Supplier relationship, the supplier team's model takes priority for the customer team's needs, but the supplier is not obligated to accommodate every request, creating an explicit power asymmetry that Partnership doesn't have.",
+    questionFr: "En Context Mapping, quelle différence entre une relation Partnership et Customer-Supplier ?",
+    answerFr:
+      "Dans un Partnership, deux équipes se coordonnent en égales avec une dépendance mutuelle et une planification partagée ; dans une relation Customer-Supplier, le modèle de l'équipe fournisseuse prend en compte les besoins de l'équipe cliente en priorité, mais le fournisseur n'est pas obligé de satisfaire chaque demande, créant une asymétrie de pouvoir explicite que le Partnership n'a pas.",
+  },
+  {
+    question: "Why must an Aggregate's invariants be enforced within a single transaction?",
+    answer:
+      "An Aggregate is the consistency boundary: any business rule that must always hold true (e.g. \"an order's total can't exceed its credit limit\") has to be checked and committed atomically, because if it spanned two transactions another process could observe or modify the aggregate in an invalid intermediate state.",
+    questionFr: "Pourquoi les invariants d'un Aggregate doivent-ils être garantis dans une seule transaction ?",
+    answerFr:
+      "Un Aggregate est la frontière de cohérence : toute règle métier qui doit toujours être vraie (ex. \"le total d'une commande ne peut pas dépasser sa limite de crédit\") doit être vérifiée et validée de façon atomique, car si elle s'étendait sur deux transactions, un autre processus pourrait observer ou modifier l'aggregate dans un état intermédiaire invalide.",
+  },
+  {
+    question: "How does optimistic concurrency control typically protect an Aggregate from concurrent updates?",
+    answer:
+      "The aggregate carries a version number (or timestamp) that's checked and incremented on every save; if two processes load the same version and both try to save, the second write fails the version check and must retry, avoiding the cost of pessimistic locking while still preventing lost updates.",
+    questionFr: "Comment le contrôle de concurrence optimiste protège-t-il typiquement un Aggregate des mises à jour concurrentes ?",
+    answerFr:
+      "L'aggregate porte un numéro de version (ou un timestamp) vérifié et incrémenté à chaque sauvegarde ; si deux processus chargent la même version et essaient tous deux de sauvegarder, la seconde écriture échoue à la vérification de version et doit réessayer, évitant le coût du verrouillage pessimiste tout en empêchant les mises à jour perdues.",
+  },
+  {
+    question: "What role does a Factory play in DDD, and why not just use a constructor?",
+    answer:
+      "A Factory encapsulates the (sometimes complex) logic of building a valid Aggregate or Entity from scratch or from another representation, especially when construction involves invariant checks across multiple objects or choosing between subtypes; a plain constructor works for simple cases, but a Factory keeps that complexity out of client code when it doesn't.",
+    questionFr: "Quel rôle joue une Factory en DDD, et pourquoi ne pas juste utiliser un constructeur ?",
+    answerFr:
+      "Une Factory encapsule la logique (parfois complexe) de construction d'un Aggregate ou d'une Entity valide à partir de rien ou d'une autre représentation, en particulier quand la construction implique des vérifications d'invariants sur plusieurs objets ou un choix entre sous-types ; un simple constructeur suffit pour les cas simples, mais une Factory garde cette complexité hors du code appelant quand ce n'est pas le cas.",
+  },
+  {
+    question: "What is the \"Big Ball of Mud\", and how do Bounded Contexts help avoid it?",
+    answer:
+      "A system where every part implicitly depends on every other part, with no clear internal boundaries, making any change risky and slow; splitting the domain into Bounded Contexts with an explicit, deliberately limited model per context (and explicit relationships between them) is DDD's main tool for preventing that outcome as a system grows.",
+    questionFr: "Qu'est-ce que le \"Big Ball of Mud\", et comment les Bounded Contexts aident-ils à l'éviter ?",
+    answerFr:
+      "Un système où chaque partie dépend implicitement de toutes les autres, sans frontières internes claires, rendant tout changement risqué et lent ; découper le domaine en Bounded Contexts avec un modèle explicite et délibérément limité par contexte (et des relations explicites entre eux) est le principal outil du DDD pour éviter ce résultat à mesure qu'un système grandit.",
+  },
 ];
