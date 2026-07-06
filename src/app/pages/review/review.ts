@@ -131,6 +131,7 @@ export class Review {
         c.id === card.id ? (remembered ? reviewCorrect(c) : reviewIncorrect(c)) : c,
       ),
     }));
+    this.appState.logReview(remembered);
 
     this.stats.update((s) => ({
       reviewed: s.reviewed + 1,

@@ -1,6 +1,7 @@
 import { Injectable, effect, signal } from "@angular/core";
 import type { AppState } from "./types";
 import { createInitialState } from "./content";
+import { logReviewEntry } from "./activity";
 
 const STORAGE_KEY = "missionready:state";
 
@@ -26,11 +27,14 @@ function mergeNewSeedContent(persisted: AppState, seeded: AppState): AppState {
   const newThemes = seeded.themes.filter((t) => !knownThemeIds.has(t.id));
   const newCards = seeded.cards.filter((c) => !knownCardIds.has(c.id));
 
-  if (newThemes.length === 0 && newCards.length === 0) return persisted;
+  if (newThemes.length === 0 && newCards.length === 0) {
+    return { ...persisted, reviewLog: persisted.reviewLog ?? [] };
+  }
 
   return {
     themes: [...persisted.themes, ...newThemes],
     cards: [...persisted.cards, ...newCards],
+    reviewLog: persisted.reviewLog ?? [],
   };
 }
 
@@ -46,6 +50,13 @@ export class AppStateService {
 
   update(updater: (state: AppState) => AppState): void {
     this.state.update(updater);
+  }
+
+  logReview(correct: boolean): void {
+    this.state.update((prev) => ({
+      ...prev,
+      reviewLog: logReviewEntry(prev.reviewLog ?? [], correct),
+    }));
   }
 
   exportJson(): string {

@@ -92,5 +92,5 @@ export function createInitialState(): AppState {
     })),
   );
 
-  return { themes, cards };
+  return { themes, cards, reviewLog: [] };
 }

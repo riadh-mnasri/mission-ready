@@ -20,7 +20,15 @@ export interface Flashcard {
   createdAt: number;
 }
 
+/** One aggregated entry per calendar day a review happened, keyed by local date (YYYY-MM-DD). */
+export interface ReviewLogEntry {
+  date: string;
+  reviewed: number;
+  correct: number;
+}
+
 export interface AppState {
   themes: Theme[];
   cards: Flashcard[];
+  reviewLog: ReviewLogEntry[];
 }

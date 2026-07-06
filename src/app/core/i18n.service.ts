@@ -68,6 +68,9 @@ interface Strings {
   search: string;
   searchPlaceholder: (n: number) => string;
   searchNoResults: string;
+  statStreakLabel: string;
+  activityTitle: string;
+  activityDayTooltip: (n: number, date: string) => string;
 }
 
 const en: Strings = {
@@ -129,6 +132,9 @@ const en: Strings = {
   search: "Search",
   searchPlaceholder: (n) => `Search all ${n} cards...`,
   searchNoResults: "No matching cards.",
+  statStreakLabel: "Day streak",
+  activityTitle: "Last 12 weeks",
+  activityDayTooltip: (n, date) => `${n} card${n !== 1 ? "s" : ""} reviewed on ${date}`,
 };
 
 const fr: Strings = {
@@ -189,6 +195,9 @@ const fr: Strings = {
   search: "Rechercher",
   searchPlaceholder: (n) => `Rechercher parmi ${n} cartes...`,
   searchNoResults: "Aucune carte trouvée.",
+  statStreakLabel: "Jours de suite",
+  activityTitle: "12 dernières semaines",
+  activityDayTooltip: (n, date) => `${n} carte${n !== 1 ? "s" : ""} révisée${n !== 1 ? "s" : ""} le ${date}`,
 };
 
 const DICTIONARIES: Record<Language, Strings> = { en, fr };

@@ -24,7 +24,10 @@
   </div>
 
   @if (cards().length > 0) {
-    <div class="animate-fade-up mb-10 grid grid-cols-3 gap-2 sm:gap-4" style="animation-delay: 100ms">
+    <div
+      class="animate-fade-up mb-6 grid grid-cols-2 gap-2 sm:grid-cols-4 sm:gap-4"
+      style="animation-delay: 100ms"
+    >
       <div class="card-shadow rounded-xl border border-border bg-surface px-3 py-3 sm:px-5 sm:py-4">
         <p class="font-mono text-xl font-semibold text-text sm:text-3xl">
           <app-animated-number [value]="totalDue()" />
@@ -44,6 +47,28 @@
           }}</span>
         </p>
         <p class="mt-1 text-xs text-text-muted">{{ i18n.strings.statMasteredLabel }}</p>
+      </div>
+      <div class="card-shadow rounded-xl border border-border bg-surface px-3 py-3 sm:px-5 sm:py-4">
+        <p class="font-mono text-xl font-semibold text-text sm:text-3xl">
+          <app-animated-number [value]="streak()" />
+        </p>
+        <p class="mt-1 text-xs text-text-muted">{{ i18n.strings.statStreakLabel }}</p>
+      </div>
+    </div>
+
+    <div
+      class="animate-fade-up card-shadow mb-10 rounded-xl border border-border bg-surface px-3 py-3 sm:px-5 sm:py-4"
+      style="animation-delay: 160ms"
+    >
+      <p class="mb-2 text-xs text-text-muted">{{ i18n.strings.activityTitle }}</p>
+      <div class="flex flex-wrap gap-1">
+        @for (day of activityDays(); track day.date) {
+          <div
+            class="h-3 w-3 rounded-sm"
+            [style.background]="activityColor(day.reviewed)"
+            [attr.title]="i18n.strings.activityDayTooltip(day.reviewed, day.date)"
+          ></div>
+        }
       </div>
     </div>
   }

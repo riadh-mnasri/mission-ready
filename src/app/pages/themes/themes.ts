@@ -92,6 +92,7 @@ export class Themes {
   protected deleteTheme(themeId: string): void {
     if (!confirm(this.i18n.strings.confirmDeleteTheme)) return;
     this.appState.update((prev) => ({
+      ...prev,
       themes: prev.themes.filter((t) => t.id !== themeId),
       cards: prev.cards.filter((c) => c.themeId !== themeId),
     }));
