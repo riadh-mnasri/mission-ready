@@ -63,6 +63,8 @@ interface Strings {
   selectThemesHint: string;
   startFocusSession: (n: number) => string;
   clearSelection: string;
+  updateAvailable: string;
+  reloadToUpdate: string;
 }
 
 const en: Strings = {
@@ -119,6 +121,8 @@ const en: Strings = {
   selectThemesHint: "Select themes to cram before an interview, regardless of what's due.",
   startFocusSession: (n) => `Start focus session (${n})`,
   clearSelection: "Clear selection",
+  updateAvailable: "A new version is available.",
+  reloadToUpdate: "Reload",
 };
 
 const fr: Strings = {
@@ -174,6 +178,8 @@ const fr: Strings = {
   selectThemesHint: "Sélectionnez des thèmes à bachoter avant un entretien, peu importe ce qui est dû.",
   startFocusSession: (n) => `Démarrer la session ciblée (${n})`,
   clearSelection: "Effacer la sélection",
+  updateAvailable: "Une nouvelle version est disponible.",
+  reloadToUpdate: "Recharger",
 };
 
 const DICTIONARIES: Record<Language, Strings> = { en, fr };

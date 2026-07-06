@@ -4,4 +4,19 @@
   <footer class="mx-auto w-full max-w-5xl px-6 py-6 text-center text-xs text-text-faint">
     © 2026 Riadh MNASRI
   </footer>
+
+  @if (pwaUpdate.updateAvailable()) {
+    <div
+      class="card-shadow animate-fade-up fixed bottom-4 left-1/2 z-50 flex -translate-x-1/2 items-center gap-3 rounded-lg border border-accent/40 bg-surface px-4 py-3 text-sm text-text"
+    >
+      <span>{{ i18n.strings.updateAvailable }}</span>
+      <button
+        type="button"
+        (click)="pwaUpdate.reload()"
+        class="rounded-md bg-accent px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-accent-hover"
+      >
+        {{ i18n.strings.reloadToUpdate }}
+      </button>
+    </div>
+  }
 </div>
