@@ -18,6 +18,7 @@ export class ThemeRow {
   readonly cards = input.required<Flashcard[]>();
   readonly expanded = input.required<boolean>();
   readonly selected = input<boolean>(false);
+  readonly highlightedCardId = input<string>('');
 
   readonly toggleExpand = output<void>();
   readonly toggleSelect = output<boolean>();

@@ -1,4 +1,4 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, input, signal, untracked } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppStateService } from '../../core/app-state.service';
 import { I18nService } from '../../core/i18n.service';
@@ -7,12 +7,17 @@ import type { Theme } from '../../core/types';
 import { NewThemeForm } from './new-theme-form/new-theme-form';
 import { ThemeRow } from './theme-row/theme-row';
 
+const HIGHLIGHT_DURATION_MS = 2500;
+
 @Component({
   selector: 'app-themes',
   imports: [NewThemeForm, ThemeRow],
   templateUrl: './themes.html',
 })
 export class Themes {
+  /** Card id to jump to and flash, set when arriving from the search overlay. */
+  readonly highlight = input<string>('');
+
   private readonly appState = inject(AppStateService);
   private readonly router = inject(Router);
   protected readonly i18n = inject(I18nService);
@@ -23,6 +28,28 @@ export class Themes {
   protected readonly expandedThemeId = signal<string | null>(null);
   protected readonly newThemeOpen = signal(false);
   protected readonly selectedThemeIds = signal<ReadonlySet<string>>(new Set());
+  protected readonly highlightedCardId = signal('');
+
+  constructor() {
+    effect(() => {
+      const cardId = this.highlight();
+      if (!cardId) return;
+
+      const card = untracked(() => this.cards()).find((c) => c.id === cardId);
+      if (!card) return;
+
+      this.expandedThemeId.set(card.themeId);
+      this.highlightedCardId.set(cardId);
+
+      setTimeout(() => {
+        document
+          .querySelector(`[data-card-id="${cardId}"]`)
+          ?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }, 0);
+
+      setTimeout(() => this.highlightedCardId.set(''), HIGHLIGHT_DURATION_MS);
+    });
+  }
 
   protected cardsForTheme(themeId: string) {
     return this.cards().filter((c) => c.themeId === themeId);

@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { NavBar } from './components/nav-bar/nav-bar';
 import { PwaUpdateService } from './core/pwa-update.service';
 import { I18nService } from './core/i18n.service';
+import { SearchOverlay } from './components/search-overlay/search-overlay';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavBar],
+  imports: [RouterOutlet, NavBar, SearchOverlay],
   templateUrl: './app.html',
   styleUrl: './app.css',
 })

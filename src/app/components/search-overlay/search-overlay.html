@@ -1,0 +1,45 @@
+@if (overlay.isOpen()) {
+  <div
+    class="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 pt-24 backdrop-blur-sm"
+    (click)="overlay.close()"
+  >
+    <div
+      class="animate-fade-up card-shadow w-full max-w-xl rounded-xl border border-border bg-surface"
+      (click)="$event.stopPropagation()"
+    >
+      <input
+        #searchInput
+        type="text"
+        [ngModel]="query()"
+        (ngModelChange)="query.set($event)"
+        [placeholder]="i18n.strings.searchPlaceholder(totalCards())"
+        class="w-full rounded-t-xl border-b border-border bg-transparent px-5 py-4 text-sm text-text placeholder:text-text-faint focus:outline-none"
+      />
+
+      @if (query().trim()) {
+        <div class="max-h-96 overflow-y-auto p-2">
+          @if (results().length > 0) {
+            @for (result of results(); track result.card.id) {
+              <button
+                type="button"
+                (click)="selectResult(result)"
+                class="flex w-full items-start gap-3 rounded-lg px-3 py-2.5 text-left transition-colors hover:bg-surface-hover"
+              >
+                <span
+                  class="mt-1.5 h-2 w-2 shrink-0 rounded-full"
+                  [style.background]="result.theme.color"
+                ></span>
+                <span class="min-w-0 flex-1">
+                  <span class="block truncate text-sm text-text">{{ cardText(result.card).question }}</span>
+                  <span class="text-xs text-text-muted">{{ themeName(result.theme) }}</span>
+                </span>
+              </button>
+            }
+          } @else {
+            <p class="px-3 py-4 text-center text-sm text-text-muted">{{ i18n.strings.searchNoResults }}</p>
+          }
+        </div>
+      }
+    </div>
+  </div>
+}

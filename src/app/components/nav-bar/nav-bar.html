@@ -30,6 +30,15 @@
 
       <button
         type="button"
+        (click)="search.open()"
+        class="flex items-center gap-2 rounded-md border border-border px-2.5 py-1.5 text-xs font-medium text-text-muted transition-colors hover:border-accent hover:text-text"
+      >
+        <span>{{ i18n.strings.search }}</span>
+        <span class="rounded border border-border px-1 py-0.5 text-[10px] text-text-faint">⌘K</span>
+      </button>
+
+      <button
+        type="button"
         (click)="i18n.toggle()"
         class="rounded-md border border-border px-2.5 py-1.5 text-xs font-medium text-text-muted transition-colors hover:border-accent hover:text-text"
       >

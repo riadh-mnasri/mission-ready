@@ -29,7 +29,14 @@
     </div>
   </form>
 } @else {
-  <div class="rounded-lg border border-border bg-bg p-4">
+  <div
+    [attr.data-card-id]="cardId()"
+    [class]="
+      highlighted()
+        ? 'rounded-lg border border-accent bg-accent/10 p-4 transition-colors duration-500'
+        : 'rounded-lg border border-border bg-bg p-4 transition-colors duration-500'
+    "
+  >
     <p class="text-sm font-medium text-text">{{ question() }}</p>
     <p class="mt-1 text-sm text-text-muted">{{ answer() }}</p>
     <div class="mt-3 flex gap-4">

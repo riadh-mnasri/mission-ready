@@ -29,8 +29,10 @@
     <div class="animate-fade-up space-y-3 border-t border-border p-5">
       @for (card of cards(); track card.id) {
         <app-card-row
+          [cardId]="card.id"
           [question]="card.question"
           [answer]="card.answer"
+          [highlighted]="highlightedCardId() === card.id"
           (save)="updateCard.emit({ cardId: card.id, question: $event.question, answer: $event.answer })"
           (delete)="deleteCard.emit(card.id)"
         />

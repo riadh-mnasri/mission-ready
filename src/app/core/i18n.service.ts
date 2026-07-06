@@ -65,6 +65,9 @@ interface Strings {
   clearSelection: string;
   updateAvailable: string;
   reloadToUpdate: string;
+  search: string;
+  searchPlaceholder: (n: number) => string;
+  searchNoResults: string;
 }
 
 const en: Strings = {
@@ -123,6 +126,9 @@ const en: Strings = {
   clearSelection: "Clear selection",
   updateAvailable: "A new version is available.",
   reloadToUpdate: "Reload",
+  search: "Search",
+  searchPlaceholder: (n) => `Search all ${n} cards...`,
+  searchNoResults: "No matching cards.",
 };
 
 const fr: Strings = {
@@ -180,6 +186,9 @@ const fr: Strings = {
   clearSelection: "Effacer la sélection",
   updateAvailable: "Une nouvelle version est disponible.",
   reloadToUpdate: "Recharger",
+  search: "Rechercher",
+  searchPlaceholder: (n) => `Rechercher parmi ${n} cartes...`,
+  searchNoResults: "Aucune carte trouvée.",
 };
 
 const DICTIONARIES: Record<Language, Strings> = { en, fr };

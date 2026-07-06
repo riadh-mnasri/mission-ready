@@ -12,6 +12,8 @@ export class CardRow {
 
   readonly question = input.required<string>();
   readonly answer = input.required<string>();
+  readonly cardId = input<string>('');
+  readonly highlighted = input<boolean>(false);
 
   readonly save = output<{ question: string; answer: string }>();
   readonly delete = output<void>();
