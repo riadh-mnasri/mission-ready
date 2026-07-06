@@ -11,6 +11,11 @@ import { questions as java } from "./java";
 import { questions as kotlin } from "./kotlin";
 import { questions as risqueContrepartie } from "./risque-contrepartie";
 import { questions as ia } from "./ia";
+import { questions as spark } from "./spark";
+import { questions as springBoot } from "./spring-boot";
+import { questions as cicdDevsecops } from "./cicd-devsecops";
+import { questions as angular } from "./angular";
+import { questions as mongodb } from "./mongodb";
 
 interface ThemeSeed {
   id: string;
@@ -50,6 +55,16 @@ const THEME_SEEDS: ThemeSeed[] = [
     color: "#b98ee8",
     questions: ia,
   },
+  { id: "spark", name: "Apache Spark", color: "#d9482c", questions: spark },
+  { id: "spring-boot", name: "Spring Boot", color: "#8bc34a", questions: springBoot },
+  {
+    id: "cicd-devsecops",
+    name: "CI/CD & DevSecOps",
+    color: "#6b8fa3",
+    questions: cicdDevsecops,
+  },
+  { id: "angular", name: "Angular & RxJS", color: "#d6336c", questions: angular },
+  { id: "mongodb", name: "MongoDB & NoSQL", color: "#2f9e6e", questions: mongodb },
 ];
 
 export function createInitialState(): AppState {
