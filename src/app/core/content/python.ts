@@ -164,4 +164,53 @@ export const questions = [
     answerFr:
       "`__new__` est la méthode statique qui crée et retourne réellement une nouvelle instance (alloue la mémoire), appelée avant `__init__`, qui initialise ensuite les attributs de cette instance déjà créée ; surcharger `__new__` est nécessaire pour des cas qu'`__init__` ne peut pas gérer, comme sous-classer un type immuable (`str` ou `tuple`) ou implémenter le pattern singleton/cache d'instances, car à ce stade l'objet existe déjà.",
   },
+  {
+    question:
+      "What's the difference between an iterable and an iterator, and what does the `for` loop actually do under the hood?",
+    answer:
+      'An iterable implements `__iter__` and can produce an iterator on demand (a list can be iterated many times); an iterator implements `__next__` and holds progress state, exhausting itself once consumed. A `for` loop calls `iter()` on the iterable to get an iterator, then repeatedly calls `next()` on it until a `StopIteration` is raised.',
+    questionFr:
+      'Quelle est la différence entre un iterable et un iterator, et que fait réellement la boucle `for` en interne ?',
+    answerFr:
+      "Un iterable implémente `__iter__` et peut produire un iterator à la demande (une liste peut être itérée plusieurs fois) ; un iterator implémente `__next__` et conserve un état de progression, s'épuisant une fois consommé. Une boucle `for` appelle `iter()` sur l'iterable pour obtenir un iterator, puis appelle `next()` dessus de façon répétée jusqu'à ce qu'une `StopIteration` soit levée.",
+  },
+  {
+    question:
+      'What does structural pattern matching (`match`/`case`, PEP 634) add over a chain of `if`/`elif`?',
+    answer:
+      "It matches a value against a pattern that can simultaneously check shape/type and destructure it (unpacking a sequence, matching specific dict keys, binding remaining fields to names, matching a class's attributes), expressing in one readable case what would otherwise take several separate `isinstance` checks and manual unpacking with `if`/`elif`.",
+    questionFr:
+      "Qu'apporte le structural pattern matching (`match`/`case`, PEP 634) par rapport à une chaîne de `if`/`elif` ?",
+    answerFr:
+      "Il fait correspondre une valeur à un pattern qui peut simultanément vérifier la forme/le type et la déstructurer (unpacking d'une séquence, correspondance de clés de dict spécifiques, liaison des champs restants à des noms, correspondance des attributs d'une classe), exprimant en un cas lisible ce qui demanderait sinon plusieurs vérifications `isinstance` séparées et un unpacking manuel avec `if`/`elif`.",
+  },
+  {
+    question:
+      "What does the walrus operator (`:=`) do, and what's a case where it meaningfully improves readability?",
+    answer:
+      'It assigns a value to a name as part of a larger expression instead of requiring a separate statement, most commonly used to avoid computing or calling something twice - e.g. `if (n := len(data)) > 10:` binds `n` for reuse in the block instead of calling `len(data)` again inside it.',
+    questionFr:
+      "Que fait l'opérateur walrus (`:=`), et dans quel cas améliore-t-il concrètement la lisibilité ?",
+    answerFr:
+      "Il assigne une valeur à un nom au sein d'une expression plus large plutôt que de nécessiter une instruction séparée, le plus souvent utilisé pour éviter de calculer ou d'appeler quelque chose deux fois - par exemple `if (n := len(data)) > 10:` lie `n` pour réutilisation dans le bloc au lieu de rappeler `len(data)` à l'intérieur.",
+  },
+  {
+    question: "What is a descriptor, and how does Python's built-in `property` relate to it?",
+    answer:
+      'A descriptor is an object whose class implements `__get__`/`__set__`/`__delete__`, letting it intercept attribute access on the class that holds it - the general mechanism Python uses to implement `property` (which packages a getter/setter pair as a descriptor) as well as methods themselves, bound functions, and `classmethod`/`staticmethod`.',
+    questionFr:
+      "Qu'est-ce qu'un descriptor, et quel est le rapport avec le `property` intégré de Python ?",
+    answerFr:
+      "Un descriptor est un objet dont la classe implémente `__get__`/`__set__`/`__delete__`, lui permettant d'intercepter l'accès à un attribut sur la classe qui le détient - le mécanisme général que Python utilise pour implémenter `property` (qui packages une paire getter/setter comme un descriptor) ainsi que les méthodes elles-mêmes, les fonctions liées, et `classmethod`/`staticmethod`.",
+  },
+  {
+    question:
+      "What does `raise ... from ...` (exception chaining) give you that a plain `raise` inside an `except` block doesn't?",
+    answer:
+      'It explicitly links a new exception to the original one that caused it (exposed as `__cause__`), so the traceback shows both "the direct cause was this original error" clearly rather than an implicit, easy-to-misread `__context__` chain; it\'s the idiomatic way to wrap a low-level exception in a more meaningful, domain-specific one without losing the original diagnostic information.',
+    questionFr:
+      "Qu'apporte `raise ... from ...` (chaînage d'exceptions) par rapport à un simple `raise` dans un bloc `except` ?",
+    answerFr:
+      "Il lie explicitement une nouvelle exception à l'originale qui l'a causée (exposée via `__cause__`), pour que la traceback montre clairement \"la cause directe était cette erreur d'origine\" plutôt qu'une chaîne `__context__` implicite et facile à mal lire ; c'est la façon idiomatique d'envelopper une exception bas niveau dans une autre plus parlante et spécifique au domaine sans perdre l'information de diagnostic d'origine.",
+  },
 ];

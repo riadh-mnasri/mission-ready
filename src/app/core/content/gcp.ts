@@ -166,4 +166,58 @@ export const questions = [
     answerFr:
       "Les données au repos dans BigQuery sont facturées pour le stockage indépendamment de l'exécution des requêtes, facturée soit par octets scannés (on-demand) soit via une capacité de slots réservée (flat-rate) ; cette séparation fait que des données inactives coûtent peu, mais le coût d'une requête dépend directement de la quantité de données scannées, ce qui fait du partitionnement et du clustering des tables un levier clé de maîtrise des coûts.",
   },
+  {
+    question: 'What are IAM Conditions and what do they add on top of a standard role binding?',
+    answer:
+      'A conditional expression (based on attributes like resource name, request time, or IP) attached to an IAM role binding, so the grant only applies when the condition is true - e.g. "only allow this role until a given date" or "only on resources with a specific tag", enabling fine-grained, time- or context-bound access beyond a flat allow.',
+    questionFr:
+      "Que sont les IAM Conditions et qu'ajoutent-elles par rapport à un binding de rôle standard ?",
+    answerFr:
+      "Une expression conditionnelle (basée sur des attributs comme le nom de la ressource, l'heure de la requête, ou l'IP) attachée à un binding de rôle IAM, pour que l'octroi ne s'applique que si la condition est vraie - par exemple \"n'autoriser ce rôle que jusqu'à une date donnée\" ou \"seulement sur des ressources avec un tag spécifique\", permettant un accès fin, borné dans le temps ou le contexte, au-delà d'une autorisation plate.",
+  },
+  {
+    question: 'What is Cloud NAT and why do private instances need it?',
+    answer:
+      'A managed service that lets instances without a public IP address initiate outbound connections to the internet (e.g. to pull packages or call an external API) while remaining unreachable from the internet inbound, avoiding the security exposure of assigning a public IP just to get outbound connectivity.',
+    questionFr: "Qu'est-ce que Cloud NAT et pourquoi des instances privées en ont-elles besoin ?",
+    answerFr:
+      "Un service managé qui permet à des instances sans adresse IP publique d'initier des connexions sortantes vers internet (pour récupérer des paquets ou appeler une API externe par exemple) tout en restant inaccessibles depuis internet en entrant, évitant l'exposition de sécurité d'assigner une IP publique juste pour obtenir de la connectivité sortante.",
+  },
+  {
+    question:
+      'What is Identity-Aware Proxy (IAP) and what problem does it solve for internal admin access?',
+    answer:
+      "It enforces access control at the application/network edge based on a user's identity and context (via Google sign-in and IAM) before traffic reaches an app or VM, letting you expose internal tools (admin panels, SSH/RDP) without a VPN by replacing network-perimeter trust with per-request identity checks - a concrete instance of zero-trust access.",
+    questionFr:
+      "Qu'est-ce qu'Identity-Aware Proxy (IAP) et quel problème résout-il pour l'accès admin interne ?",
+    answerFr:
+      "Il impose un contrôle d'accès en périphérie de l'application/réseau basé sur l'identité et le contexte de l'utilisateur (via l'authentification Google et IAM) avant que le trafic n'atteigne une app ou une VM, permettant d'exposer des outils internes (panneaux admin, SSH/RDP) sans VPN en remplaçant la confiance de périmètre réseau par des vérifications d'identité par requête - une instance concrète d'accès zero-trust.",
+  },
+  {
+    question: 'What is Cloud Composer and why choose it over self-hosting Apache Airflow?',
+    answer:
+      'A fully managed Apache Airflow service for orchestrating multi-step, scheduled data pipelines (DAGs) across GCP and external services; choosing it over self-hosting removes the operational burden of running and scaling the Airflow scheduler, webserver, and workers yourself, at the cost of some flexibility over the underlying infrastructure.',
+    questionFr:
+      "Qu'est-ce que Cloud Composer et pourquoi le choisir plutôt que d'auto-héberger Apache Airflow ?",
+    answerFr:
+      "Un service Apache Airflow entièrement managé pour orchestrer des pipelines de données planifiés et multi-étapes (DAGs) à travers GCP et des services externes ; le choisir plutôt que l'auto-hébergement supprime la charge opérationnelle de faire tourner et scaler soi-même le scheduler, le webserver et les workers Airflow, au prix d'un peu de flexibilité sur l'infrastructure sous-jacente.",
+  },
+  {
+    question: 'What does Cloud CDN add on top of the global HTTP(S) load balancer?',
+    answer:
+      "It caches eligible responses at Google's edge points of presence close to users, reducing latency and origin load for cacheable content (static assets, cacheable API responses); it's enabled directly on a global load balancer's backend rather than being a separate standalone product, and cache behavior is controlled via standard HTTP cache headers plus GCP-specific cache-key overrides.",
+    questionFr: "Qu'apporte Cloud CDN par-dessus le load balancer HTTP(S) global ?",
+    answerFr:
+      "Il met en cache les réponses éligibles aux points de présence edge de Google proches des utilisateurs, réduisant la latence et la charge sur l'origine pour du contenu cachable (assets statiques, réponses API cachables) ; il s'active directement sur le backend d'un load balancer global plutôt que d'être un produit autonome séparé, et le comportement de cache est contrôlé via les en-têtes HTTP de cache standards plus des overrides de clé de cache spécifiques à GCP.",
+  },
+  {
+    question:
+      'What is BigQuery ML and what workflow does it change for a team that already knows SQL?',
+    answer:
+      'It lets you train, evaluate, and run inference for common ML model types (linear/logistic regression, k-means, boosted trees, and imported models) using SQL statements directly inside BigQuery, letting a data-savvy team prototype and serve models on data that never has to leave the warehouse or be exported to a separate ML pipeline for straightforward use cases.',
+    questionFr:
+      "Qu'est-ce que BigQuery ML et quel workflow change-t-il pour une équipe qui maîtrise déjà le SQL ?",
+    answerFr:
+      "Il permet d'entraîner, d'évaluer et d'exécuter l'inférence pour des types de modèles ML courants (régression linéaire/logistique, k-means, arbres boostés, et modèles importés) via des instructions SQL directement dans BigQuery, permettant à une équipe à l'aise avec la donnée de prototyper et servir des modèles sur des données qui n'ont jamais besoin de quitter le warehouse ou d'être exportées vers un pipeline ML séparé pour des cas d'usage simples.",
+  },
 ];

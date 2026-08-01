@@ -141,4 +141,53 @@ export const questions = [
     answerFr:
       "Via des politiques d'exclusion de contenu configurées au niveau de l'organisation ou du repository, listant des chemins, types de fichiers ou repos entiers qui ne doivent jamais être envoyés au modèle comme contexte - couramment utilisé pour garder les credentials, artefacts générés, ou domaines particulièrement sensibles hors de ce que Copilot voit jamais.",
   },
+  {
+    question:
+      'What is Copilot Edits, and how does it differ from chat-and-paste or single-line completion?',
+    answer:
+      'A mode where you describe a change and Copilot proposes and applies edits directly across multiple selected files in the working tree, shown as reviewable diffs you can accept or reject per file, rather than either accepting one suggestion at a time or copy-pasting a chat response into each file by hand.',
+    questionFr:
+      "Qu'est-ce que Copilot Edits, et en quoi diffère-t-il du chat-puis-copier-coller ou de la complétion ligne par ligne ?",
+    answerFr:
+      "Un mode où vous décrivez un changement et Copilot propose et applique des édits directement sur plusieurs fichiers sélectionnés dans l'arbre de travail, affichés comme des diffs relisables que vous pouvez accepter ou rejeter fichier par fichier, plutôt que d'accepter une suggestion à la fois ou de copier-coller une réponse de chat dans chaque fichier à la main.",
+  },
+  {
+    question:
+      'What is the Copilot coding agent, and how does assigning it an issue differ from using Copilot Chat interactively?',
+    answer:
+      'An autonomous mode where you assign a GitHub issue directly to Copilot; it works in the background in its own environment, opens a pull request with its proposed implementation, and iterates on review comments - closer to delegating a ticket to a teammate than to a live, turn-by-turn chat session where a developer drives every step.',
+    questionFr:
+      "Qu'est-ce que le coding agent de Copilot, et en quoi assigner une issue diffère-t-il d'utiliser Copilot Chat de façon interactive ?",
+    answerFr:
+      "Un mode autonome où l'on assigne directement une issue GitHub à Copilot ; il travaille en arrière-plan dans son propre environnement, ouvre une pull request avec son implémentation proposée, et itère sur les commentaires de revue - plus proche de déléguer un ticket à un coéquipier que d'une session de chat en direct, tour par tour, où un développeur pilote chaque étape.",
+  },
+  {
+    question: 'What do next edit suggestions add beyond the classic cursor-position autocomplete?',
+    answer:
+      "Instead of only predicting what comes next at the current cursor, this feature anticipates other, related edits your current change implies elsewhere in the file or codebase (e.g. updating a call site after you change a function's signature) and lets you jump to and accept them in sequence, catching consistency fixes a developer might otherwise miss or do manually.",
+    questionFr:
+      "Qu'apportent les next edit suggestions par rapport à l'autocomplete classique à la position du curseur ?",
+    answerFr:
+      "Plutôt que de seulement prédire ce qui vient ensuite à la position actuelle du curseur, cette fonctionnalité anticipe d'autres édits liés que votre changement actuel implique ailleurs dans le fichier ou le codebase (mettre à jour un site d'appel après avoir changé la signature d'une fonction, par exemple) et permet de sauter dessus et de les accepter en séquence, rattrapant des corrections de cohérence qu'un développeur pourrait autrement manquer ou faire à la main.",
+  },
+  {
+    question:
+      'What visibility does the Copilot metrics/usage dashboard give an engineering manager or admin?',
+    answer:
+      "Aggregated, org-level data on adoption and engagement - active users, acceptance rate of suggestions, language/IDE breakdown - without exposing individual developers' actual code or prompts, letting a manager gauge rollout success and ROI without the privacy cost of per-developer content inspection.",
+    questionFr:
+      'Quelle visibilité le dashboard de métriques/usage de Copilot donne-t-il à un manager ou un admin ?',
+    answerFr:
+      "Des données agrégées au niveau de l'organisation sur l'adoption et l'engagement - utilisateurs actifs, taux d'acceptation des suggestions, répartition par langage/IDE - sans exposer le code ou les prompts réels d'un développeur individuel, permettant à un manager d'évaluer le succès du déploiement et le ROI sans le coût de confidentialité d'une inspection de contenu par développeur.",
+  },
+  {
+    question:
+      'How does agent mode differ from simply asking Copilot Chat a question and applying its answer yourself?',
+    answer:
+      'In agent mode, Copilot autonomously plans and executes multiple steps - reading files, running terminal commands, iterating based on test or lint output - toward a stated goal with only periodic checkpoints for approval, whereas a plain chat answer is a single response the developer must interpret and manually apply themselves, one step at a time.',
+    questionFr:
+      "En quoi le mode agent diffère-t-il du fait de simplement poser une question à Copilot Chat et d'appliquer soi-même sa réponse ?",
+    answerFr:
+      "En mode agent, Copilot planifie et exécute plusieurs étapes de façon autonome - lire des fichiers, exécuter des commandes terminal, itérer selon les résultats de tests ou de lint - vers un objectif énoncé, avec seulement des points de contrôle périodiques pour approbation, tandis qu'une réponse de chat classique est une réponse unique que le développeur doit interpréter et appliquer lui-même, une étape à la fois.",
+  },
 ];

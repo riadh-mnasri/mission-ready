@@ -172,4 +172,51 @@ export const questions = [
     answerFr:
       "Que les prompts/sorties client soient utilisés ou non pour entraîner de futurs modèles (typiquement non, par défaut, pour un usage API/entreprise), les durées de rétention des données, les options de résidence régionale des données, et les certifications d'audit/conformité - c'est ce qu'une équipe sécurité ou juridique doit valider avant qu'un LLM ne touche des données sensibles ou régulées.",
   },
+  {
+    question: 'What is the Message Batches API, and what workload is it designed for?',
+    answer:
+      "An asynchronous endpoint that accepts a large set of independent requests at once and returns results within a longer completion window (rather than real-time), at a significantly lower per-token cost than synchronous calls; it fits large offline workloads - bulk classification, dataset labeling, batch summarization - where latency on any single request doesn't matter but total cost does.",
+    questionFr:
+      "Qu'est-ce que l'API Message Batches, et pour quel type de workload est-elle conçue ?",
+    answerFr:
+      "Un endpoint asynchrone qui accepte un grand ensemble de requêtes indépendantes d'un coup et retourne les résultats dans une fenêtre de complétion plus longue (plutôt qu'en temps réel), à un coût par token significativement plus bas que des appels synchrones ; elle convient aux gros workloads hors ligne - classification en masse, labellisation de dataset, résumé par lot - où la latence d'une requête individuelle importe peu mais le coût total oui.",
+  },
+  {
+    question:
+      "What are Claude's built-in tools (e.g. web search, code execution), and how do they differ from custom tools/MCP servers a developer defines?",
+    answer:
+      'Built-in tools are capabilities Anthropic hosts and maintains directly (fetching live web results, running code in a sandbox) that a developer enables with a flag rather than implementing themselves; custom tools and MCP servers are integrations the developer defines and hosts to connect the model to their own systems - the two are complementary, letting an application mix ready-made capabilities with bespoke ones.',
+    questionFr:
+      'Que sont les outils intégrés de Claude (recherche web, exécution de code), et en quoi diffèrent-ils des outils custom/serveurs MCP définis par un développeur ?',
+    answerFr:
+      "Les outils intégrés sont des capacités hébergées et maintenues directement par Anthropic (récupérer des résultats web en direct, exécuter du code dans un sandbox) qu'un développeur active avec un flag plutôt que de les implémenter lui-même ; les outils custom et serveurs MCP sont des intégrations que le développeur définit et héberge pour connecter le modèle à ses propres systèmes - les deux sont complémentaires, permettant à une application de mélanger des capacités prêtes à l'emploi et sur mesure.",
+  },
+  {
+    question:
+      'How do you get reliable structured (JSON) output from Claude for a downstream system to parse?',
+    answer:
+      'The most reliable approach is defining a tool with a strict input schema and forcing the model to call it, since the API then validates the response against that schema rather than hoping a free-text instruction like "respond in JSON" is followed exactly; this matters whenever an LLM\'s output feeds directly into code rather than being read by a human.',
+    questionFr:
+      "Comment obtenir une sortie structurée (JSON) fiable de Claude pour qu'un système en aval la parse ?",
+    answerFr:
+      "L'approche la plus fiable consiste à définir un outil avec un schéma d'entrée strict et à forcer le modèle à l'appeler, car l'API valide alors la réponse contre ce schéma plutôt que d'espérer qu'une instruction en texte libre comme \"réponds en JSON\" soit suivie exactement ; cela compte dès qu'une sortie de LLM alimente directement du code plutôt que d'être lue par un humain.",
+  },
+  {
+    question: 'What is the Claude Agent SDK, and how does it relate to Claude Code?',
+    answer:
+      'A software development kit that exposes the same agentic loop, tool-use, and context-management primitives that power Claude Code, so a team can build their own custom agents for tasks beyond coding (e.g. a support or research agent) instead of reimplementing the orchestration logic (looping, tool dispatch, context/memory handling) from scratch.',
+    questionFr: "Qu'est-ce que le Claude Agent SDK, et quel est son lien avec Claude Code ?",
+    answerFr:
+      "Un kit de développement qui expose les mêmes primitives de boucle agentique, d'usage d'outils et de gestion du contexte qui font tourner Claude Code, pour qu'une équipe puisse construire ses propres agents sur mesure pour des tâches au-delà du code (un agent de support ou de recherche par exemple) plutôt que de réimplémenter la logique d'orchestration (boucle, dispatch d'outils, gestion du contexte/mémoire) à partir de zéro.",
+  },
+  {
+    question:
+      'What do API usage tiers and rate limits typically govern, and why do they matter when architecting an application on Claude?',
+    answer:
+      'They cap requests-per-minute and tokens-per-minute based on account tier and spend history, meaning a production application needs to handle 429 responses with backoff/retry and, for bursty or high-volume workloads, either request a tier increase or spread load (e.g. via batching) rather than assuming unlimited throughput from day one.',
+    questionFr:
+      "Que gouvernent typiquement les tiers d'usage et les rate limits de l'API, et pourquoi comptent-ils en concevant une application sur Claude ?",
+    answerFr:
+      "Ils plafonnent les requêtes par minute et les tokens par minute selon le tier du compte et l'historique de dépense, ce qui signifie qu'une application en production doit gérer les réponses 429 avec du backoff/retry et, pour des workloads en pics ou à fort volume, soit demander une augmentation de tier soit étaler la charge (via du batching par exemple) plutôt que de supposer un débit illimité dès le premier jour.",
+  },
 ];
