@@ -20,6 +20,10 @@ import { questions as gcp } from './gcp';
 import { questions as claude } from './claude';
 import { questions as copilot } from './copilot';
 import { questions as python } from './python';
+import { questions as react } from './react';
+import { questions as vue } from './vue';
+import { questions as bdd } from './bdd';
+import { questions as gitlabCicd } from './gitlab-cicd';
 
 interface ThemeSeed {
   id: string;
@@ -73,6 +77,15 @@ const THEME_SEEDS: ThemeSeed[] = [
   { id: 'claude', name: 'Claude', color: '#d97757', questions: claude },
   { id: 'copilot', name: 'GitHub Copilot', color: '#8250df', questions: copilot },
   { id: 'python', name: 'Python', color: '#3776ab', questions: python },
+  { id: 'react', name: 'React', color: '#61dafb', questions: react },
+  { id: 'vue', name: 'Vue.js', color: '#42b883', questions: vue },
+  { id: 'bdd', name: 'BDD', color: '#c97b84', questions: bdd },
+  {
+    id: 'gitlab-cicd',
+    name: 'GitLab CI/CD',
+    color: '#fc6d26',
+    questions: gitlabCicd,
+  },
 ];
 
 export function createInitialState(): AppState {
